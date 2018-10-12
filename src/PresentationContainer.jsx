@@ -134,9 +134,7 @@ function Slides({ schedule, onSlideVisible }) {
                     </h4>
                   )}
                 </main>
-                <footer className={styles.presentationFooter}>
-                  footer content
-                </footer>
+                <footer className={styles.presentationFooter} />
               </div>
             </Observer>
           ))
