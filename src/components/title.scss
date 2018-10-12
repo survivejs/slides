@@ -1,15 +1,19 @@
 @import "../variables.scss";
 
-body {
-  background: white;
-}
-
-.authorContainer {
+.titleContainer {
+  min-height: 100vh;
+  max-height: 100vh;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+}
+.presentation {
+  font-size: 800%;
+  margin-left: 5vw;
 }
 .author {
-  color: $primaryColor;
-  font-size: 1000% !important;
-  margin-top: -2cm;
+  color: $secondaryTextColor;
+  font-size: 400%;
+  margin-right: 5vw;
+  justify-self: end;
 }
