@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": "true",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

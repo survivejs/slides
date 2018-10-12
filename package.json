@@ -1,0 +1,81 @@
+{
+  "name": "intro-to-graphql",
+  "version": "0.0.0",
+  "description": "Brief introduction to GraphQL",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "build": "node ./antwar.bootstrap.js build",
+    "start": "node ./antwar.bootstrap.js develop",
+    "lint": "eslint . --ignore-path .gitignore --fix",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/survivejs-presentations/intro-to-graphql.git"
+  },
+  "lint-staged": {
+    "*.{js,json,md,css,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/survivejs-presentations/intro-to-graphql/issues"
+  },
+  "homepage": "https://github.com/survivejs-presentations/intro-to-graphql#readme",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "graphql-request": "^1.8.2",
+    "intersection-observer": "^0.5.0",
+    "lodash": "^4.17.11",
+    "react": "^16.5.2",
+    "react-easy-emoji": "^1.2.0",
+    "react-intersection-observer": "^6.2.3",
+    "react-swipe-component": "^2.1.0",
+    "window-or-global": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-syntax-class-properties": "^7.0.0",
+    "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "antwar": "^0.29.3",
+    "antwar-interactive": "^0.29.3",
+    "autoprefixer": "^9.1.5",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "file-loader": "^2.0.0",
+    "graphql-yoga": "^1.16.2",
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.9.3",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.14.3",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.20.2",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
