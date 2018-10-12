@@ -1,0 +1,64 @@
+@import "./variables.scss";
+
+h1,
+h2,
+h3,
+h4,
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.presentationHeader {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: start;
+  align-self: start;
+}
+.presentationLogo {
+  width: 100%;
+}
+
+.speakerImageContainer {
+  filter: drop-shadow(0.1em 0.1em 0.1em rgba($primaryColor, 0.2));
+}
+
+.speakerImage {
+  max-width: 300px;
+  max-height: 300px;
+  width: 70%;
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+}
+
+.titlePageContainer,
+.presentationContainer {
+  min-height: 100vh;
+  max-height: 100vh;
+  align-items: center;
+}
+
+.presentationContainer {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.presentationContent {
+  font-size: 400%;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.presentationInterval {
+  margin-top: 0.5em;
+  text-align: center;
+}
+.speakerTitle {
+  font-size: 90%;
+}
+.speakerName {
+  font-size: 70%;
+}
+
+.presentationFooter {
+}

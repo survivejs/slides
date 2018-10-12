@@ -1,0 +1,9 @@
+$primaryColor: #e10098;
+$secondaryColor: desaturate(lighten($primaryColor, 50), 5);
+$primaryTextColor: #233239;
+$secondaryTextColor: desaturate(lighten($primaryTextColor, 50), 5);
+$backgroundColor: #fff;
+$mainFontFamily: "Assistant", -apple-system, BlinkMacSystemFont,
+  "Helvetica Neue", "Segoe UI", sans-serif;
+$displayFontFamily: Montserrat, -apple-system, BlinkMacSystemFont,
+  "Helvetica Neue", "Segoe UI", sans-serif;

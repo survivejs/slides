@@ -1,0 +1,15 @@
+@import "../variables.scss";
+
+body {
+  background: white;
+}
+
+.authorContainer {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+.author {
+  color: $primaryColor;
+  font-size: 1000% !important;
+  margin-top: -2cm;
+}
