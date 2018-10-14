@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { styled } from "@bebraw/linaria/react";
 import { modularScale } from "polished";
 
@@ -31,5 +32,8 @@ const TitlePage = ({ theme = {} }) => (
     <Author color={theme.secondaryColor}>Juho Vepsäläinen</Author>
   </TitlePageContainer>
 );
+TitlePage.propTypes = {
+  theme: PropTypes.object
+};
 
 export default TitlePage;

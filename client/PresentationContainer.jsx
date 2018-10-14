@@ -1,11 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Swipe from "react-swipe-component";
 import Observer from "react-intersection-observer";
 import connect from "./utils/connect";
 import ScheduleIcon from "./components/ScheduleIcon.jsx";
 import TitlePage from "./components/TitlePage.jsx";
 import logo from "./assets/colored-logo.svg";
-//import styles from "./presentation.scss";
 import root from "window-or-global";
 
 // TODO: Lazy load as in https://www.npmjs.com/package/react-intersection-observer#polyfill
@@ -85,6 +85,10 @@ class PresentationContainer extends React.Component {
     );
   }
 }
+PresentationContainer.propTypes = {
+  schedule: PropTypes.object,
+  theme: PropTypes.object
+};
 
 function Slides({ schedule, theme, onSlideVisible }) {
   function onSlideChange(slide) {
