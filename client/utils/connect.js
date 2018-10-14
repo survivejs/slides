@@ -25,10 +25,9 @@ function connect(query, { apiUrl, propsToVars }) {
         }
       }
       fetchData() {
-        return request(apiUrl, query, {
-          ...(propsToVars ? propsToVars(this.props) : {}),
-          conferenceId: "graphql-finland-2018" // TODO: decouple
-        }).then(data => {
+        const vars = propsToVars ? propsToVars(this.props) : {};
+
+        return request(vars.apiUrl || apiUrl, query, vars).then(data => {
           queryCache = data;
 
           return { data };
