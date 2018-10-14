@@ -4,7 +4,9 @@ import Observer from "react-intersection-observer";
 import { styled } from "linaria/react";
 import layouts from "./layouts";
 
-const Slide = styled.div``;
+const Slide = styled.div`
+  page-break-after: always; /* Needed for print to work */
+`;
 
 function Slides({ slides = [], theme, onSlideVisible }) {
   return slides.map((slide, index) => {
