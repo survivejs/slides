@@ -6,21 +6,41 @@ module.exports = env => {
   switch (env) {
     case "build":
     case "interactive":
-      return merge(commonConfig(), buildConfig());
+      return commonConfig(env);
     default:
-      return merge(commonConfig(), developmentConfig());
+      return merge(commonConfig(env), developmentConfig());
   }
 };
 
-function commonConfig() {
+function commonConfig(env) {
   return {
     stats: "minimal",
     module: {
       rules: [
         {
           test: /\.js(x)$/,
-          use: "babel-loader",
+          use: [
+            "babel-loader",
+            {
+              loader: "@bebraw/linaria/loader",
+              options: {
+                sourceMap: env === "develop"
+              }
+            }
+          ],
           include: path.join(__dirname, "src")
+        },
+        {
+          test: /\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: env === "develop"
+              }
+            }
+          ]
         },
         {
           test: /\.woff(2)?|\.ttf$|\.eot$/,
@@ -43,6 +63,7 @@ function commonConfig() {
         }
       ]
     },
+    plugins: [new MiniCssExtractPlugin()],
     resolve: {
       alias: {
         assets: path.resolve(__dirname, "assets"),
@@ -56,42 +77,6 @@ function commonConfig() {
 
 function developmentConfig() {
   return {
-    stats: "minimal",
-    module: {
-      rules: [
-        {
-          test: /\.s?css$/,
-          use: [
-            "style-loader",
-            {
-              loader: "css-loader",
-              options: { importLoaders: 1, modules: true }
-            },
-            "sass-loader"
-          ]
-        }
-      ]
-    }
-  };
-}
-
-function buildConfig() {
-  return {
-    module: {
-      rules: [
-        {
-          test: /\.s?css$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            {
-              loader: "css-loader",
-              options: { importLoaders: 1, modules: true }
-            },
-            "sass-loader"
-          ]
-        }
-      ]
-    },
-    plugins: [new MiniCssExtractPlugin()]
+    stats: "minimal"
   };
 }

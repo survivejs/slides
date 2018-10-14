@@ -5,13 +5,15 @@ import connect from "./utils/connect";
 import ScheduleIcon from "./components/ScheduleIcon.jsx";
 import TitlePage from "./components/TitlePage.jsx";
 import logo from "./assets/colored-logo.svg";
-import styles from "./presentation.scss";
+//import styles from "./presentation.scss";
 import root from "window-or-global";
 
 // TODO: Lazy load as in https://www.npmjs.com/package/react-intersection-observer#polyfill
 if (root.location) {
   require("intersection-observer");
 }
+
+const styles = {}; // TODO
 
 class PresentationContainer extends React.Component {
   state = {

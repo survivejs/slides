@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "Finlandica";
+  src: url("./assets/fonts/finlandica-regular.eot");
+  src: url("./assets/fonts/finlandica-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/finlandica-regular.woff2") format("woff2"),
+    url("./assets/fonts/finlandica-regular.woff") format("woff"),
+    url("./assets/fonts/finlandica-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Finlandica Bold";
+  src: url("./assets/fonts/finlandica-bold.eot");
+  src: url("./assets/fonts/finlandica-bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/finlandica-bold.woff2") format("woff2"),
+    url("./assets/fonts/finlandica-bold.woff") format("woff"),
+    url("./assets/fonts/finlandica-bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: "Finlandica", sans-serif;
+  background: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
