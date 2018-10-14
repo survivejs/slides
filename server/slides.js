@@ -22,11 +22,27 @@ module.exports = [
     content: {
       title: "Code slide",
       markup: `
-\`\`\`javascript
-function helloWorld() {
-  return 'hello world!';
-}
+\`\`\`js
+var React = require('react');
+var Markdown = require('react-markdown');
+React.render(
+  <Markdown source="# Your markdown here" />,
+  document.getElementById('content')
+);
 \`\`\`
+`
+    }
+  },
+  {
+    layout: "markdown",
+    content: {
+      title: "Table slide",
+      markup: `
+| Feature | Support |
+| ------ | ----------- |
+| tables | ✔ |
+| alignment | ✔ |
+| wewt | ✔ |
 `
     }
   }
