@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Observer from "react-intersection-observer";
+import { styled } from "@bebraw/linaria/react";
 import layouts from "./layouts";
+
+const Slide = styled.div``;
 
 function Slides({ slides = [], theme, onSlideVisible }) {
   return slides.map((slide, index) => {
@@ -9,14 +12,14 @@ function Slides({ slides = [], theme, onSlideVisible }) {
 
     // Slides are given class names for keyboard navigation to work.
     return (
-      <div className={slideKey} key={slideKey}>
+      <Slide className={slideKey} key={slideKey}>
         <Observer onChange={onSlideChange(index, onSlideVisible)}>
           {React.createElement(getLayout(slide.layout), {
             theme,
             content: slide.content
           })}
         </Observer>
-      </div>
+      </Slide>
     );
   });
 }
