@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Observer from "react-intersection-observer";
+import ScrollPercentage from "react-scroll-percentage";
 import { styled } from "linaria/react";
 import layouts from "./layouts";
 
@@ -15,12 +15,12 @@ function Slides({ slides = [], theme, onSlideVisible }) {
     // Slides are given class names for keyboard navigation to work.
     return (
       <Slide className={slideKey} key={slideKey}>
-        <Observer onChange={onSlideChange(index, onSlideVisible)}>
+        <ScrollPercentage onChange={onSlideChange(index, onSlideVisible)}>
           {React.createElement(getLayout(slide.layout), {
             theme,
             content: slide.content
           })}
-        </Observer>
+        </ScrollPercentage>
       </Slide>
     );
   });
@@ -32,8 +32,8 @@ Slides.propTypes = {
 };
 
 function onSlideChange(slide, onSlideVisible) {
-  return inView => {
-    if (inView) {
+  return (percentage, inView) => {
+    if (percentage > 0.5 && inView === true) {
       onSlideVisible(slide);
     }
   };

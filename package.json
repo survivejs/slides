@@ -44,8 +44,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-easy-emoji": "^1.2.0",
-    "react-intersection-observer": "^6.2.3",
     "react-markdown": "^4.0.3",
+    "react-scroll-percentage": "^2.0.0",
     "react-swipe-component": "^2.1.0",
     "window-or-global": "^1.0.1"
   },
