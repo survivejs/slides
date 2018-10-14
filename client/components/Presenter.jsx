@@ -39,7 +39,7 @@ class Presenter extends React.Component {
     this.goToSlide(
       Math.min(
         parseInt(root.location.hash.slice(1)) + 1,
-        this.props.schedule.intervals.length
+        this.props.slides.length
       )
     );
   };
@@ -61,7 +61,7 @@ class Presenter extends React.Component {
   }
 
   render() {
-    const { schedule, theme } = this.props;
+    const { slides, theme } = this.props;
 
     return (
       <Swipe
@@ -70,7 +70,7 @@ class Presenter extends React.Component {
         onSwipedDown={this.moveToPreviousSlide}
       >
         <Slides
-          schedule={schedule}
+          slides={slides}
           theme={theme}
           onSlideVisible={this.setUrlHash}
         />
@@ -79,7 +79,7 @@ class Presenter extends React.Component {
   }
 }
 Presenter.propTypes = {
-  schedule: PropTypes.object,
+  slides: PropTypes.array,
   theme: PropTypes.object
 };
 
