@@ -12,6 +12,10 @@ class Presenter extends React.Component {
   state = {
     slide: getSlide()
   };
+  componentDidCatch(err) {
+    // TODO: Use a nice error overlay here
+    console.log(err);
+  }
   componentDidMount() {
     document.addEventListener("keydown", this.onKeydown, false);
   }
