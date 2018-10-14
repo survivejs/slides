@@ -28,7 +28,7 @@ function commonConfig(env) {
               }
             }
           ],
-          include: path.join(__dirname, "src")
+          include: path.join(__dirname, "client")
         },
         {
           test: /\.css$/,
@@ -63,15 +63,7 @@ function commonConfig(env) {
         }
       ]
     },
-    plugins: [new MiniCssExtractPlugin()],
-    resolve: {
-      alias: {
-        assets: path.resolve(__dirname, "assets"),
-        config: path.resolve(__dirname, "antwar.config.js"), // XXX: styleguidist
-        components: path.resolve(__dirname, "components"),
-        utils: path.resolve(__dirname, "utils")
-      }
-    }
+    plugins: [new MiniCssExtractPlugin()]
   };
 }
 
