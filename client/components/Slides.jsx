@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Observer from "react-intersection-observer";
-import TitlePage from "./TitlePage.jsx";
+import TitleContent from "./TitleContent.jsx";
 
 function Slides({ slides = [], theme, onSlideVisible }) {
   function onSlideChange(slide) {
@@ -14,7 +14,9 @@ function Slides({ slides = [], theme, onSlideVisible }) {
 
   return slides.map((slide, index) => (
     <Observer onChange={onSlideChange(index)} key={`slide-${index}`}>
-      <TitlePage theme={theme} />
+      {slide.layout === "TITLE" && (
+        <TitleContent theme={theme} content={slide.content} />
+      )}
     </Observer>
   ));
 }

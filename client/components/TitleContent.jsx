@@ -24,16 +24,15 @@ const Author = styled.h2`
   color: ${props => props.color};
 `;
 
-const TitlePage = ({ theme = {} }) => (
+const TitleContent = ({ content = {}, theme = {} }) => (
   <TitlePageContainer>
-    <Presentation color={theme.primaryColor}>
-      Brief Introduction to GraphQL
-    </Presentation>
-    <Author color={theme.secondaryColor}>Juho Vepsäläinen</Author>
+    <Presentation color={theme.primaryColor}>{content.title}</Presentation>
+    <Author color={theme.secondaryColor}>{content.author}</Author>
   </TitlePageContainer>
 );
-TitlePage.propTypes = {
+TitleContent.propTypes = {
+  content: PropTypes.object,
   theme: PropTypes.object
 };
 
-export default TitlePage;
+export default TitleContent;
