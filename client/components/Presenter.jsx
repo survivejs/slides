@@ -14,7 +14,7 @@ class Presenter extends React.Component {
   };
   componentDidCatch(err) {
     // TODO: Use a nice error overlay here
-    console.log(err);
+    console.error(err); // eslint-disable-line no-console
   }
   componentDidMount() {
     document.addEventListener("keydown", this.onKeydown, false);
