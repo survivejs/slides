@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Observer from "react-intersection-observer";
-import TitleContent from "./TitleContent.jsx";
+import layouts from "./layouts";
 
 function Slides({ slides = [], theme, onSlideVisible }) {
   function onSlideChange(slide) {
@@ -14,9 +14,10 @@ function Slides({ slides = [], theme, onSlideVisible }) {
 
   return slides.map((slide, index) => (
     <Observer onChange={onSlideChange(index)} key={`slide-${index}`}>
-      {slide.layout === "TITLE" && (
-        <TitleContent theme={theme} content={slide.content} />
-      )}
+      {React.createElement(layouts[slide.layout], {
+        theme,
+        content: slide.content
+      })}
     </Observer>
   ));
 }
