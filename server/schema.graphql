@@ -20,12 +20,16 @@ enum Layout {
 
 union ContentType = TitleContent | MarkdownContent
 
-type TitleContent {
+interface Content {
+  title: String!
+}
+
+type TitleContent implements Content {
   title: String!
   author: String
 }
 
-type MarkdownContent {
+type MarkdownContent implements Content {
   title: String!
   markup: String
 }

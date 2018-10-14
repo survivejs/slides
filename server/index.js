@@ -38,16 +38,11 @@ const resolvers = {
     theme: () => theme,
     slides: () => slides
   },
+  Content: {
+    __resolveType: resolveContentType
+  },
   ContentType: {
-    __resolveType(obj) {
-      if (obj.author) {
-        return "TitleContent";
-      }
-
-      if (obj.markup) {
-        return "MarkdownContent";
-      }
-    }
+    __resolveType: resolveContentType
   }
 };
 
@@ -56,3 +51,13 @@ const server = new GraphQLServer({
   resolvers
 });
 server.start(() => console.log("Server is running on localhost:4000"));
+
+function resolveContentType({ author, markup }) {
+  if (author) {
+    return "TitleContent";
+  }
+
+  if (markup) {
+    return "MarkdownContent";
+  }
+}
