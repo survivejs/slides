@@ -1,5 +1,5 @@
-import Presenter from "./Presenter.jsx";
-import connect from "../utils/connect";
+import Presenter from "./components/Presenter.jsx";
+import connect from "./connect";
 
 export default connect(
   `
