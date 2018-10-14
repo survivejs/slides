@@ -6,15 +6,12 @@ import connect from "./utils/connect";
 import "highlight.js/styles/github.css";
 import "./global.css";
 
-const apiUrl = "http://localhost:4000";
-
 const PresentationPage = ({ theme, slides }) => (
   <Interactive
     id="client/components/Presenter.jsx"
     component={Presenter}
     theme={theme}
     slides={slides}
-    apiUrl={apiUrl}
   />
 );
 PresentationPage.propTypes = {
@@ -45,6 +42,6 @@ export default connect(
 }
 `,
   {
-    apiUrl
+    apiUrl: "http://localhost:4000"
   }
 )(PresentationPage);
