@@ -39,7 +39,7 @@ class Presenter extends React.Component {
     this.goToSlide(
       Math.min(
         parseInt(root.location.hash.slice(1)) + 1,
-        this.props.slides.length
+        this.props.slides.length - 1
       )
     );
   };
