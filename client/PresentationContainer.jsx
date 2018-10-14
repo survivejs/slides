@@ -1,28 +1,9 @@
 import Presenter from "./components/Presenter.jsx";
 import connect from "./connect";
+import initialData from "../initial-data.graphql";
 
 export default connect(
-  `
-{
-  theme {
-    primaryColor
-    secondaryColor
-  }
-  slides {
-    layout
-    content {
-      ... on TitleContent {
-      	title
-        author
-    	}
-      ... on MarkdownContent {
-      	title
-        markup
-    	}
-    }
-  }
-}
-`,
+  initialData,
   {
     apiUrl: "http://localhost:4000"
   }

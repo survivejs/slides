@@ -46,7 +46,7 @@ module.exports = env => ({
         use: "file-loader"
       },
       {
-        test: /\.(md|txt)$/,
+        test: /\.(graphql|md|txt)$/,
         use: "raw-loader"
       }
     ]

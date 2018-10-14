@@ -1,0 +1,19 @@
+{
+  theme {
+    primaryColor
+    secondaryColor
+  }
+  slides {
+    layout
+    content {
+      ... on TitleContent {
+      	title
+        author
+    	}
+      ... on MarkdownContent {
+      	title
+        markup
+    	}
+    }
+  }
+}
