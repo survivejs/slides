@@ -4,22 +4,14 @@ import Observer from "react-intersection-observer";
 import layouts from "./layouts";
 
 function Slides({ slides = [], theme, onSlideVisible }) {
-  function onSlideChange(slide) {
-    return inView => {
-      if (inView) {
-        onSlideVisible(slide);
-      }
-    };
-  }
-
   return slides.map((slide, index) => {
     const slideKey = `slide-${index}`;
 
     // Slides are given class names for keyboard navigation to work.
     return (
       <div className={slideKey} key={slideKey}>
-        <Observer onChange={onSlideChange(index)}>
-          {React.createElement(layouts[slide.layout], {
+        <Observer onChange={onSlideChange(index, onSlideVisible)}>
+          {React.createElement(getLayout(slide.layout + "foo"), {
             theme,
             content: slide.content
           })}
@@ -33,5 +25,21 @@ Slides.propTypes = {
   theme: PropTypes.object,
   onSlideVisible: PropTypes.func
 };
+
+function onSlideChange(slide, onSlideVisible) {
+  return inView => {
+    if (inView) {
+      onSlideVisible(slide);
+    }
+  };
+}
+
+function getLayout(name) {
+  if (!layouts[name]) {
+    throw new Error(`No layout found for ${name}`);
+  }
+
+  return layouts[name];
+}
 
 export default Slides;
