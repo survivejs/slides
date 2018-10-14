@@ -51,9 +51,9 @@ class Presenter extends React.Component {
   };
 
   scrollToSlide(slide) {
-    root.document
-      .getElementsByClassName(`slide-${slide}`)[0]
-      .scrollIntoView({ behavior: "smooth" });
+    const element = root.document.getElementsByClassName(`slide-${slide}`)[0];
+
+    element && element.scrollIntoView({ behavior: "smooth" });
   }
 
   setUrlHash(slide) {
