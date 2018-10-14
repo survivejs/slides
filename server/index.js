@@ -10,18 +10,44 @@ const theme = {
 
 const slides = [
   {
-    layout: "TITLE",
+    layout: "title",
     content: {
       title: "Brief Introduction to GraphQL",
       author: "Juho Vepsäläinen"
+    }
+  },
+  {
+    layout: "markdown",
+    content: {
+      title: "Testing Markdown",
+      markup: `
+* One
+* Two
+* Three
+`
     }
   }
 ];
 
 const resolvers = {
+  Layout: {
+    TITLE: "title",
+    MARKDOWN: "markdown"
+  },
   Query: {
     theme: () => theme,
     slides: () => slides
+  },
+  ContentType: {
+    __resolveType(obj) {
+      if (obj.author) {
+        return "TitleContent";
+      }
+
+      if (obj.markup) {
+        return "MarkdownContent";
+      }
+    }
   }
 };
 

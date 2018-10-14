@@ -10,14 +10,22 @@ type Theme {
 
 type Slide {
   layout: Layout!
-  content: TitleContent!
+  content: ContentType!
 }
 
 enum Layout {
   TITLE
+  MARKDOWN
 }
+
+union ContentType = TitleContent | MarkdownContent
 
 type TitleContent {
   title: String!
   author: String
+}
+
+type MarkdownContent {
+  title: String!
+  markup: String
 }
