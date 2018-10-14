@@ -45,5 +45,14 @@ React.render(
 | wewt | ✔ |
 `
     }
+  },
+  {
+    layout: "markdown",
+    content: {
+      title: "Quote slide",
+      markup: `
+> Hasta la vista, baby! - Arnold Schwarzenegger
+`
+    }
   }
 ];
