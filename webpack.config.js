@@ -10,7 +10,7 @@ module.exports = env => ({
         use: [
           "babel-loader",
           {
-            loader: "@bebraw/linaria/loader",
+            loader: "linaria/loader",
             options: {
               sourceMap: env === "develop"
             }
@@ -21,7 +21,7 @@ module.exports = env => ({
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          env === "develop" ? "style-loader" : MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {

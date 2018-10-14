@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Observer from "react-intersection-observer";
-import { styled } from "@bebraw/linaria/react";
+import { styled } from "linaria/react";
 import layouts from "./layouts";
 
 const Slide = styled.div``;

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { styled } from "@bebraw/linaria/react";
+import { styled } from "linaria/react";
 import { modularScale } from "polished";
 import ReactMarkdown from "react-markdown";
 import CodeBlock from "./CodeBlock.jsx";

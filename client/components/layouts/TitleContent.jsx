@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { styled } from "@bebraw/linaria/react";
+import { styled } from "linaria/react";
 import { modularScale } from "polished";
 
 const TitlePageContainer = styled.div`
@@ -13,7 +13,7 @@ const TitlePageContainer = styled.div`
 
 const Presentation = styled.h1`
   font-size: ${modularScale(7)};
-  margin-left: 5vw;
+  margin-left: 10vw;
   color: ${props => props.color};
 `;
 
