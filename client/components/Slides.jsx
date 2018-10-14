@@ -1,8 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ScrollPercentage from "react-scroll-percentage";
+import root from "window-or-global";
 import { styled } from "linaria/react";
 import layouts from "./layouts";
+
+// TODO: Lazy load as in https://www.npmjs.com/package/react-intersection-observer#polyfill
+if (root.location) {
+  require("intersection-observer");
+}
 
 const Slide = styled.div`
   page-break-after: always; /* Needed for print to work */
@@ -33,7 +39,7 @@ Slides.propTypes = {
 
 function onSlideChange(slide, onSlideVisible) {
   return (percentage, inView) => {
-    if (percentage > 0.5 && inView === true) {
+    if (Math.floor(percentage * 100) / 100 === 0.5 && inView === true) {
       onSlideVisible(slide);
     }
   };

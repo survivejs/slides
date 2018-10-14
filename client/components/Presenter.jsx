@@ -4,10 +4,6 @@ import Swipe from "react-swipe-component";
 import root from "window-or-global";
 import Slides from "./Slides.jsx";
 
-// TODO: Lazy load as in https://www.npmjs.com/package/react-intersection-observer#polyfill
-if (root.location) {
-  require("intersection-observer");
-}
 class Presenter extends React.Component {
   state = {
     slide: getSlide()
