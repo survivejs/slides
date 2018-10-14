@@ -2,32 +2,8 @@
 const path = require("path");
 const { GraphQLServer } = require("graphql-yoga");
 const { importSchema } = require("graphql-import");
-
-const theme = {
-  primaryColor: "#09b5c4",
-  secondaryColor: "#19a0ab94"
-};
-
-const slides = [
-  {
-    layout: "title",
-    content: {
-      title: "Brief Introduction to GraphQL",
-      author: "Juho Vepsäläinen"
-    }
-  },
-  {
-    layout: "markdown",
-    content: {
-      title: "Testing Markdown",
-      markup: `
-* One
-* Two
-* Three
-`
-    }
-  }
-];
+const theme = require("./theme");
+const slides = require("./slides");
 
 const resolvers = {
   Layout: {
