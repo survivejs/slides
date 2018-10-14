@@ -1,7 +1,6 @@
 import React from "react";
 import { styled } from "@bebraw/linaria/react";
 import { modularScale } from "polished";
-import variables from "../variables";
 
 const TitlePageContainer = styled.div`
   min-height: 100vh;
@@ -24,12 +23,12 @@ const Author = styled.h2`
   color: ${props => props.color};
 `;
 
-const TitlePage = () => (
+const TitlePage = ({ theme = {} }) => (
   <TitlePageContainer>
-    <Presentation color={variables.primaryColor}>
+    <Presentation color={theme.primaryColor}>
       Brief Introduction to GraphQL
     </Presentation>
-    <Author color={variables.secondaryColor}>Juho Vepsäläinen</Author>
+    <Author color={theme.secondaryColor}>Juho Vepsäläinen</Author>
   </TitlePageContainer>
 );
 

@@ -68,7 +68,7 @@ class PresentationContainer extends React.Component {
   }
 
   render() {
-    const { schedule } = this.props;
+    const { schedule, theme } = this.props;
 
     return (
       <Swipe
@@ -76,13 +76,17 @@ class PresentationContainer extends React.Component {
         onSwipedUp={this.moveToNextSlide}
         onSwipedDown={this.moveToPreviousSlide}
       >
-        <Slides schedule={schedule} onSlideVisible={this.setUrlHash} />
+        <Slides
+          schedule={schedule}
+          theme={theme}
+          onSlideVisible={this.setUrlHash}
+        />
       </Swipe>
     );
   }
 }
 
-function Slides({ schedule, onSlideVisible }) {
+function Slides({ schedule, theme, onSlideVisible }) {
   function onSlideChange(slide) {
     return inView => {
       if (inView) {
@@ -95,7 +99,7 @@ function Slides({ schedule, onSlideVisible }) {
     <>
       <div className={`${styles.titlePageContainer} slide-0`}>
         <Observer onChange={onSlideChange(0)}>
-          <TitlePage />
+          <TitlePage theme={theme} />
         </Observer>
       </div>
       {schedule ? (
