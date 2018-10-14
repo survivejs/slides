@@ -12,14 +12,21 @@ function Slides({ slides = [], theme, onSlideVisible }) {
     };
   }
 
-  return slides.map((slide, index) => (
-    <Observer onChange={onSlideChange(index)} key={`slide-${index}`}>
-      {React.createElement(layouts[slide.layout], {
-        theme,
-        content: slide.content
-      })}
-    </Observer>
-  ));
+  return slides.map((slide, index) => {
+    const slideKey = `slide-${index}`;
+
+    // Slides are given class names for keyboard navigation to work.
+    return (
+      <div className={slideKey} key={slideKey}>
+        <Observer onChange={onSlideChange(index)}>
+          {React.createElement(layouts[slide.layout], {
+            theme,
+            content: slide.content
+          })}
+        </Observer>
+      </div>
+    );
+  });
 }
 Slides.propTypes = {
   slides: PropTypes.array,
