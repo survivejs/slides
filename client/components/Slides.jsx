@@ -11,7 +11,7 @@ function Slides({ slides = [], theme, onSlideVisible }) {
     return (
       <div className={slideKey} key={slideKey}>
         <Observer onChange={onSlideChange(index, onSlideVisible)}>
-          {React.createElement(getLayout(slide.layout + "foo"), {
+          {React.createElement(getLayout(slide.layout), {
             theme,
             content: slide.content
           })}
