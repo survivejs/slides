@@ -10,7 +10,7 @@ const apiUrl = "http://localhost:4000";
 
 const PresentationPage = ({ theme }) => (
   <Interactive
-    id="src/PresentationContainer.jsx"
+    id="client/PresentationContainer.jsx"
     component={PresentationContainer}
     theme={theme}
     apiUrl={apiUrl}
