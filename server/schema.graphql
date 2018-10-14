@@ -1,0 +1,23 @@
+type Query {
+  theme: Theme
+  slides: [Slide]
+}
+
+type Theme {
+  primaryColor: String!
+  secondaryColor: String!
+}
+
+type Slide {
+  layout: Layout!
+  content: TitleContent!
+}
+
+enum Layout {
+  TITLE
+}
+
+type TitleContent {
+  title: String!
+  author: String
+}
