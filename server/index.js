@@ -8,6 +8,7 @@ const slides = require("./slides");
 const resolvers = {
   Layout: {
     TITLE: "title",
+    EMBED: "embed",
     MARKDOWN: "markdown"
   },
   Query: {
@@ -23,18 +24,22 @@ const resolvers = {
   }
 };
 
-const server = new GraphQLServer({
-  typeDefs: importSchema(path.resolve(__dirname, "schema.graphql")),
-  resolvers
-});
-server.start(() => console.log("Server is running on localhost:4000"));
-
-function resolveContentType({ author, markup }) {
+function resolveContentType({ author, link, markup }) {
   if (author) {
     return "TitleContent";
+  }
+
+  if (link) {
+    return "EmbedContent";
   }
 
   if (markup) {
     return "MarkdownContent";
   }
 }
+
+const server = new GraphQLServer({
+  typeDefs: importSchema(path.resolve(__dirname, "schema.graphql")),
+  resolvers
+});
+server.start(() => console.log("Server is running on localhost:4000"));

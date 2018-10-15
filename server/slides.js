@@ -7,6 +7,13 @@ module.exports = [
     }
   },
   {
+    layout: "embed",
+    content: {
+      title: "GraphQL",
+      link: "https://graphql.org/"
+    }
+  },
+  {
     layout: "markdown",
     content: {
       title: "Testing Markdown",

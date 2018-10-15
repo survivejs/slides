@@ -11,6 +11,10 @@
         title
         author
       }
+      ... on EmbedContent {
+        title
+        link
+      }
       ... on MarkdownContent {
         title
         markup
