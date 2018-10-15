@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Swipe from "react-swipe-component";
+import { request } from "graphql-request";
 import root from "window-or-global";
 import Slides from "./Slides.jsx";
 import Options from "./Options.jsx";
+import apiUrl from "../api-url";
 
 class Presenter extends React.Component {
   state = {
     slide: getSlide(),
-    showOptions: false
+    showOptions: false,
+    theme: null
   };
   componentDidCatch(err) {
     // TODO: Use a nice error overlay here
@@ -66,8 +69,9 @@ class Presenter extends React.Component {
   }
 
   render() {
-    const { slides, theme } = this.props;
+    const { slides } = this.props;
     const { showOptions } = this.state;
+    const theme = this.state.theme || this.props.theme;
 
     return (
       <Swipe
@@ -94,7 +98,24 @@ class Presenter extends React.Component {
   onChangeTheme = themeName => {
     const { name: presentationName } = this.props;
 
-    console.log("change theme", themeName, presentationName);
+    request(
+      apiUrl,
+      `
+mutation($presentationName: String!, $themeName: String!) {
+  changeTheme(presentationName: $presentationName, themeName: $themeName) {
+    theme {
+      name
+      primaryColor
+      secondaryColor
+      backgroundColor
+    }
+  }
+}
+      `,
+      { presentationName, themeName }
+    ).then(({ changeTheme: { theme } }) => {
+      this.setState({ theme });
+    });
   };
 }
 Presenter.propTypes = {
