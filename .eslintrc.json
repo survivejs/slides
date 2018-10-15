@@ -6,9 +6,15 @@
     "node": true
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["graphql", "prettier"],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "graphql/template-strings": [
+      "error",
+      {
+        "env": "literal"
+      }
+    ]
   },
   "settings": {
     "react": {

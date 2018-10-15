@@ -1,6 +1,8 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const CLIENT_PATH = path.join(__dirname, "client");
+
 module.exports = env => ({
   stats: "minimal",
   module: {
@@ -16,7 +18,7 @@ module.exports = env => ({
             }
           }
         ],
-        include: path.join(__dirname, "client")
+        include: CLIENT_PATH
       },
       {
         test: /\.css$/,
@@ -46,8 +48,12 @@ module.exports = env => ({
         use: "file-loader"
       },
       {
-        test: /\.(graphql|md|txt)$/,
+        test: /\.(md|txt)$/,
         use: "raw-loader"
+      },
+      {
+        test: /\.graphql$/,
+        use: "graphql-tag/loader"
       }
     ]
   },
