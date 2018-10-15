@@ -12,6 +12,7 @@ if (root.location) {
 
 const Slide = styled.div`
   page-break-after: always; /* Needed for print to work */
+  background-color: ${props => props.backgroundColor};
 `;
 
 function Slides({ slides = [], theme, onSlideVisible }) {
@@ -20,7 +21,11 @@ function Slides({ slides = [], theme, onSlideVisible }) {
 
     // Slides are given class names for keyboard navigation to work.
     return (
-      <Slide className={slideKey} key={slideKey}>
+      <Slide
+        className={slideKey}
+        backgroundColor={theme.backgroundColor}
+        key={slideKey}
+      >
         <ScrollPercentage onChange={onSlideChange(index, onSlideVisible)}>
           {React.createElement(getLayout(slide.layout), {
             theme,

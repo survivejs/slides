@@ -2,18 +2,19 @@
   theme {
     primaryColor
     secondaryColor
+    backgroundColor
   }
   slides {
     layout
     content {
       ... on TitleContent {
-      	title
+        title
         author
-    	}
+      }
       ... on MarkdownContent {
-      	title
+        title
         markup
-    	}
+      }
     }
   }
 }

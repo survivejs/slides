@@ -6,6 +6,7 @@ type Query {
 type Theme {
   primaryColor: String!
   secondaryColor: String!
+  backgroundColor: String!
 }
 
 type Slide {
