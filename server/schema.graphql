@@ -1,9 +1,11 @@
 type Query {
-  theme: Theme
+  themes: [Theme]
+  theme(name: String!): Theme
   slides: [Slide]
 }
 
 type Theme {
+  name: String!
   primaryColor: String!
   secondaryColor: String!
   backgroundColor: String!

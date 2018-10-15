@@ -2,7 +2,7 @@
 const path = require("path");
 const { GraphQLServer } = require("graphql-yoga");
 const { importSchema } = require("graphql-import");
-const theme = require("./theme");
+const themes = require("./themes");
 const slides = require("./slides");
 
 const resolvers = {
@@ -11,7 +11,8 @@ const resolvers = {
     MARKDOWN: "markdown"
   },
   Query: {
-    theme: () => theme,
+    themes: () => Object.values(themes),
+    theme: (root, { name }) => themes[name],
     slides: () => slides
   },
   Content: {

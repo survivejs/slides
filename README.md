@@ -6,13 +6,14 @@
 
 ## Examples
 
-**Example query:**
+### Example Query
 
 ```graphql
 {
-  theme {
+  theme(name: "survivejs") {
     primaryColor
     secondaryColor
+    backgroundColor
   }
   slides {
     layout
@@ -30,5 +31,65 @@
       }
     }
   }
+}
+```
+
+### Theme API
+
+```graphql
+{
+  theme(name: "survivejs") {
+    primaryColor
+    secondaryColor
+    backgroundColor
+  }
+  themes {
+    primaryColor
+  }
+}
+```
+
+### Slide API
+
+```graphql
+{
+  slides {
+    layout
+    content {
+      ... on Content {
+        title
+      }
+      ... on TitleContent {
+        title
+        author
+      }
+      ... on MarkdownContent {
+        title
+        markup
+      }
+    }
+  }
+}
+```
+
+### Variables
+
+**Query:**
+
+```graphql
+{
+  theme(name: @themeName) {
+    primaryColor
+    secondaryColor
+    backgroundColor
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "themeName": "survivejs"
 }
 ```
