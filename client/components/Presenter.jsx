@@ -66,7 +66,7 @@ class Presenter extends React.Component {
   }
 
   render() {
-    const { slides, theme } = this.props;
+    const { name, slides, theme } = this.props;
     const { showOptions } = this.state;
 
     return (
@@ -82,13 +82,14 @@ class Presenter extends React.Component {
         />
         {showOptions &&
           process.env.NODE_ENV !== "production" && (
-            <Options currentTheme={theme.name} />
+            <Options presentationName={name} themeName={theme.name} />
           )}
       </Swipe>
     );
   }
 }
 Presenter.propTypes = {
+  name: PropTypes.string,
   slides: PropTypes.array,
   theme: PropTypes.object
 };

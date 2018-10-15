@@ -14,7 +14,7 @@ const Header = styled.h2`
   margin-bottom: 0.5em;
 `;
 
-function Options({ currentTheme, themes }) {
+function Options({ presentationName, themeName, themes }) {
   const options = toOptions(themes);
 
   return (
@@ -24,9 +24,9 @@ function Options({ currentTheme, themes }) {
         <OptionsContainer>
           <Header>Theme</Header>
           <Select
-            value={options.find(({ value }) => value === currentTheme)}
+            value={options.find(({ value }) => value === themeName)}
             options={options}
-            onChange={changeTheme}
+            onChange={changeTheme(presentationName)}
           />
         </OptionsContainer>
       }
@@ -34,20 +34,25 @@ function Options({ currentTheme, themes }) {
       styles={{
         sidebar: { background: "white", minWidth: "20%" }
       }}
-    />
+    >
+      ''
+    </Sidebar>
   );
 }
 Options.propTypes = {
-  currentTheme: PropTypes.string,
-  themes: PropTypes.object
+  presentationName: PropTypes.string,
+  themeName: PropTypes.string,
+  themes: PropTypes.array
 };
 
 function toOptions(themes = []) {
   return themes.map(({ name }) => ({ value: name, label: name }));
 }
 
-function changeTheme(value) {
-  console.log("change theme", value);
+function changeTheme(presentationName) {
+  return ({ value }) => {
+    console.log("change theme", presentationName, value);
+  };
 }
 
 export default connect(

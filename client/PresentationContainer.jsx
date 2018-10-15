@@ -6,7 +6,7 @@ import apiUrl from "./api-url";
 import initialData from "../initial-data.graphql";
 
 function PresentationContainer({ presentation = {} }) {
-  return <Presenter theme={presentation.theme} slides={presentation.slides} />;
+  return <Presenter {...presentation} />;
 }
 PresentationContainer.propTypes = {
   presentation: PropTypes.object

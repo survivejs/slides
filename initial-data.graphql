@@ -1,5 +1,6 @@
 {
   presentation(name: "intro-to-graphql") {
+    name
     theme {
       name
       primaryColor
