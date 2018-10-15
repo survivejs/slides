@@ -80,7 +80,10 @@ class Presenter extends React.Component {
           theme={theme}
           onSlideVisible={this.setUrlHash}
         />
-        {showOptions && process.env.NODE_ENV !== "production" && <Options />}
+        {showOptions &&
+          process.env.NODE_ENV !== "production" && (
+            <Options currentTheme={theme.name} />
+          )}
       </Swipe>
     );
   }

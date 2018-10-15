@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Presenter from "./components/Presenter.jsx";
 import connect from "./connect";
+import apiUrl from "./api-url";
 import initialData from "../initial-data.graphql";
 
 function PresentationContainer({ presentation = {} }) {
@@ -13,7 +14,5 @@ PresentationContainer.propTypes = {
 
 export default connect(
   initialData,
-  {
-    apiUrl: "http://localhost:4000"
-  }
+  { apiUrl }
 )(PresentationContainer);
