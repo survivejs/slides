@@ -18,8 +18,8 @@ const resolvers = {
   Query: {
     themes: () => Object.values(themes),
     theme: (_, { name }) => themes[name],
-    presentations: () => presentations,
-    presentation: (_, { name }) => presentations[name]
+    presentations: () => presentations.map(resolveTheme),
+    presentation: (_, { name }) => resolveTheme(presentations[name])
   },
   Content: {
     __resolveType: resolveContentType
@@ -55,6 +55,15 @@ function resolveContentType({ author, link, markup, title }) {
   if (title) {
     return "SectionContent";
   }
+}
+
+const resolveTheme = resolveField("theme", themes);
+
+function resolveField(field, lookup) {
+  return entity => ({
+    ...entity,
+    [field]: lookup[entity[field]]
+  });
 }
 
 module.exports = resolvers;
