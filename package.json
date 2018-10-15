@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "build": "node ./antwar.bootstrap.js build",
+    "build:ci": "start-server-and-test server http://localhost:4000 build",
     "start": "node ./antwar.bootstrap.js develop",
     "server": "node ./server",
     "lint": "eslint . --ignore-path .gitignore --fix --ext .graphql",
@@ -80,6 +81,7 @@
     "prettier": "^1.14.3",
     "raw-loader": "^0.5.1",
     "require-dir": "^1.1.0",
+    "start-server-and-test": "^1.7.4",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.20.2",
