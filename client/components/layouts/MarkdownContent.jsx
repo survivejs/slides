@@ -11,6 +11,7 @@ const MarkdownContainer = styled.div`
   display: grid;
   grid-template-rows: 0.5fr 1.5fr;
   align-items: center;
+  line-height: 1.5;
 `;
 
 const Title = styled.h1`

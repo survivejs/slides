@@ -7,21 +7,22 @@ module.exports = [
     }
   },
   {
+    layout: "markdown",
+    content: {
+      title: "Topics",
+      markup: `
+* What is GraphQL
+* Performing Queries
+* Implementing a Server
+* Subscriptions*
+`
+    }
+  },
+  {
     layout: "embed",
     content: {
       title: "GraphQL",
       link: "https://graphql.org/"
-    }
-  },
-  {
-    layout: "markdown",
-    content: {
-      title: "Testing Markdown",
-      markup: `
-* One
-* Two
-* Three
-`
     }
   },
   {
