@@ -3,7 +3,7 @@ const path = require("path");
 const { GraphQLServer } = require("graphql-yoga");
 const { importSchema } = require("graphql-import");
 const themes = require("./themes");
-const slides = require("./slides");
+const presentations = require("./presentations");
 
 const resolvers = {
   Layout: {
@@ -15,7 +15,8 @@ const resolvers = {
   Query: {
     themes: () => Object.values(themes),
     theme: (root, { name }) => themes[name],
-    slides: () => slides
+    presentations: () => presentations,
+    presentation: (root, { name }) => presentations[name]
   },
   Content: {
     __resolveType: resolveContentType

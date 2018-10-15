@@ -15,19 +15,30 @@
     secondaryColor
     backgroundColor
   }
-  slides {
-    layout
-    content {
-      ... on Content {
-        title
-      }
-      ... on TitleContent {
-        title
-        author
-      }
-      ... on MarkdownContent {
-        title
-        markup
+  presentation(name: "intro-to-graphql") {
+    theme {
+      primaryColor
+      secondaryColor
+      backgroundColor
+    }
+    slides {
+      layout
+      content {
+        ... on TitleContent {
+          title
+          author
+        }
+        ... on SectionContent {
+          title
+        }
+        ... on EmbedContent {
+          title
+          link
+        }
+        ... on MarkdownContent {
+          title
+          markup
+        }
       }
     }
   }
@@ -38,34 +49,48 @@
 
 ```graphql
 {
+  themes {
+    primaryColor
+  }
   theme(name: "survivejs") {
     primaryColor
     secondaryColor
     backgroundColor
   }
-  themes {
-    primaryColor
-  }
 }
 ```
 
-### Slide API
+### Presentation API
 
 ```graphql
 {
-  slides {
-    layout
-    content {
-      ... on Content {
-        title
-      }
-      ... on TitleContent {
-        title
-        author
-      }
-      ... on MarkdownContent {
-        title
-        markup
+  presentations {
+    name
+  }
+  presentation(name: "intro-to-graphql") {
+    theme {
+      primaryColor
+      secondaryColor
+      backgroundColor
+    }
+    slides {
+      layout
+      content {
+        ... on TitleContent {
+          title
+          author
+        }
+        ... on SectionContent {
+          title
+        }
+        ... on EmbedContent {
+          title
+          link
+        }
+        ... on MarkdownContent {
+          title
+          markup
+        }
       }
     }
   }

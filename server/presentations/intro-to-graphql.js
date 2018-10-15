@@ -1,4 +1,5 @@
-module.exports = [
+const theme = require("../themes/graphql-finland");
+const slides = [
   {
     layout: "title",
     content: {
@@ -88,3 +89,9 @@ React.render(
     }
   }
 ];
+
+module.exports = {
+  name: "intro-to-graphql",
+  theme,
+  slides
+};

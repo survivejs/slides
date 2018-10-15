@@ -1,7 +1,14 @@
 type Query {
-  themes: [Theme]
+  themes: [Theme]!
   theme(name: String!): Theme
-  slides: [Slide]
+  presentations: [Presentation]!
+  presentation(name: String!): Presentation
+}
+
+type Presentation {
+  name: String!
+  theme: Theme!
+  slides: [Slide]!
 }
 
 type Theme {

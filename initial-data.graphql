@@ -1,26 +1,28 @@
 {
-  theme(name: "graphql-finland") {
-    primaryColor
-    secondaryColor
-    backgroundColor
-  }
-  slides {
-    layout
-    content {
-      ... on TitleContent {
-        title
-        author
-      }
-      ... on SectionContent {
-        title
-      }
-      ... on EmbedContent {
-        title
-        link
-      }
-      ... on MarkdownContent {
-        title
-        markup
+  presentation(name: "intro-to-graphql") {
+    theme {
+      primaryColor
+      secondaryColor
+      backgroundColor
+    }
+    slides {
+      layout
+      content {
+        ... on TitleContent {
+          title
+          author
+        }
+        ... on SectionContent {
+          title
+        }
+        ... on EmbedContent {
+          title
+          link
+        }
+        ... on MarkdownContent {
+          title
+          markup
+        }
       }
     }
   }
