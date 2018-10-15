@@ -46,6 +46,7 @@
     "react": "^16.5.2",
     "react-markdown": "^4.0.3",
     "react-scroll-percentage": "^2.0.0",
+    "react-sidebar": "^3.0.2",
     "react-swipe-component": "^2.1.0",
     "window-or-global": "^1.0.1"
   },

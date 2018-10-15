@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import Swipe from "react-swipe-component";
 import root from "window-or-global";
 import Slides from "./Slides.jsx";
+import Options from "./Options.jsx";
 
 class Presenter extends React.Component {
   state = {
-    slide: getSlide()
+    slide: getSlide(),
+    showOptions: false
   };
   componentDidCatch(err) {
     // TODO: Use a nice error overlay here
@@ -28,6 +30,9 @@ class Presenter extends React.Component {
     if (key === "ArrowDown") {
       event.preventDefault();
       this.moveToNextSlide();
+    }
+    if (key === "s") {
+      this.setState({ showOptions: !this.state.showOptions });
     }
   };
 
@@ -62,6 +67,7 @@ class Presenter extends React.Component {
 
   render() {
     const { slides, theme } = this.props;
+    const { showOptions } = this.state;
 
     return (
       <Swipe
@@ -74,6 +80,7 @@ class Presenter extends React.Component {
           theme={theme}
           onSlideVisible={this.setUrlHash}
         />
+        {showOptions && <Options />}
       </Swipe>
     );
   }
