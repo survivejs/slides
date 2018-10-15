@@ -8,11 +8,18 @@ const resolvers = {
     EMBED: "embed",
     MARKDOWN: "markdown"
   },
+  Mutation: {
+    // TODO: Update at FS to persist
+    changeTheme: (_, { presentationName, themeName }) => ({
+      ...getField("presentation", presentations, presentationName),
+      theme: getField("theme", themes, themeName)
+    })
+  },
   Query: {
     themes: () => Object.values(themes),
-    theme: (root, { name }) => themes[name],
+    theme: (_, { name }) => themes[name],
     presentations: () => presentations,
-    presentation: (root, { name }) => presentations[name]
+    presentation: (_, { name }) => presentations[name]
   },
   Content: {
     __resolveType: resolveContentType
@@ -21,6 +28,16 @@ const resolvers = {
     __resolveType: resolveContentType
   }
 };
+
+function getField(type, record, name) {
+  const result = record[name];
+
+  if (!result) {
+    throw new Error(`No ${type} found using ${name}`);
+  }
+
+  return result;
+}
 
 function resolveContentType({ author, link, markup, title }) {
   if (author) {

@@ -45,6 +45,19 @@
 }
 ```
 
+### Example Mutation
+
+```graphql
+mutation {
+  changeTheme(presentationName: "intro-to-graphql", themeName: "survivejs") {
+    name
+    theme {
+      name
+    }
+  }
+}
+```
+
 ### Theme API
 
 ```graphql

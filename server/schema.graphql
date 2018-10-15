@@ -5,6 +5,10 @@ type Query {
   presentation(name: String!): Presentation
 }
 
+type Mutation {
+  changeTheme(presentationName: String!, themeName: String!): Presentation
+}
+
 type Presentation {
   name: String!
   theme: Theme!
