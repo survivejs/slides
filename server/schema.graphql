@@ -18,11 +18,16 @@ type Slide {
 
 enum Layout {
   TITLE
+  SECTION
   EMBED
   MARKDOWN
 }
 
-union ContentType = TitleContent | EmbedContent | MarkdownContent
+union ContentType =
+    TitleContent
+  | SectionContent
+  | EmbedContent
+  | MarkdownContent
 
 interface Content {
   title: String!
@@ -31,6 +36,10 @@ interface Content {
 type TitleContent implements Content {
   title: String!
   author: String
+}
+
+type SectionContent implements Content {
+  title: String!
 }
 
 type EmbedContent implements Content {

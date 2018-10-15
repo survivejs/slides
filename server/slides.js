@@ -11,7 +11,7 @@ module.exports = [
     content: {
       title: "Topics",
       markup: `
-* What is GraphQL
+* What is GraphQL?
 * Performing Queries
 * Implementing a Server
 * Subscriptions*
@@ -19,10 +19,34 @@ module.exports = [
     }
   },
   {
+    layout: "section",
+    content: {
+      title: "What is GraphQL?"
+    }
+  },
+  {
     layout: "embed",
     content: {
       title: "GraphQL",
       link: "https://graphql.org/"
+    }
+  },
+  {
+    layout: "section",
+    content: {
+      title: "Performing Queries"
+    }
+  },
+  {
+    layout: "section",
+    content: {
+      title: "Implementing a Server"
+    }
+  },
+  {
+    layout: "section",
+    content: {
+      title: "Subscriptions*"
     }
   },
   {

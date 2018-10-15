@@ -11,6 +11,9 @@
         title
         author
       }
+      ... on SectionContent {
+        title
+      }
       ... on EmbedContent {
         title
         link

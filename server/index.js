@@ -8,6 +8,7 @@ const slides = require("./slides");
 const resolvers = {
   Layout: {
     TITLE: "title",
+    SECTION: "section",
     EMBED: "embed",
     MARKDOWN: "markdown"
   },
@@ -24,7 +25,7 @@ const resolvers = {
   }
 };
 
-function resolveContentType({ author, link, markup }) {
+function resolveContentType({ author, link, markup, title }) {
   if (author) {
     return "TitleContent";
   }
@@ -35,6 +36,10 @@ function resolveContentType({ author, link, markup }) {
 
   if (markup) {
     return "MarkdownContent";
+  }
+
+  if (title) {
+    return "SectionContent";
   }
 }
 
