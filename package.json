@@ -18,7 +18,7 @@
     "url": "git+https://github.com/survivejs-presentations/intro-to-graphql.git"
   },
   "lint-staged": {
-    "*.{graphql,js,json,md,css}": [
+    "*.{graphql,js,jsx,json,md,css}": [
       "prettier --write",
       "git add"
     ]
