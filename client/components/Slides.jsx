@@ -16,7 +16,8 @@ const SlideContainer = styled.div`
   max-height: 100vh;
 `;
 
-const Slide = styled.div`
+/* eslint-disable no-unused-vars */
+const Slide = styled(({ backgroundColor, ...rest }) => <div {...rest} />)`
   page-break-after: always; /* Needed for print to work */
   background-color: ${props => props.backgroundColor};
   scroll-snap-align: start;

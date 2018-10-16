@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
 
-const SectionPageContainer = styled.div`
+/* eslint-disable no-unused-vars */
+const SectionPageContainer = styled(({ backgroundColor, ...rest }) => (
+  <div {...rest} />
+))`
   min-height: 100vh;
   max-height: 100vh;
   display: grid;
