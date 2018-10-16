@@ -1,11 +1,8 @@
 /* eslint-disable no-console */
 const path = require("path");
 const { GraphQLServer } = require("graphql-yoga");
-const { importSchema } = require("graphql-import");
+const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
 
-const server = new GraphQLServer({
-  typeDefs: importSchema(path.resolve(__dirname, "schema.graphql")),
-  resolvers
-});
+const server = new GraphQLServer({ typeDefs, resolvers });
 server.start(() => console.log("Server is running on localhost:4000"));

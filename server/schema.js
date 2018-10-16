@@ -1,3 +1,4 @@
+module.exports = `
 type Query {
   themes: [Theme]!
   theme(name: String!): Theme
@@ -72,3 +73,4 @@ type MarkdownContent implements Content {
   background: ContentBackground
   markup: String!
 }
+`;

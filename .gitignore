@@ -1,5 +1,4 @@
 node_modules/
 build/
-server/schema.graphql
 .antwar
 .initial-data.json
