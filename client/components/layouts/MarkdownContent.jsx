@@ -12,6 +12,7 @@ const MarkdownContainer = styled.div`
   grid-template-rows: 0.5fr 1.5fr;
   align-items: center;
   line-height: 1.5;
+  background: ${props => props.background};
 `;
 
 const Title = styled.h1`
@@ -28,7 +29,7 @@ const Markup = styled.h2`
 `;
 
 const MarkdownContent = ({ content = {}, theme = {} }) => (
-  <MarkdownContainer>
+  <MarkdownContainer background={content.background && content.background.asset}>
     <Title color={theme.primaryColor}>{content.title}</Title>
     <Markup color={theme.secondaryColor}>
       <ReactMarkdown source={content.markup} renderers={{ code: CodeBlock }} />

@@ -39,7 +39,7 @@
     "graphql-import": "^0.7.1",
     "graphql-request": "^1.8.2",
     "highlight.js": "^9.13.0",
-    "linaria": "^1.0.0-alpha.8",
+    "linaria": "^1.0.0-alpha.10",
     "lodash": "^4.17.11",
     "polished": "^2.2.0",
     "prop-types": "^15.6.2",
