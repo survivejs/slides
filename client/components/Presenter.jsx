@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import OverScroll from "react-over-scroll";
+import OverScroll from "@bebraw/react-over-scroll";
 import { request } from "graphql-request";
 import root from "window-or-global";
 import Slides from "./Slides.jsx";
@@ -70,7 +70,7 @@ class Presenter extends React.Component {
 
   render() {
     const { slides } = this.props;
-    const { showOptions } = this.state;
+    const { slide, showOptions } = this.state;
     const theme = this.state.theme || this.props.theme;
     const slideElements = Slides({
       slides,
@@ -78,7 +78,13 @@ class Presenter extends React.Component {
     });
 
     return (
-      <OverScroll factor={2} slides={slideElements.length}>
+      <OverScroll
+        factor={2}
+        slides={slideElements.length}
+        throttleRate={30}
+        initialPage={slide}
+        onPageChange={this.setUrlHash}
+      >
         {page => (
           <div>
             <section>{slideElements[page]}</section>
