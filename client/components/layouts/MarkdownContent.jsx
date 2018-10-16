@@ -29,7 +29,9 @@ const Markup = styled.h2`
 `;
 
 const MarkdownContent = ({ content = {}, theme = {} }) => (
-  <MarkdownContainer background={content.background && content.background.asset}>
+  <MarkdownContainer
+    background={content.background && content.background.asset}
+  >
     <Title color={theme.primaryColor}>{content.title}</Title>
     <Markup color={theme.secondaryColor}>
       <ReactMarkdown source={content.markup} renderers={{ code: CodeBlock }} />
