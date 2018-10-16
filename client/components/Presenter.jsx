@@ -18,10 +18,10 @@ class Presenter extends React.Component {
     console.error(err); // eslint-disable-line no-console
   }
   componentDidMount() {
-    document.addEventListener("keydown", this.onKeydown, false);
+    root.document && root.document.addEventListener("keydown", this.onKeydown, false);
   }
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.onKeydown, false);
+    root.document && root.document.removeEventListener("keydown", this.onKeydown, false);
   }
   onKeydown = event => {
     const { key } = event;

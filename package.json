@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/survivejs-presentations/intro-to-graphql#readme",
   "dependencies": {
-    "@bebraw/react-over-scroll": "^1.1.5",
+    "@bebraw/react-over-scroll": "^1.1.7",
     "classnames": "^2.2.6",
     "graphql-import": "^0.7.1",
     "graphql-request": "^1.8.2",
