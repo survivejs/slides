@@ -1,8 +1,11 @@
 // From react-markdown
 import React from "react";
 import PropTypes from "prop-types";
-import hljs from "highlight.js";
+import hljs from "highlight.js/lib/highlight";
 
+// TODO: Figure out how to register only the needed languages.
+// Ideally we wouldn't need to highlight in the frontend at all.
+// Instead, the backend should be able to do it somehow.
 // https://github.com/highlightjs/highlight.js/issues/1471
 hljs.registerLanguage("graphql", e => ({
   aliases: ["gql"],
