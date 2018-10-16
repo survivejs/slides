@@ -13,13 +13,13 @@
   theme(name: "survivejs") {
     primaryColor
     secondaryColor
-    backgroundColor
+    background
   }
   presentation(name: "intro-to-graphql") {
     theme {
       primaryColor
       secondaryColor
-      backgroundColor
+      background
     }
     slides {
       layout
@@ -68,7 +68,7 @@ mutation {
   theme(name: "survivejs") {
     primaryColor
     secondaryColor
-    backgroundColor
+    background
   }
 }
 ```
@@ -84,7 +84,7 @@ mutation {
     theme {
       primaryColor
       secondaryColor
-      backgroundColor
+      background
     }
     slides {
       layout
@@ -119,7 +119,7 @@ mutation {
   theme(name: @themeName) {
     primaryColor
     secondaryColor
-    backgroundColor
+    background
   }
 }
 ```

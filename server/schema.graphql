@@ -19,7 +19,7 @@ type Theme {
   name: String!
   primaryColor: String!
   secondaryColor: String!
-  backgroundColor: String!
+  background: String!
 }
 
 type Slide {

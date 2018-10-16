@@ -5,7 +5,7 @@
       name
       primaryColor
       secondaryColor
-      backgroundColor
+      background
     }
     slides {
       layout

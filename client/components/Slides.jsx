@@ -4,7 +4,7 @@ import { styled } from "linaria/react";
 import layouts from "./layouts";
 
 const Slide = styled.div`
-  background-color: ${props => props.backgroundColor};
+  background: ${props => props.background};
 `;
 
 function Slides({ slides = [], theme }) {

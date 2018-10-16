@@ -12,7 +12,7 @@ const SectionPageContainer = styled(({ backgroundColor, ...rest }) => (
   display: grid;
   grid-template-rows: 1fr;
   align-items: center;
-  background-color: ${props => props.backgroundColor};
+  background: ${props => props.background};
 `;
 
 const Title = styled.h1`
@@ -22,8 +22,8 @@ const Title = styled.h1`
 `;
 
 const SectionContent = ({ content = {}, theme = {} }) => (
-  <SectionPageContainer backgroundColor={theme.primaryColor}>
-    <Title color={theme.backgroundColor}>{content.title}</Title>
+  <SectionPageContainer background={theme.primaryColor}>
+    <Title color={theme.background}>{content.title}</Title>
   </SectionPageContainer>
 );
 SectionContent.propTypes = {

@@ -113,7 +113,7 @@ mutation($presentationName: String!, $themeName: String!) {
       name
       primaryColor
       secondaryColor
-      backgroundColor
+      background
     }
   }
 }

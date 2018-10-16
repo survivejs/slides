@@ -48,7 +48,7 @@ content:
       theme(name: "survivejs") {
         primaryColor
         secondaryColor
-        backgroundColor
+        background
       }
     }
     ```
