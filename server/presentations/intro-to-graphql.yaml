@@ -11,7 +11,8 @@ content:
   title: Topics
   markup: |
     * What is GraphQL?
-    * Performing Queries
+    * GraphQL Queries
+    * GraphQL Schema
     * GraphQL Clients
     * Implementing a Server
     * Subscriptions*
@@ -27,7 +28,17 @@ content:
 ---
 layout: markdown
 content:
-  title: Query
+  title: Exercises
+  markup: |
+    *
+---
+layout: section
+content:
+  title: GraphQL Queries
+---
+layout: markdown
+content:
+  title: Queries
   markup: |
     ```graphql
     {
@@ -44,20 +55,112 @@ content:
 ---
 layout: markdown
 content:
+  title: Variables
+  markup: |
+    ```graphql
+    {
+      theme(name: @themeName) {
+        primaryColor
+      }
+    }
+    ```
+
+    ```json
+    {
+      "themeName": "survivejs"
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Aliases
+  markup: |
+    ```graphql
+    {
+      colors: themes {
+        primaryColor
+      }
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Mutations
+  markup: |
+    ```graphql
+    mutation {
+      changeTheme(
+        presentationName: "intro-to-graphql",
+        themeName: "survivejs"
+      ) {
+        name
+        theme {
+          name
+        }
+      }
+    }
+    ```
+---
+layout: markdown
+content:
   title: Playgrounds
   markup: |
     * [GraphiQL](https://github.com/graphql/graphiql#graphiql)
     * [GraphQL Playground](https://www.npmjs.com/package/graphql-playground)
 ---
+layout: markdown
+content:
+  title: Exercises
+  markup: |
+    1. How many speakers does GraphQL Finland 2018 have? [API](https://api.react-finland.fi/graphql). [Source](https://github.com/ReactFinland/graphql-api). Use `conferenceId` `graphql-finland-2018` as an `id` to the `conference` query. See the schema explorer. You can count the data using a little script or perform the request using [graphql-request](https://www.npmjs.com/package/graphql-request) and then process it further.
+    2. What was the title and release date of the first Star Wars movie? [API](https://graphql.org/swapi-graphql/). [Source](https://github.com/graphql/swapi-graphql).
+    3. How many open source licenses is GitHub aware of? [API](https://developer.github.com/v4/explorer/). [Documentation](https://developer.github.com/v4/).
+    4. What are the names of the followers of the user `LinusTorvalds` in GitHub? (Not to be confused with Linux Linus.)
+---
 layout: section
 content:
-  title: Performing Queries
+  title: GraphQL Schema
+---
+layout: markdown
+content:
+  title: Types
+  markup: |
+    ```graphql
+    ```
+---
+layout: markdown
+content:
+  title: Enums
+  markup: |
+    ```graphql
+    ```
+---
+layout: markdown
+content:
+  title: Unions
+  markup: |
+    ```graphql
+    ```
+---
+layout: markdown
+content:
+  title: Interfaces
+  markup: |
+    ```graphql
+    ```
+---
+layout: markdown
+content:
+  title: Introspection
+  markup: |
+    ```graphql
+    ```
 ---
 layout: markdown
 content:
   title: Exercises
   markup: |
-    *
+    * How many speakers did React Finland 2018 have? [API](https://api.react-finland.fi/graphql)
 ---
 layout: section
 content:
@@ -135,3 +238,61 @@ content: {
   title: "Quote slide",
   markup: |
     > Hasta la vista, baby! - Arnold Schwarzenegger
+---
+layout: markdown
+content:
+  title: Answers 1-1
+  markup: |
+    ```graphql
+    {
+      conference(id: "graphql-finland-2018") {
+        speakers {
+          name
+        }
+      }
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Answers 1-2
+  markup: |
+    ```graphql
+    {
+      allFilms {
+        films {
+          title
+          releaseDate
+        }
+      }
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Answers 1-3
+  markup: |
+    ```graphql
+    query {
+      licenses {
+        name
+      }
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Answers 1-4
+  markup: |
+    ```graphql
+    query {
+      user(login: "LinusTorvalds") {
+        followers(first: 10) {
+          nodes {
+            name
+          }
+        }
+      }
+    }
+    ```
+---
