@@ -206,6 +206,7 @@ content:
     * [graphql-yoga](https://www.npmjs.com/package/graphql-yoga)
     * [Prisma](https://www.npmjs.com/package/prisma)
     * **[Apollo Server](https://www.npmjs.com/package/apollo-server)**
+    * [graphpack](https://github.com/glennreyes/graphpack)*
 ---
 layout: markdown
 content:
