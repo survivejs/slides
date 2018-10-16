@@ -265,11 +265,22 @@ content:
 ---
 layout: markdown
 content:
+  title: Integrating GraphQL with Tools
+  markup: |
+    * [graphql-config](https://www.npmjs.com/package/graphql-config)
+    * [eslint-plugin-graphql](https://www.npmjs.com/package/eslint-plugin-graphql)
+    * [type-graphql](https://www.npmjs.com/package/type-graphql)
+    * [graphql-code-generator](https://www.npmjs.com/package/graphql-code-generator)
+    * [graphqlviz](https://www.npmjs.com/package/graphqlviz)
+---
+layout: markdown
+content:
   title: Exercises
   markup: |
     1. What's the difference between an `Interface` and a `Union`?
     2. Model a schema for a small API. You can use this presentation as an example.
     3. Where would you use introspection?
+    4. Try [graphqlviz](https://www.npmjs.com/package/graphqlviz) against an API.
 ---
 layout: section
 content:
