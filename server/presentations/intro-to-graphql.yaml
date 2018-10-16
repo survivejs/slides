@@ -112,7 +112,13 @@ layout: markdown
 content:
   title: Exercises
   markup: |
-    1. How many speakers does GraphQL Finland 2018 have? [API](https://api.react-finland.fi/graphql). [Source](https://github.com/ReactFinland/graphql-api). Use `conferenceId` `graphql-finland-2018` as an `id` to the `conference` query. See the schema explorer. You can count the data using a little script or perform the request using [graphql-request](https://www.npmjs.com/package/graphql-request) and then process it further.
+    1. How many speakers does GraphQL Finland 2018 have? [API](https://api.react-finland.fi/graphql). [Source](https://github.com/ReactFinland/graphql-api).
+      > Use `conferenceId` `graphql-finland-2018` as an `id` to the `conference` query. See the schema explorer. You can count the data using a little script or perform the request using [graphql-request](https://www.npmjs.com/package/graphql-request) and then process it further.
+---
+layout: markdown
+content:
+  title: Exercises
+  markup: |
     2. What was the title and release date of the first Star Wars movie? [API](https://graphql.org/swapi-graphql/). [Source](https://github.com/graphql/swapi-graphql).
     3. How many open source licenses is GitHub aware of? [API](https://developer.github.com/v4/explorer/). [Documentation](https://developer.github.com/v4/).
     4. What are the names of the followers of the user `LinusTorvalds` in GitHub? (Not to be confused with Linux Linus.)
@@ -160,7 +166,7 @@ layout: markdown
 content:
   title: Exercises
   markup: |
-    * How many speakers did React Finland 2018 have? [API](https://api.react-finland.fi/graphql)
+    *
 ---
 layout: section
 content:
