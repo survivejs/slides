@@ -12,6 +12,7 @@ content:
   markup: |
     * What is GraphQL?
     * Performing Queries
+    * GraphQL Clients
     * Implementing a Server
     * Subscriptions*
 ---
@@ -24,17 +25,87 @@ content:
   title: GraphQL
   link: https://graphql.org/
 ---
+layout: markdown
+content:
+  title: Query
+  markup: |
+    ```graphql
+    {
+      themes {
+        primaryColor
+      }
+      theme(name: "survivejs") {
+        primaryColor
+        secondaryColor
+        backgroundColor
+      }
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Playgrounds
+  markup: |
+    * [GraphiQL](https://github.com/graphql/graphiql#graphiql)
+    * [GraphQL Playground](https://www.npmjs.com/package/graphql-playground)
+---
 layout: section
 content:
   title: Performing Queries
+---
+layout: markdown
+content:
+  title: Exercises
+  markup: |
+    *
+---
+layout: section
+content:
+  title: GraphQL Clients
+---
+layout: markdown
+content:
+  title: Clients
+  markup: |
+    * [graphql-request](https://www.npmjs.com/package/graphql-request)
+    * [urql](https://www.npmjs.com/package/urql)
+    * [Relay](https://www.npmjs.com/package/react-relay)
+    * [Apollo Client](https://www.npmjs.com/package/apollo-client)
+---
+layout: markdown
+content:
+  title: Exercises
+  markup: |
+    *
 ---
 layout: section
 content:
   title: Implementing a Server
 ---
+layout: markdown
+content:
+  title: Servers
+  markup: |
+    * [GraphQL.js](https://www.npmjs.com/package/graphql)
+    * [Apollo Server](https://www.npmjs.com/package/apollo-server)
+    * [graphql-yoga](https://www.npmjs.com/package/graphql-yoga)
+    * [Prisma](https://www.npmjs.com/package/prisma)
+---
+layout: markdown
+content:
+  title: Exercises
+  markup: |
+    *
+---
 layout: section
 content:
   title: Subscriptions*
+---
+layout: markdown
+content:
+  title: Exercises
+  markup: |
+    *
 ---
 layout: markdown
 content:
