@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import OverScroll from "@bebraw/react-over-scroll";
 import { request } from "graphql-request";
 import root from "window-or-global";
+import OverScroll from "./OverScroll.jsx";
 import Slides from "./Slides.jsx";
 import Options from "./Options.jsx";
 import apiUrl from "../api-url";
@@ -18,10 +18,12 @@ class Presenter extends React.Component {
     console.error(err); // eslint-disable-line no-console
   }
   componentDidMount() {
-    root.document && root.document.addEventListener("keydown", this.onKeydown, false);
+    root.document &&
+      root.document.addEventListener("keydown", this.onKeydown, false);
   }
   componentWillUnmount() {
-    root.document && root.document.removeEventListener("keydown", this.onKeydown, false);
+    root.document &&
+      root.document.removeEventListener("keydown", this.onKeydown, false);
   }
   onKeydown = event => {
     const { key } = event;
