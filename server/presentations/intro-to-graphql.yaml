@@ -171,7 +171,7 @@ layout: markdown
 content:
   title: GraphQL Schema Definition Language (SDL)
   markup: |
-    * A definition languge is used to define an API
+    * A definition language is used to define an API
     * Separate language to describe types and their relations
     * In addition code implementing **Queries** and **Mutations** is needed
 ---
