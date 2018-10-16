@@ -1,67 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ScrollPercentage from "react-scroll-percentage";
-import root from "window-or-global";
 import { styled } from "linaria/react";
 import layouts from "./layouts";
 
-// TODO: Lazy load as in https://www.npmjs.com/package/react-intersection-observer#polyfill
-if (root.location) {
-  require("intersection-observer");
-}
-
-const SlideContainer = styled.div`
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  max-height: 100vh;
-`;
-
-/* eslint-disable no-unused-vars */
-const Slide = styled(({ backgroundColor, ...rest }) => <div {...rest} />)`
-  page-break-after: always; /* Needed for print to work */
+const Slide = styled.div`
   background-color: ${props => props.backgroundColor};
-  scroll-snap-align: start;
 `;
 
-function Slides({ slides = [], theme, onSlideVisible }) {
-  return (
-    <SlideContainer>
-      {slides.map((slide, index) => {
-        const slideKey = `slide-${index}`;
+function Slides({ slides = [], theme }) {
+  return slides.map((slide, index) => {
+    const slideKey = `slide-${index}`;
 
-        // Slides are given class names for keyboard navigation to work.
-        return (
-          <Slide
-            className={slideKey}
-            backgroundColor={theme.backgroundColor}
-            key={slideKey}
-          >
-            <ScrollPercentage onChange={onSlideChange(index, onSlideVisible)}>
-              {React.createElement(getLayout(slide.layout), {
-                theme,
-                content: slide.content
-              })}
-            </ScrollPercentage>
-          </Slide>
-        );
-      })}
-    </SlideContainer>
-  );
+    // Slides are given class names for keyboard navigation to work.
+    return (
+      <Slide className={slideKey} key={slideKey}>
+        {React.createElement(getLayout(slide.layout), {
+          theme,
+          content: slide.content
+        })}
+      </Slide>
+    );
+  });
 }
 Slides.propTypes = {
   slides: PropTypes.array,
-  theme: PropTypes.object,
-  onSlideVisible: PropTypes.func
+  theme: PropTypes.object
 };
-
-function onSlideChange(slide, onSlideVisible) {
-  return (percentage, inView) => {
-    // TODO: Figure out why this doesn't get triggered while scrolling with mouse
-    if (inView === true && percentage > 0) {
-      onSlideVisible(slide);
-    }
-  };
-}
 
 function getLayout(name) {
   if (!layouts[name]) {

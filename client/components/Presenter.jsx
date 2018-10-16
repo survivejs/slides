@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Swipe from "react-swipe-component";
+import OverScroll from "react-over-scroll";
 import { request } from "graphql-request";
 import root from "window-or-global";
 import Slides from "./Slides.jsx";
@@ -72,26 +72,26 @@ class Presenter extends React.Component {
     const { slides } = this.props;
     const { showOptions } = this.state;
     const theme = this.state.theme || this.props.theme;
+    const slideElements = Slides({
+      slides,
+      theme
+    });
 
     return (
-      <Swipe
-        mouseSwipe
-        onSwipedUp={this.moveToNextSlide}
-        onSwipedDown={this.moveToPreviousSlide}
-      >
-        <Slides
-          slides={slides}
-          theme={theme}
-          onSlideVisible={this.setUrlHash}
-        />
-        {showOptions &&
-          process.env.NODE_ENV !== "production" && (
-            <Options
-              themeName={theme.name}
-              onChangeTheme={this.onChangeTheme}
-            />
-          )}
-      </Swipe>
+      <OverScroll factor={2} slides={slideElements.length}>
+        {page => (
+          <div>
+            <section>{slideElements[page]}</section>
+            {showOptions &&
+              process.env.NODE_ENV !== "production" && (
+                <Options
+                  themeName={theme.name}
+                  onChangeTheme={this.onChangeTheme}
+                />
+              )}
+          </div>
+        )}
+      </OverScroll>
     );
   }
 
