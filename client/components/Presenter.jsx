@@ -26,11 +26,11 @@ class Presenter extends React.Component {
   onKeydown = event => {
     const { key } = event;
 
-    if (key === "ArrowUp") {
+    if (key === "ArrowUp" || key === "ArrowLeft") {
       event.preventDefault();
       this.moveToPreviousSlide();
     }
-    if (key === "ArrowDown") {
+    if (key === "ArrowDown" || key === "ArrowRight") {
       event.preventDefault();
       this.moveToNextSlide();
     }
