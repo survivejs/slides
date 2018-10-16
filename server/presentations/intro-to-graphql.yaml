@@ -13,13 +13,22 @@ content:
     * What is GraphQL?
     * GraphQL Queries
     * GraphQL Schema
-    * GraphQL Clients
     * Implementing a Server
-    * Subscriptions*
 ---
 layout: section
 content:
   title: What is GraphQL?
+---
+layout: markdown
+content:
+  title: Brief History
+  # background:
+  #  asset: url("assets/images/switchboard.jpg")
+  #  source: https://en.wikipedia.org/wiki/Switchboard_operator
+  markup: |
+    * 1930s - Operators between client and server
+    * 2000s - REST between client and server
+    * 2010s - GraphQL between client and server
 ---
 layout: embed
 content:
@@ -28,18 +37,25 @@ content:
 ---
 layout: markdown
 content:
-  title: History
-  # background:
-  #  asset: url("assets/images/switchboard.jpg")
-  #  source: https://en.wikipedia.org/wiki/Switchboard_operator
+  title: Why GraphQL?
   markup: |
-    * TODO
+    * You have multiple consumers
+    * You have multiple legacy APIs and want to unite them
+    * You write applications
+---
+layout: markdown
+content: {
+  markup: |
+    > The consumer is always right
 ---
 layout: markdown
 content:
   title: Exercises
   markup: |
-    *
+    1. Find [a couple of  GraphQL APIs online](https://github.com/APIs-guru/graphql-apis).
+    2. What sort of functionality do the APIs implement?
+    3. What commonalities do the APIs have?
+    4. What differences do the APIs have?
 ---
 layout: section
 content:
@@ -119,6 +135,15 @@ content:
 ---
 layout: markdown
 content:
+  title: Clients
+  markup: |
+    * [graphql-request](https://www.npmjs.com/package/graphql-request)
+    * [urql](https://www.npmjs.com/package/urql)
+    * [Relay](https://www.npmjs.com/package/react-relay)
+    * [Apollo Client](https://www.npmjs.com/package/apollo-client)
+---
+layout: markdown
+content:
   title: Exercises
   markup: |
     1. How many speakers does GraphQL Finland 2018 have? [API](https://api.react-finland.fi/graphql). [Source](https://github.com/ReactFinland/graphql-api).
@@ -132,6 +157,12 @@ content:
     3. How many open source licenses is GitHub aware of? [API](https://developer.github.com/v4/explorer/). [Documentation](https://developer.github.com/v4/).
     4. What are the names of the followers of the user `LinusTorvalds` in GitHub? (Not to be confused with Linux Linus.)
 ---
+layout: markdown
+content:
+  title: Exercises
+  markup: |
+    5. Choose a client from the list and try performing some of the queries using it.
+---
 layout: section
 content:
   title: GraphQL Schema
@@ -140,14 +171,20 @@ layout: markdown
 content:
   title: GraphQL Schema Definition Language (SDL)
   markup: |
-    ```graphql
-    ```
+    * A definition languge is used to define an API
+    * Separate language to describe types and their relations
+    * In addition code implementing **Queries** and **Mutations** is needed
 ---
 layout: markdown
 content:
   title: Types
   markup: |
     ```graphql
+    type Presentation {
+      name: String!
+      theme: Theme!
+      slides: [Slide]!
+    }
     ```
 ---
 layout: markdown
@@ -155,6 +192,12 @@ content:
   title: Enums
   markup: |
     ```graphql
+    enum Layout {
+      TITLE
+      SECTION
+      EMBED
+      MARKDOWN
+    }
     ```
 ---
 layout: markdown
@@ -162,6 +205,11 @@ content:
   title: Unions
   markup: |
     ```graphql
+    union ContentType =
+        TitleContent
+      | SectionContent
+      | EmbedContent
+      | MarkdownContent
     ```
 ---
 layout: markdown
@@ -169,6 +217,36 @@ content:
   title: Interfaces
   markup: |
     ```graphql
+    interface Content {
+      title: String
+      background: ContentBackground
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Queries
+  markup: |
+    ```graphql
+    type Query {
+      themes: [Theme]!
+      theme(name: String!): Theme
+      presentations: [Presentation]!
+      presentation(name: String!): Presentation
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Mutations
+  markup: |
+    ```graphql
+    type Mutation {
+      changeTheme(
+        presentationName: String!,
+        themeName: String!
+      ): Presentation
+    }
     ```
 ---
 layout: markdown
@@ -176,32 +254,22 @@ content:
   title: Introspection
   markup: |
     ```graphql
+    {
+      __schema {
+        types {
+          name
+        }
+      }
+    }
     ```
 ---
 layout: markdown
 content:
   title: Exercises
   markup: |
-    *
----
-layout: section
-content:
-  title: GraphQL Clients
----
-layout: markdown
-content:
-  title: Clients
-  markup: |
-    * [graphql-request](https://www.npmjs.com/package/graphql-request)
-    * [urql](https://www.npmjs.com/package/urql)
-    * [Relay](https://www.npmjs.com/package/react-relay)
-    * [Apollo Client](https://www.npmjs.com/package/apollo-client)
----
-layout: markdown
-content:
-  title: Exercises
-  markup: |
-    *
+    1. What's the difference between an `Interface` and a `Union`?
+    2. Model a schema for a small API. You can use this presentation as an example.
+    3. Where would you use introspection?
 ---
 layout: section
 content:
@@ -217,54 +285,23 @@ content:
     * **[Apollo Server](https://www.npmjs.com/package/apollo-server)**
     * [graphpack](https://github.com/glennreyes/graphpack)*
 ---
+layout: embed
+content:
+  title: Apollo Server
+  link: https://www.apollographql.com/docs/apollo-server/
+---
 layout: markdown
 content:
-  title: Exercises
   markup: |
-    *
+    > [Let's jump to Sara's material now for the rest!](https://github.com/SaraVieira/graphql-workshop)
 ---
 layout: section
 content:
-  title: Subscriptions*
+  title: Solutions
 ---
 layout: markdown
 content:
-  title: Exercises
-  markup: |
-    *
----
-layout: markdown
-content:
-  title: Code slide
-  markup: |
-    ```js
-    var React = require('react');
-    var Markdown = require('react-markdown');
-    React.render(
-      <Markdown source="# Your markdown here" />,
-      document.getElementById('content')
-    );
-    ```
----
-layout: markdown
-content:
-  title: Table slide
-  markup: |
-    | Feature | Support |
-    | ------ | ----------- |
-    | tables | ✔ |
-    | alignment | ✔ |
-    | wewt | ✔ |
----
-layout: markdown
-content: {
-  title: "Quote slide",
-  markup: |
-    > Hasta la vista, baby! - Arnold Schwarzenegger
----
-layout: markdown
-content:
-  title: Answers 1-1
+  title: Answers 2-1
   markup: |
     ```graphql
     {
@@ -278,7 +315,7 @@ content:
 ---
 layout: markdown
 content:
-  title: Answers 1-2
+  title: Answers 2-2
   markup: |
     ```graphql
     {
@@ -293,7 +330,7 @@ content:
 ---
 layout: markdown
 content:
-  title: Answers 1-3
+  title: Answers 2-3
   markup: |
     ```graphql
     query {
@@ -305,7 +342,7 @@ content:
 ---
 layout: markdown
 content:
-  title: Answers 1-4
+  title: Answers 2-4
   markup: |
     ```graphql
     query {

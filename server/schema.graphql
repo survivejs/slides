@@ -41,7 +41,7 @@ union ContentType =
   | MarkdownContent
 
 interface Content {
-  title: String!
+  title: String
   background: ContentBackground
 }
 
@@ -51,24 +51,24 @@ type ContentBackground {
 }
 
 type TitleContent implements Content {
-  title: String!
+  title: String
   background: ContentBackground
   author: String
 }
 
 type SectionContent implements Content {
-  title: String!
+  title: String
   background: ContentBackground
 }
 
 type EmbedContent implements Content {
-  title: String!
+  title: String
   background: ContentBackground
   link: String!
 }
 
 type MarkdownContent implements Content {
-  title: String!
+  title: String
   background: ContentBackground
   markup: String!
 }
