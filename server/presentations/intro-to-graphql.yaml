@@ -129,6 +129,13 @@ content:
 ---
 layout: markdown
 content:
+  title: GraphQL Schema Definition Language (SDL)
+  markup: |
+    ```graphql
+    ```
+---
+layout: markdown
+content:
   title: Types
   markup: |
     ```graphql
@@ -196,9 +203,9 @@ content:
   title: Servers
   markup: |
     * [GraphQL.js](https://www.npmjs.com/package/graphql)
-    * [Apollo Server](https://www.npmjs.com/package/apollo-server)
     * [graphql-yoga](https://www.npmjs.com/package/graphql-yoga)
     * [Prisma](https://www.npmjs.com/package/prisma)
+    * **[Apollo Server](https://www.npmjs.com/package/apollo-server)**
 ---
 layout: markdown
 content:
