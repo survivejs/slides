@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import root from "window-or-global";
 import EventTracker from "./EventTracker.jsx";
+import position from "./css-supports";
 
 class OverScroll extends React.Component {
   /**
@@ -131,8 +132,8 @@ class OverScroll extends React.Component {
    */
   get overlayStyle() {
     return {
-      position: "sticky",
-      top: 0,
+      position: position.sticky || (this.state.fixed ? "fixed" : "absolute"),
+      top: position.sticky ? 0 : this.state.bottom ? "auto" : 0,
       bottom: 0,
       left: 0,
       right: 0,
