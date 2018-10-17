@@ -80,7 +80,24 @@ content:
 ---
 layout: markdown
 content:
-  title: Variables
+  title: Queries with Names
+  markup: |
+    ```graphql
+    query getTheme {
+      themes {
+        primaryColor
+      }
+      theme(name: "survivejs") {
+        primaryColor
+        secondaryColor
+        background
+      }
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Queries with Variables
   markup: |
     ```graphql
     {
@@ -90,9 +107,32 @@ content:
     }
     ```
 
+    **Variables**
+
     ```json
     {
       "themeName": "survivejs"
+    }
+    ```
+---
+layout: markdown
+content:
+  title: Fragments
+  markup: |
+    ```graphql
+    fragment SponsorFragment on Contact {
+      name
+    }
+
+    query RootQuery($conferenceId: ID!) {
+      conference(id: $conferenceId) {
+        partners {
+          ...SponsorFragment
+        }
+        goldSponsors {
+          ...SponsorFragment
+        }
+      }
     }
     ```
 ---

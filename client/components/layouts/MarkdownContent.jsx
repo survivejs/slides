@@ -16,7 +16,7 @@ const MarkdownContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: ${modularScale(7)};
+  font-size: ${modularScale(6)};
   margin-left: 5vw;
   color: ${props => props.color};
 `;
