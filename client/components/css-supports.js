@@ -1,4 +1,6 @@
 /* react-over-scroll - MIT Copyright (c) 2016 Gregor Adams */
+import root from "window-or-global";
+
 /**
  * a list of vendor prefixes to use for css-feature testing
  * @type {Array}
@@ -12,6 +14,10 @@ const vendorPrefixes = ["webkit", "moz", "ms"];
  * @return {String|Boolean} returns the supported value or `false`
  */
 const cssSupportsValue = (prop, value) => {
+  if (!root.document) {
+    return false;
+  }
+
   const div = document.createElement("div");
   const values = [
     value,
