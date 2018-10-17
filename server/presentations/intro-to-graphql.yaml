@@ -42,6 +42,8 @@ content:
     * You have multiple consumers
     * You have multiple legacy APIs and want to unite them
     * You write applications
+
+    > Discuss: Think about your current projects. Can you see potential for using GraphQL?
 ---
 layout: markdown
 content: {
@@ -167,11 +169,18 @@ content:
     ```
 ---
 layout: markdown
+content: {
+  markup: |
+    > While query fields are executed in parallel, mutation fields run in series, one after the other. -  [GraphQL documentation](https://graphql.org/learn/queries/#multiple-fields-in-mutations)
+---
+layout: markdown
 content:
   title: Playgrounds
   markup: |
     * [GraphiQL](https://github.com/graphql/graphiql#graphiql)
     * [GraphQL Playground](https://www.npmjs.com/package/graphql-playground)
+
+    > Discuss: Investigate the playgrounds. Can you see what functionality they have?
 ---
 layout: markdown
 content:
@@ -202,7 +211,7 @@ content:
   title: Exercises
   markup: |
     5. Choose a client from the list and try performing some of the queries using it.
-    6. Look up GraphQL directives. What's the purpose of those? Where would you use them?
+    6. Look up [GraphQL directives](https://graphql.org/learn/queries/#directives). What's the purpose of those? Where would you use them?
 ---
 layout: section
 content:
@@ -227,6 +236,8 @@ content:
       slides: [Slide]!
     }
     ```
+
+    > Exercise: Which types does GraphQL support out of the box?
 ---
 layout: markdown
 content:
@@ -240,6 +251,8 @@ content:
       MARKDOWN
     }
     ```
+
+    > Discuss: What's the use case for enums? Where would use you use them?
 ---
 layout: markdown
 content:
@@ -252,6 +265,8 @@ content:
       | EmbedContent
       | MarkdownContent
     ```
+
+    > Discuss: What's the use case for unions? Where would use you use them?
 ---
 layout: markdown
 content:
@@ -263,6 +278,8 @@ content:
       background: ContentBackground
     }
     ```
+
+    > Discuss: What's the use case for interfaces? Where would use you use them?
 ---
 layout: markdown
 content:
@@ -276,6 +293,8 @@ content:
       presentation(name: String!): Presentation
     }
     ```
+
+    > Discuss: What's the use case for queries? Where would use you use them?
 ---
 layout: markdown
 content:
@@ -289,6 +308,8 @@ content:
       ): Presentation
     }
     ```
+
+    > Discuss: What's the use case for mutations? Where would use you use them?
 ---
 layout: markdown
 content:
@@ -303,6 +324,8 @@ content:
       }
     }
     ```
+
+    > Discuss: What's the use case for introspection? Where would use you use it?
 ---
 layout: markdown
 content:
@@ -319,9 +342,14 @@ content:
   title: Exercises
   markup: |
     1. What's the difference between an `Interface` and a `Union`?
-    2. Model a schema for a small API. You can use this presentation as an example.
-    3. Where would you use introspection?
-    4. Try [graphqlviz](https://www.npmjs.com/package/graphqlviz) against an API.
+    2. Model a schema for a small presentation application API.
+---
+layout: markdown
+content:
+  title: Exercises
+  markup: |
+    3. Try [graphqlviz](https://www.npmjs.com/package/graphqlviz) against an API.
+    4. Look up [JSON Schema](https://json-schema.org/). What's the relationship between that and GraphQL SDL? See also [graphql-json-schema](https://www.npmjs.com/package/graphql-json-schema).
 ---
 layout: section
 content:
@@ -334,7 +362,7 @@ content:
     * [GraphQL.js](https://www.npmjs.com/package/graphql)
     * [graphql-yoga](https://www.npmjs.com/package/graphql-yoga)
     * [Prisma](https://www.npmjs.com/package/prisma)
-    * **[Apollo Server](https://www.npmjs.com/package/apollo-server)**
+    * [Apollo Server](https://www.npmjs.com/package/apollo-server)
     * [graphpack](https://github.com/glennreyes/graphpack)*
 ---
 layout: embed
