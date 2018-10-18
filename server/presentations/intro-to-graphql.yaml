@@ -343,11 +343,6 @@ content:
   markup: |
     1. What's the difference between an `Interface` and a `Union`?
     2. Model a schema for a small presentation application API.
----
-layout: markdown
-content:
-  title: Exercises
-  markup: |
     3. Try [graphqlviz](https://www.npmjs.com/package/graphqlviz) against an API.
     4. Look up [JSON Schema](https://json-schema.org/). What's the relationship between that and GraphQL SDL? See also [graphql-json-schema](https://www.npmjs.com/package/graphql-json-schema).
 ---
