@@ -21,7 +21,7 @@ const Title = styled.h1`
   color: ${props => props.color};
 `;
 
-const Markup = styled.h2`
+const Markup = styled.div`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
   align-self: start;
