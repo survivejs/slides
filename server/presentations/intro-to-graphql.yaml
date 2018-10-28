@@ -1,427 +1,425 @@
-title: Brief Introduction to GraphQL
-theme: graphql-finland
----
-layout: title
-content:
-  title: Brief Introduction to GraphQL
-  author: Juho Vepsäläinen
----
-layout: toc
-content:
-  title: Topics
----
-layout: section
-content:
-  title: What is GraphQL?
----
-layout: markdown
-content:
-  title: Brief History
-  # background:
-  #  asset: url("assets/images/switchboard.jpg")
-  #  source: https://en.wikipedia.org/wiki/Switchboard_operator
-  markup: |
-    * 1930s - Operators between client and server
-    * 2000s - REST between client and server
-    * 2010s - GraphQL between client and server
----
-layout: embed
-content:
-  title: GraphQL
-  link: https://graphql.org/
----
-layout: markdown
-content:
-  title: Why GraphQL?
-  markup: |
-    * You have multiple consumers
-    * You have multiple legacy APIs and want to unite them
-    * You write applications
+- title: Brief Introduction to GraphQL
+  theme: graphql-finland
+- layout: title
+  content:
+    title: Brief Introduction to GraphQL
+    author: Juho Vepsäläinen
+- layout: markdown
+  content:
+    title: Topics
+    markup: |-
+      * What is GraphQL?
+      * GraphQL Queries
+      * GraphQL Schema
+      * Implementing a Server
+      * Solutions
+- layout: section
+  content:
+    title: What is GraphQL?
+- layout: markdown
+  content:
+    title: Brief History
+    markup: |
+      * 1930s - Operators between client and server
+      * 2000s - REST between client and server
+      * 2010s - GraphQL between client and server
+- layout: embed
+  content:
+    title: GraphQL
+    link: https://graphql.org/
+- layout: markdown
+  content:
+    title: Why GraphQL?
+    markup: >
+      * You have multiple consumers
 
-    > Discuss: Think about your current projects. Can you see potential for using GraphQL?
----
-layout: markdown
-content: {
-  markup: |
-    > The consumer is always right
----
-layout: markdown
-content:
-  title: Exercises
-  markup: |
-    1. Find [a couple of  GraphQL APIs online](https://github.com/APIs-guru/graphql-apis).
-    2. What sort of functionality do the APIs implement?
-    3. What commonalities do the APIs have?
-    4. What differences do the APIs have?
----
-layout: section
-content:
-  title: GraphQL Queries
----
-layout: markdown
-content:
-  title: Queries
-  markup: |
-    ```graphql
-    {
-      themes {
-        primaryColor
-      }
-      theme(id: "survivejs") {
-        primaryColor
-        secondaryColor
-        background
-      }
-    }
-    ```
----
-layout: markdown
-content:
-  title: Queries with Ids
-  markup: |
-    ```graphql
-    query getTheme {
-      themes {
-        primaryColor
-      }
-      theme(id: "survivejs") {
-        primaryColor
-        secondaryColor
-        background
-      }
-    }
-    ```
----
-layout: markdown
-content:
-  title: Queries with Variables
-  markup: |
-    ```graphql
-    query($themeID: ID!) {
-      theme(id: $themeID) {
-        primaryColor
-      }
-    }
-    ```
+      * You have multiple legacy APIs and want to unite them
 
-    **Variables**
+      * You write applications
 
-    ```json
-    {
-      "themeID": "survivejs"
-    }
-    ```
----
-layout: markdown
-content:
-  title: Fragments
-  markup: |
-    ```graphql
-    fragment SponsorFragment on Contact {
-      name
-    }
 
-    query RootQuery($conferenceId: ID!) {
-      conference(id: $conferenceId) {
-        partners {
-          ...SponsorFragment
+      > Discuss: Think about your current projects. Can you see potential for using GraphQL?
+- layout: markdown
+  content:
+    markup: |
+      > The consumer is always right
+- layout: markdown
+  content:
+    title: Exercises
+    markup: >
+      1. Find [a couple of  GraphQL APIs
+      online](https://github.com/APIs-guru/graphql-apis).
+
+      2. What sort of functionality do the APIs implement?
+
+      3. What commonalities do the APIs have?
+
+      4. What differences do the APIs have?
+- layout: section
+  content:
+    title: GraphQL Queries
+- layout: markdown
+  content:
+    title: Queries
+    markup: |
+      ```graphql
+      {
+        themes {
+          primaryColor
         }
-        goldSponsors {
-          ...SponsorFragment
+        theme(id: "survivejs") {
+          primaryColor
+          secondaryColor
+          background
         }
       }
-    }
-    ```
----
-layout: markdown
-content:
-  title: Aliases
-  markup: |
-    ```graphql
-    {
-      colors: themes {
-        primaryColor
-      }
-    }
-    ```
----
-layout: markdown
-content:
-  title: Mutations
-  markup: |
-    ```graphql
-    mutation {
-      changeTheme(
-        presentationID: "intro-to-graphql",
-        themeID: "survivejs"
-      ) {
-        id
-        theme {
-          id
+      ```
+- layout: markdown
+  content:
+    title: Queries with Ids
+    markup: |
+      ```graphql
+      query getTheme {
+        themes {
+          primaryColor
+        }
+        theme(id: "survivejs") {
+          primaryColor
+          secondaryColor
+          background
         }
       }
-    }
-    ```
----
-layout: markdown
-content: {
-  markup: |
-    > While query fields are executed in parallel, mutation fields run in series, one after the other. -  [GraphQL documentation](https://graphql.org/learn/queries/#multiple-fields-in-mutations)
----
-layout: markdown
-content:
-  title: Playgrounds
-  markup: |
-    * [GraphiQL](https://github.com/graphql/graphiql#graphiql)
-    * [GraphQL Playground](https://www.npmjs.com/package/graphql-playground)
-
-    > Discuss: Investigate the playgrounds. Can you see what functionality they have?
----
-layout: markdown
-content:
-  title: Clients
-  markup: |
-    * [graphql-request](https://www.npmjs.com/package/graphql-request)
-    * [urql](https://www.npmjs.com/package/urql)
-    * [Relay](https://www.npmjs.com/package/react-relay)
-    * [Apollo Client](https://www.npmjs.com/package/apollo-client)
----
-layout: markdown
-content:
-  title: Exercises
-  markup: |
-    1. How many speakers does GraphQL Finland 2018 have? [API](https://api.react-finland.fi/graphql). [Source](https://github.com/ReactFinland/graphql-api).
-      > Use `conferenceId` `graphql-finland-2018` as an `id` to the `conference` query. See the schema explorer. You can count the data using a little script or perform the request using [graphql-request](https://www.npmjs.com/package/graphql-request) and then process it further.
----
-layout: markdown
-content:
-  title: Exercises
-  markup: |
-    2. What was the title and release date of the first Star Wars movie? [API](https://graphql.org/swapi-graphql/). [Source](https://github.com/graphql/swapi-graphql).
-    3. How many open source licenses is GitHub aware of? [API](https://developer.github.com/v4/explorer/). [Documentation](https://developer.github.com/v4/).
-    4. What are the names of the followers of the user `LinusTorvalds` in GitHub? (Not to be confused with Linux Linus.)
----
-layout: markdown
-content:
-  title: Exercises
-  markup: |
-    5. Choose a client from the list and try performing some of the queries using it.
-    6. Look up [GraphQL directives](https://graphql.org/learn/queries/#directives). What's the purpose of those? Where would you use them?
----
-layout: section
-content:
-  title: GraphQL Schema
----
-layout: markdown
-content:
-  title: GraphQL Schema Definition Language (SDL)
-  markup: |
-    * A definition language is used to define an API
-    * Separate language to describe types and their relations
-    * In addition code implementing **Queries** and **Mutations** is needed
----
-layout: markdown
-content:
-  title: Types
-  markup: |
-    ```graphql
-    type Presentation {
-      id: ID!
-      theme: Theme!
-      slides: [Slide]!
-    }
-    ```
-
-    > Exercise: Which types does GraphQL support out of the box?
----
-layout: markdown
-content:
-  title: Enums
-  markup: |
-    ```graphql
-    enum Layout {
-      TITLE
-      SECTION
-      EMBED
-      MARKDOWN
-    }
-    ```
-
-    > Discuss: What's the use case for enums? Where would use you use them?
----
-layout: markdown
-content:
-  title: Unions
-  markup: |
-    ```graphql
-    union ContentType =
-        TitleContent
-      | SectionContent
-      | EmbedContent
-      | MarkdownContent
-    ```
-
-    > Discuss: What's the use case for unions? Where would use you use them?
----
-layout: markdown
-content:
-  title: Interfaces
-  markup: |
-    ```graphql
-    interface Content {
-      title: String
-      background: ContentBackground
-    }
-    ```
-
-    > Discuss: What's the use case for interfaces? Where would use you use them?
----
-layout: markdown
-content:
-  title: Queries
-  markup: |
-    ```graphql
-    type Query {
-      themes: [Theme]!
-      theme(id: String!): Theme
-      presentations: [Presentation]!
-      presentation(id: String!): Presentation
-    }
-    ```
-
-    > Discuss: What's the use case for queries? Where would use you use them?
----
-layout: markdown
-content:
-  title: Mutations
-  markup: |
-    ```graphql
-    type Mutation {
-      changeTheme(
-        presentationID: String!,
-        themeID: String!
-      ): Presentation
-    }
-    ```
-
-    > Discuss: What's the use case for mutations? Where would use you use them?
----
-layout: markdown
-content:
-  title: Introspection
-  markup: |
-    ```graphql
-    {
-      __schema {
-        types {
-          name
+      ```
+- layout: markdown
+  content:
+    title: Queries with Variables
+    markup: |
+      ```graphql
+      query($themeID: ID!) {
+        theme(id: $themeID) {
+          primaryColor
         }
       }
-    }
-    ```
+      ```
 
-    > Discuss: What's the use case for introspection? Where would use you use it?
----
-layout: markdown
-content:
-  title: Integrating GraphQL with Tools
-  markup: |
-    * [graphql-config](https://www.npmjs.com/package/graphql-config)
-    * [eslint-plugin-graphql](https://www.npmjs.com/package/eslint-plugin-graphql)
-    * [type-graphql](https://www.npmjs.com/package/type-graphql)
-    * [graphql-code-generator](https://www.npmjs.com/package/graphql-code-generator)
-    * [graphqlviz](https://www.npmjs.com/package/graphqlviz)
----
-layout: markdown
-content:
-  title: Exercises
-  markup: |
-    1. What's the difference between an `Interface` and a `Union`?
-    2. Model a schema for a small presentation application API.
-    3. Try [graphqlviz](https://www.npmjs.com/package/graphqlviz) against an API.
-    4. Look up [JSON Schema](https://json-schema.org/). What's the relationship between that and GraphQL SDL? See also [graphql-json-schema](https://www.npmjs.com/package/graphql-json-schema).
----
-layout: section
-content:
-  title: Implementing a Server
----
-layout: markdown
-content:
-  title: Servers
-  markup: |
-    * [GraphQL.js](https://www.npmjs.com/package/graphql)
-    * [graphql-yoga](https://www.npmjs.com/package/graphql-yoga)
-    * [Prisma](https://www.npmjs.com/package/prisma)
-    * [Apollo Server](https://www.npmjs.com/package/apollo-server)
-    * [graphpack](https://github.com/glennreyes/graphpack)*
----
-layout: embed
-content:
-  title: Apollo Server
-  link: https://www.apollographql.com/docs/apollo-server/
----
-layout: markdown
-content:
-  markup: |
-    > [Let's jump to Sara's material now for the rest!](https://github.com/SaraVieira/graphql-workshop)
----
-layout: section
-content:
-  title: Solutions
----
-layout: markdown
-content:
-  title: Answers 2-1
-  markup: |
-    ```graphql
-    {
-      conference(id: "graphql-finland-2018") {
-        speakers {
-          name
-        }
+      **Variables**
+
+      ```json
+      {
+        "themeID": "survivejs"
       }
-    }
-    ```
----
-layout: markdown
-content:
-  title: Answers 2-2
-  markup: |
-    ```graphql
-    {
-      allFilms {
-        films {
-          title
-          releaseDate
-        }
-      }
-    }
-    ```
----
-layout: markdown
-content:
-  title: Answers 2-3
-  markup: |
-    ```graphql
-    query {
-      licenses {
+      ```
+- layout: markdown
+  content:
+    title: Fragments
+    markup: |
+      ```graphql
+      fragment SponsorFragment on Contact {
         name
       }
-    }
-    ```
----
-layout: markdown
-content:
-  title: Answers 2-4
-  markup: |
-    ```graphql
-    query {
-      user(login: "LinusTorvalds") {
-        followers(first: 10) {
-          nodes {
+
+      query RootQuery($conferenceId: ID!) {
+        conference(id: $conferenceId) {
+          partners {
+            ...SponsorFragment
+          }
+          goldSponsors {
+            ...SponsorFragment
+          }
+        }
+      }
+      ```
+- layout: markdown
+  content:
+    title: Aliases
+    markup: |
+      ```graphql
+      {
+        colors: themes {
+          primaryColor
+        }
+      }
+      ```
+- layout: markdown
+  content:
+    title: Mutations
+    markup: |
+      ```graphql
+      mutation {
+        changeTheme(
+          presentationID: "intro-to-graphql",
+          themeID: "survivejs"
+        ) {
+          id
+          theme {
+            id
+          }
+        }
+      }
+      ```
+- layout: markdown
+  content:
+    markup: >
+      > While query fields are executed in parallel, mutation fields run in
+      series, one after the other. -  [GraphQL
+      documentation](https://graphql.org/learn/queries/#multiple-fields-in-mutations)
+- layout: markdown
+  content:
+    title: Playgrounds
+    markup: >
+      * [GraphiQL](https://github.com/graphql/graphiql#graphiql)
+
+      * [GraphQL Playground](https://www.npmjs.com/package/graphql-playground)
+
+
+      > Discuss: Investigate the playgrounds. Can you see what functionality they have?
+- layout: markdown
+  content:
+    title: Clients
+    markup: |
+      * [graphql-request](https://www.npmjs.com/package/graphql-request)
+      * [urql](https://www.npmjs.com/package/urql)
+      * [Relay](https://www.npmjs.com/package/react-relay)
+      * [Apollo Client](https://www.npmjs.com/package/apollo-client)
+- layout: markdown
+  content:
+    title: Exercises
+    markup: >
+      1. How many speakers does GraphQL Finland 2018 have?
+      [API](https://api.react-finland.fi/graphql).
+      [Source](https://github.com/ReactFinland/graphql-api).
+        > Use `conferenceId` `graphql-finland-2018` as an `id` to the `conference` query. See the schema explorer. You can count the data using a little script or perform the request using [graphql-request](https://www.npmjs.com/package/graphql-request) and then process it further.
+- layout: markdown
+  content:
+    title: Exercises
+    markup: >
+      2. What was the title and release date of the first Star Wars movie?
+      [API](https://graphql.org/swapi-graphql/).
+      [Source](https://github.com/graphql/swapi-graphql).
+
+      3. How many open source licenses is GitHub aware of? [API](https://developer.github.com/v4/explorer/). [Documentation](https://developer.github.com/v4/).
+
+      4. What are the names of the followers of the user `LinusTorvalds` in GitHub? (Not to be confused with Linux Linus.)
+- layout: markdown
+  content:
+    title: Exercises
+    markup: >
+      5. Choose a client from the list and try performing some of the queries
+      using it.
+
+      6. Look up [GraphQL directives](https://graphql.org/learn/queries/#directives). What's the purpose of those? Where would you use them?
+- layout: section
+  content:
+    title: GraphQL Schema
+- layout: markdown
+  content:
+    title: GraphQL Schema Definition Language (SDL)
+    markup: |
+      * A definition language is used to define an API
+      * Separate language to describe types and their relations
+      * In addition code implementing **Queries** and **Mutations** is needed
+- layout: markdown
+  content:
+    title: Types
+    markup: |
+      ```graphql
+      type Presentation {
+        id: ID!
+        theme: Theme!
+        slides: [Slide]!
+      }
+      ```
+
+      > Exercise: Which types does GraphQL support out of the box?
+- layout: markdown
+  content:
+    title: Enums
+    markup: |
+      ```graphql
+      enum Layout {
+        TITLE
+        SECTION
+        EMBED
+        MARKDOWN
+      }
+      ```
+
+      > Discuss: What's the use case for enums? Where would use you use them?
+- layout: markdown
+  content:
+    title: Unions
+    markup: |
+      ```graphql
+      union ContentType =
+          TitleContent
+        | SectionContent
+        | EmbedContent
+        | MarkdownContent
+      ```
+
+      > Discuss: What's the use case for unions? Where would use you use them?
+- layout: markdown
+  content:
+    title: Interfaces
+    markup: >
+      ```graphql
+
+      interface Content {
+        title: String
+        background: ContentBackground
+      }
+
+      ```
+
+
+      > Discuss: What's the use case for interfaces? Where would use you use them?
+- layout: markdown
+  content:
+    title: Queries
+    markup: |
+      ```graphql
+      type Query {
+        themes: [Theme]!
+        theme(id: String!): Theme
+        presentations: [Presentation]!
+        presentation(id: String!): Presentation
+      }
+      ```
+
+      > Discuss: What's the use case for queries? Where would use you use them?
+- layout: markdown
+  content:
+    title: Mutations
+    markup: >
+      ```graphql
+
+      type Mutation {
+        changeTheme(
+          presentationID: String!,
+          themeID: String!
+        ): Presentation
+      }
+
+      ```
+
+
+      > Discuss: What's the use case for mutations? Where would use you use them?
+- layout: markdown
+  content:
+    title: Introspection
+    markup: >
+      ```graphql
+
+      {
+        __schema {
+          types {
             name
           }
         }
       }
-    }
-    ```
+
+      ```
+
+
+      > Discuss: What's the use case for introspection? Where would use you use it?
+- layout: markdown
+  content:
+    title: Integrating GraphQL with Tools
+    markup: >
+      * [graphql-config](https://www.npmjs.com/package/graphql-config)
+
+      * [eslint-plugin-graphql](https://www.npmjs.com/package/eslint-plugin-graphql)
+
+      * [type-graphql](https://www.npmjs.com/package/type-graphql)
+
+      * [graphql-code-generator](https://www.npmjs.com/package/graphql-code-generator)
+
+      * [graphqlviz](https://www.npmjs.com/package/graphqlviz)
+- layout: markdown
+  content:
+    title: Exercises
+    markup: >
+      1. What's the difference between an `Interface` and a `Union`?
+
+      2. Model a schema for a small presentation application API.
+
+      3. Try [graphqlviz](https://www.npmjs.com/package/graphqlviz) against an API.
+
+      4. Look up [JSON Schema](https://json-schema.org/). What's the relationship between that and GraphQL SDL? See also [graphql-json-schema](https://www.npmjs.com/package/graphql-json-schema).
+- layout: section
+  content:
+    title: Implementing a Server
+- layout: markdown
+  content:
+    title: Servers
+    markup: |
+      * [GraphQL.js](https://www.npmjs.com/package/graphql)
+      * [graphql-yoga](https://www.npmjs.com/package/graphql-yoga)
+      * [Prisma](https://www.npmjs.com/package/prisma)
+      * [Apollo Server](https://www.npmjs.com/package/apollo-server)
+      * [graphpack](https://github.com/glennreyes/graphpack)*
+- layout: embed
+  content:
+    title: Apollo Server
+    link: https://www.apollographql.com/docs/apollo-server/
+- layout: markdown
+  content:
+    markup: >
+      > [Let's jump to Sara's material now for the
+      rest!](https://github.com/SaraVieira/graphql-workshop)
+- layout: section
+  content:
+    title: Solutions
+- layout: markdown
+  content:
+    title: Answers 2-1
+    markup: |
+      ```graphql
+      {
+        conference(id: "graphql-finland-2018") {
+          speakers {
+            name
+          }
+        }
+      }
+      ```
+- layout: markdown
+  content:
+    title: Answers 2-2
+    markup: |
+      ```graphql
+      {
+        allFilms {
+          films {
+            title
+            releaseDate
+          }
+        }
+      }
+      ```
+- layout: markdown
+  content:
+    title: Answers 2-3
+    markup: |
+      ```graphql
+      query {
+        licenses {
+          name
+        }
+      }
+      ```
+- layout: markdown
+  content:
+    title: Answers 2-4
+    markup: |
+      ```graphql
+      query {
+        user(login: "LinusTorvalds") {
+          followers(first: 10) {
+            nodes {
+              name
+            }
+          }
+        }
+      }
+      ```

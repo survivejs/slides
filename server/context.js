@@ -1,5 +1,7 @@
+const path = require("path");
 const themes = require("./themes");
 const presentations = require("./presentations");
+const { saveYAML } = require("./utils");
 
 function getTheme(id) {
   return themes[id];
@@ -10,10 +12,15 @@ function getThemes() {
 
 // TODO: Update at FS to persist
 function changeTheme({ presentationID, themeID }) {
-  return {
-    ...getField("presentation", presentations, presentationID),
-    theme: getField("theme", themes, themeID)
-  };
+  const presentation = getField("presentation", presentations, presentationID);
+  const theme = getField("theme", themes, themeID);
+
+  saveYAML(path.resolve(__dirname, "presentations", `${presentationID}.yaml`), [
+    { title: presentation.title, theme: themeID },
+    ...presentation.slides
+  ]);
+
+  return { ...presentation, theme };
 }
 function getField(type, record, id) {
   const result = record[id];

@@ -1,229 +1,214 @@
-title: Let's Make a GraphQL Presentation
-theme: graphql-finland
----
-layout: title
-content:
-  title: Let's Make a GraphQL Presentation
-  author: Juho Vepsäläinen
----
-layout: toc
-content:
-  title: Table of Contents
----
-layout: section
-content:
-  title: Schema Design
----
-layout: embed
-content:
-  title: GraphQL
-  link: https://graphql.org/
----
-layout: markdown
-content:
-  title: Why GraphQL?
-  markup: |
-    1. You have multiple consumers
-    2. You have multiple legacy APIs and want to unite them
-    3. You want to make a GraphQL presentation
----
-layout: markdown
-content:
-  title: GraphQL Schema Definition Language (SDL)
-  markup: |
-    * A definition language is used to define an API
-    * Separate language to describe types and their relations
-    * In addition code implementing **Queries** and **Mutations** is needed
----
-layout: markdown
-content:
-  title: What's a `Presentation`?
-  markup: |
-    ```graphql
-    type Presentation {
-      id: ID!
-      title: String!
-      theme: Theme!
-      slides: [Slide]!
-    }
-
-    type Query {
-      presentations: [Presentation]!
-      presentation(id: ID!): Presentation
-      ...
-    }
-    ```
----
-layout: markdown
-content:
-  title: What's a `Theme`?
-  markup: |
-    ```graphql
-    type Theme {
-      id: ID!
-      primaryColor: String!
-      secondaryColor: String!
-      background: String!
-    }
-
-    type Query {
-      themes: [Theme]!
-      theme(id: ID!): Theme
-      ...
-    }
-    ```
----
-layout: markdown
-content:
-  title: What's a `Slide`?
-  markup: |
-    ```graphql
-    type Slide {
-      layout: Layout!
-      content: ContentType!
-    }
-
-    enum Layout {
-      TITLE
-      SECTION
-      EMBED
-      MARKDOWN
-      GRID
-    }
-    ```
----
-layout: grid
-content:
-  title: What's `Content`?
-  columns:
-    - |
-      ```graphql
-      union ContentType =
-          TitleContent
-        | SectionContent
-        | EmbedContent
-        | MarkdownContent
-        | GridContent
-
-      interface Content {
-        title: String
-        background: ContentBackground
-      }
-      ```
-    - |
-      ```graphql
-      type ContentBackground {
-        asset: String!
-        source: String
-      }
-
-      type TitleContent implements Content {
-        title: String
-        background: ContentBackground
-        author: String
-      }
-      ```
----
-layout: section
-content:
-  title: Layout Types
----
-layout: markdown
-content:
-  title: Meta
-  markup: |
-    > A presentation begins by describing itself
-
-    ```yaml
+- title: Let's Make a GraphQL Presentation
+  theme: graphql-finland
+- layout: title
+  content:
     title: Let's Make a GraphQL Presentation
-    theme: graphql-finland
-    ```
----
-layout: markdown
-content:
-  title: `title`
-  markup: |
-    > I.e. the first slide of a presentation
+    author: Juho Vepsäläinen
+- layout: markdown
+  content:
+    title: Table of Contents
+    markup: |-
+      * Schema Design
+      * Layout Types
+      * Conclusion
+- layout: section
+  content:
+    title: Schema Design
+- layout: embed
+  content:
+    title: GraphQL
+    link: https://graphql.org/
+- layout: markdown
+  content:
+    title: Why GraphQL?
+    markup: |
+      1. You have multiple consumers
+      2. You have multiple legacy APIs and want to unite them
+      3. You want to make a GraphQL presentation
+- layout: markdown
+  content:
+    title: GraphQL Schema Definition Language (SDL)
+    markup: |
+      * A definition language is used to define an API
+      * Separate language to describe types and their relations
+      * In addition code implementing **Queries** and **Mutations** is needed
+- layout: markdown
+  content:
+    title: What's a `Presentation`?
+    markup: |
+      ```graphql
+      type Presentation {
+        id: ID!
+        title: String!
+        theme: Theme!
+        slides: [Slide]!
+      }
 
-    ```yaml
-    layout: title
-    content:
-      title: Let's Make a GraphQL Presentation
-      author: Juho Vepsäläinen
-    ```
----
-layout: markdown
-content:
-  title: `section`
-  markup: |
-    > Section slides between slides
-
-    ```yaml
-    layout: section
-    content:
-      title: Layout Types
-    ```
----
-layout: markdown
-content:
-  title: `toc`
-  markup: |
-    > Table of Contents generated from sections
-
-    ```yaml
-    layout: toc
-    content:
-      title: Table of Contents
-    ```
----
-layout: markdown
-content:
-  title: `markdown`
-  markup: |
-    > Slides with Markdown content
-
-    ```yaml
-    layout: markdown
-    content:
-      title: `markdown`
-      markup: |
-        > Slides with Markdown content
-
-        ```yaml
+      type Query {
+        presentations: [Presentation]!
+        presentation(id: ID!): Presentation
         ...
+      }
+      ```
+- layout: markdown
+  content:
+    title: What's a `Theme`?
+    markup: |
+      ```graphql
+      type Theme {
+        id: ID!
+        primaryColor: String!
+        secondaryColor: String!
+        background: String!
+      }
+
+      type Query {
+        themes: [Theme]!
+        theme(id: ID!): Theme
+        ...
+      }
+      ```
+- layout: markdown
+  content:
+    title: What's a `Slide`?
+    markup: |
+      ```graphql
+      type Slide {
+        layout: Layout!
+        content: ContentType!
+      }
+
+      enum Layout {
+        TITLE
+        SECTION
+        EMBED
+        MARKDOWN
+        GRID
+      }
+      ```
+- layout: grid
+  content:
+    title: What's `Content`?
+    columns:
+      - |
+        ```graphql
+        union ContentType =
+            TitleContent
+          | SectionContent
+          | EmbedContent
+          | MarkdownContent
+          | GridContent
+
+        interface Content {
+          title: String
+          background: ContentBackground
+        }
         ```
-    ```
----
-layout: markdown
-content:
-  title: `grid`
-  markup: |
-    > Slides with Grid content (only two columns for now)
+      - |
+        ```graphql
+        type ContentBackground {
+          asset: String!
+          source: String
+        }
 
-    ```yaml
-    layout: grid
-    content:
-      title: Column demo
-      columns:
-        - |
-          First column
-        - |
-          Second column
-    ```
----
-layout: markdown
-content:
-  title: `embed`
-  markup: |
-    > `<iframe>` embeds
+        type TitleContent implements Content {
+          title: String
+          background: ContentBackground
+          author: String
+        }
+        ```
+- layout: section
+  content:
+    title: Layout Types
+- layout: markdown
+  content:
+    title: Meta
+    markup: |
+      > A presentation begins by describing itself
 
-    ```yaml
-    layout: embed
-    content:
-      title: GraphQL
-      link: https://graphql.org/
-    ```
----
-layout: section
-content:
-  title: Conclusion
+      ```yaml
+      title: Let's Make a GraphQL Presentation
+      theme: graphql-finland
+      ```
+- layout: markdown
+  content:
+    title: "`title`"
+    markup: |
+      > I.e. the first slide of a presentation
+
+      ```yaml
+      layout: title
+      content:
+        title: Let's Make a GraphQL Presentation
+        author: Juho Vepsäläinen
+      ```
+- layout: markdown
+  content:
+    title: "`section`"
+    markup: |
+      > Section slides between slides
+
+      ```yaml
+      layout: section
+      content:
+        title: Layout Types
+      ```
+- layout: markdown
+  content:
+    title: "`toc`"
+    markup: |
+      > Table of Contents generated from sections
+
+      ```yaml
+      layout: toc
+      content:
+        title: Table of Contents
+      ```
+- layout: markdown
+  content:
+    title: "`markdown`"
+    markup: |
+      > Slides with Markdown content
+
+      ```yaml
+      layout: markdown
+      content:
+        title: `markdown`
+        markup: |
+          > Slides with Markdown content
+
+          ```yaml
+          ...
+          ```
+      ```
+- layout: markdown
+  content:
+    title: "`grid`"
+    markup: |
+      > Slides with Grid content (only two columns for now)
+
+      ```yaml
+      layout: grid
+      content:
+        title: Column demo
+        columns:
+          - |
+            First column
+          - |
+            Second column
+      ```
+- layout: markdown
+  content:
+    title: "`embed`"
+    markup: |
+      > `<iframe>` embeds
+
+      ```yaml
+      layout: embed
+      content:
+        title: GraphQL
+        link: https://graphql.org/
+      ```
+- layout: section
+  content:
+    title: Conclusion
