@@ -1,16 +1,22 @@
+const fs = require("fs");
 const path = require("path");
+const { fromPairs } = require("lodash");
 const { loadYAML } = require("../utils");
 
-// TODO: Clean up
-module.exports = {
-  "intro-to-graphql": {
-    ...loadYAML(path.resolve(__dirname, "intro-to-graphql.yaml")),
-    id: "intro-to-graphql"
-  },
-  "lets-make-a-graphql-presentation": {
-    ...loadYAML(
-      path.resolve(__dirname, "lets-make-a-graphql-presentation.yaml")
-    ),
-    id: "lets-make-a-graphql-presentation"
-  }
-};
+module.exports = loadPresentations();
+
+function loadPresentations() {
+  return fromPairs(
+    fs
+      .readdirSync(path.resolve(__dirname))
+      .filter(p => path.extname(p) === ".yaml")
+      .map(id => [id, loadPresentation(path.basename(id, path.extname(id)))])
+  );
+}
+
+function loadPresentation(id) {
+  return {
+    ...loadYAML(path.resolve(__dirname, `${id}.yaml`)),
+    id
+  };
+}
