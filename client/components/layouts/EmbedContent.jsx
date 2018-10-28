@@ -7,7 +7,7 @@ const EmbedPageContainer = styled.div`
   min-height: 100vh;
   max-height: 100vh;
   display: grid;
-  grid-template-rows: 0.5fr 1.5fr;
+  grid-template-rows: 0.25fr 1.75fr;
   align-items: center;
 `;
 

@@ -14,6 +14,19 @@ layout: section
 content:
   title: Schema Design
 ---
+layout: embed
+content:
+  title: GraphQL
+  link: https://graphql.org/
+---
+layout: markdown
+content:
+  title: Why GraphQL?
+  markup: |
+    * You have multiple consumers
+    * You have multiple legacy APIs and want to unite them
+    * You write applications
+---
 layout: markdown
 content:
   title: GraphQL Schema Definition Language (SDL)
@@ -65,58 +78,83 @@ content:
 ---
 layout: markdown
 content:
+  title: Meta
+  markup: |
+    > A presentation begins by describing itself
+
+    ```yaml
+    title: Let's Make a GraphQL Presentation
+    theme: graphql-finland
+    ```
+---
+layout: markdown
+content:
   title: `title`
   markup: |
     > I.e. the first slide of a presentation
+
+    ```yaml
+    layout: title
+    content:
+      title: Let's Make a GraphQL Presentation
+      author: Juho Vepsäläinen
+    ```
 ---
 layout: markdown
 content:
   title: `section`
   markup: |
     > Section slides between slides
+
+    ```yaml
+    layout: section
+    content:
+      title: Layout Types
+    ```
 ---
 layout: markdown
 content:
   title: `toc`
   markup: |
     > Table of Contents generated from sections
+
+    ```yaml
+    layout: toc
+    content:
+      title: Table of Contents
+    ```
 ---
 layout: markdown
 content:
   title: `markdown`
   markup: |
     > Slides with Markdown content
+
+    ```yaml
+    layout: markdown
+    content:
+      title: `markdown`
+      markup: |
+        > Slides with Markdown content
+
+        ```yaml
+        ...
+        ```
+    ```
 ---
 layout: markdown
 content:
   title: `embed`
   markup: |
     > `<iframe>` embeds
+
+    ```yaml
+    layout: embed
+    content:
+      title: GraphQL
+      link: https://graphql.org/
+    ```
 ---
 layout: section
 content:
-  title: What is GraphQL?
----
-layout: markdown
-content:
-  title: Brief History
-  # background:
-  #  asset: url("assets/images/switchboard.jpg")
-  #  source: https://en.wikipedia.org/wiki/Switchboard_operator
-  markup: |
-    * 1930s - Operators between client and server
-    * 2000s - REST between client and server
-    * 2010s - GraphQL between client and server
----
-layout: embed
-content:
-  title: GraphQL
-  link: https://graphql.org/
----
-layout: markdown
-content:
-  title: Why GraphQL?
-  markup: |
-    * You have multiple consumers
-    * You have multiple legacy APIs and want to unite them
-    * You write applications
+  title: Conclusion
