@@ -23,9 +23,9 @@ layout: markdown
 content:
   title: Why GraphQL?
   markup: |
-    * You have multiple consumers
-    * You have multiple legacy APIs and want to unite them
-    * You write applications
+    1. You have multiple consumers
+    2. You have multiple legacy APIs and want to unite them
+    3. You want to make a GraphQL presentation
 ---
 layout: markdown
 content:
@@ -46,6 +46,12 @@ content:
       theme: Theme!
       slides: [Slide]!
     }
+
+    type Query {
+      presentations: [Presentation]!
+      presentation(id: ID!): Presentation
+      ...
+    }
     ```
 ---
 layout: markdown
@@ -58,6 +64,12 @@ content:
       primaryColor: String!
       secondaryColor: String!
       background: String!
+    }
+
+    type Query {
+      themes: [Theme]!
+      theme(id: ID!): Theme
+      ...
     }
     ```
 ---
