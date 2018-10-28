@@ -1,4 +1,3 @@
-name: lets-make-a-graphql-presentation
 title: Let's Make a GraphQL Presentation
 theme: graphql-finland
 ---
@@ -6,6 +5,43 @@ layout: title
 content:
   title: Let's Make a GraphQL Presentation
   author: Juho Vepsäläinen
+---
+layout: markdown
+content:
+  title: What's a Presentation?
+  markup: |
+    ```graphql
+    type Presentation {
+      id: ID!
+      title: String!
+      theme: Theme!
+      slides: [Slide]!
+    }
+    ```
+---
+layout: markdown
+content:
+  title: What's a Theme?
+  markup: |
+    ```graphql
+    type Theme {
+      id: ID!
+      primaryColor: String!
+      secondaryColor: String!
+      background: String!
+    }
+    ```
+---
+layout: markdown
+content:
+  title: What's a Slide?
+  markup: |
+    ```graphql
+    type Slide {
+      layout: Layout!
+      content: ContentType!
+    }
+    ```
 ---
 layout: markdown
 content:

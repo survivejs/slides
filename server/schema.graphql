@@ -1,23 +1,23 @@
 type Query {
   themes: [Theme]!
-  theme(name: String!): Theme
+  theme(id: ID!): Theme
   presentations: [Presentation]!
-  presentation(name: String!): Presentation
+  presentation(id: ID!): Presentation
 }
 
 type Mutation {
-  changeTheme(presentationName: String!, themeName: String!): Presentation
+  changeTheme(presentationID: String!, themeID: String!): Presentation
 }
 
 type Presentation {
+  id: ID!
   title: String!
-  name: String!
   theme: Theme!
   slides: [Slide]!
 }
 
 type Theme {
-  name: String!
+  id: ID!
   primaryColor: String!
   secondaryColor: String!
   background: String!

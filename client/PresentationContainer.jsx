@@ -5,16 +5,18 @@ import connect from "./connect";
 import apiUrl from "./api-url";
 import initialData from "../initial-data.graphql";
 
-function PresentationContainer({ name, presentations = [] }) {
+function PresentationContainer({ presentations = [], presentationID }) {
   return (
     <Presenter
-      {...presentations.find(presentation => presentation.name === name)}
+      {...presentations.find(
+        presentation => presentation.id === presentationID
+      )}
     />
   );
 }
 PresentationContainer.propTypes = {
-  name: PropTypes.string,
-  presentations: PropTypes.array
+  presentations: PropTypes.array,
+  presentationID: PropTypes.string
 };
 
 export default connect(

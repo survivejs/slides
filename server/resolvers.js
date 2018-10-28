@@ -10,16 +10,16 @@ const resolvers = {
   },
   Mutation: {
     // TODO: Update at FS to persist
-    changeTheme: (_, { presentationName, themeName }) => ({
-      ...getField("presentation", presentations, presentationName),
-      theme: getField("theme", themes, themeName)
+    changeTheme: (_, { presentationID, themeID }) => ({
+      ...getField("presentation", presentations, presentationID),
+      theme: getField("theme", themes, themeID)
     })
   },
   Query: {
     themes: () => Object.values(themes),
-    theme: (_, { name }) => themes[name],
+    theme: (_, { id }) => themes[id],
     presentations: () => Object.values(presentations).map(resolveTheme),
-    presentation: (_, { name }) => resolveTheme(presentations[name])
+    presentation: (_, { id }) => resolveTheme(presentations[id])
   },
   Content: {
     __resolveType: resolveContentType
@@ -29,11 +29,11 @@ const resolvers = {
   }
 };
 
-function getField(type, record, name) {
-  const result = record[name];
+function getField(type, record, id) {
+  const result = record[id];
 
   if (!result) {
-    throw new Error(`No ${type} found using ${name}`);
+    throw new Error(`No ${type} found using ${id}`);
   }
 
   return result;

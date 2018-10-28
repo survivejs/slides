@@ -1,15 +1,15 @@
 {
-  theme(name: "survivejs") {
-    name
+  theme(id: "survivejs") {
+    id
     primaryColor
     secondaryColor
     background
   }
   presentations {
+    id
     title
-    name
     theme {
-      name
+      id
       primaryColor
       secondaryColor
       background

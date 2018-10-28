@@ -8,7 +8,6 @@ import initialData from "../initial-data.graphql";
 function PresentationIndexContainer({ presentations = [], theme = {} }) {
   return (
     <Presenter
-      name="SurviveJS Slides"
       theme={theme}
       slides={[
         {
@@ -23,7 +22,7 @@ function PresentationIndexContainer({ presentations = [], theme = {} }) {
           content: {
             title: "Presentations",
             markup: presentations
-              .map(({ title, name }) => `* [${title}](${name})`)
+              .map(({ title, id }) => `* [${title}](${id})`)
               .join("\n")
           }
         }

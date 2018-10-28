@@ -1,5 +1,5 @@
 module.exports = {
-  name: "graphql-finland",
+  id: "graphql-finland",
   primaryColor: "#e10098",
   secondaryColor: "#ab199194",
   background: "white"

@@ -33,12 +33,12 @@ Slides.propTypes = {
   theme: PropTypes.object
 };
 
-function getLayout(name) {
-  if (!layouts[name]) {
-    throw new Error(`No layout found for ${name}`);
+function getLayout(id) {
+  if (!layouts[id]) {
+    throw new Error(`No layout found for ${id}`);
   }
 
-  return layouts[name];
+  return layouts[id];
 }
 
 export default Slides;

@@ -96,25 +96,26 @@ class Presenter extends React.Component {
         <Slides slides={slides} theme={theme} />
         {showOptions &&
           process.env.NODE_ENV !== "production" && (
-            <Options
-              themeName={theme.name}
-              onChangeTheme={this.onChangeTheme}
-            />
+            <Options themeID={theme.id} onChangeTheme={this.onChangeTheme} />
           )}
       </PresenterContainer>
     );
   }
 
-  onChangeTheme = themeName => {
-    const { name: presentationName } = this.props;
+  onChangeTheme = themeID => {
+    const { presentationID } = this.props;
+
+    if (!presentationID) {
+      return;
+    }
 
     request(
       apiUrl,
       `
-mutation($presentationName: String!, $themeName: String!) {
-  changeTheme(presentationName: $presentationName, themeName: $themeName) {
+mutation($presentationID: ID!, $themeID: ID!) {
+  changeTheme(presentationID: $presentationID, themeID: $themeID) {
     theme {
-      name
+      id
       primaryColor
       secondaryColor
       background
@@ -122,14 +123,14 @@ mutation($presentationName: String!, $themeName: String!) {
   }
 }
       `,
-      { presentationName, themeName }
+      { presentationID, themeID }
     ).then(({ changeTheme: { theme } }) => {
       this.setState({ theme });
     });
   };
 }
 Presenter.propTypes = {
-  name: PropTypes.string,
+  presentationID: PropTypes.string,
   slides: PropTypes.array,
   theme: PropTypes.object
 };

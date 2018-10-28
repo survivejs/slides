@@ -1,4 +1,3 @@
-name: intro-to-graphql
 title: Brief Introduction to GraphQL
 theme: graphql-finland
 ---
@@ -73,7 +72,7 @@ content:
       themes {
         primaryColor
       }
-      theme(name: "survivejs") {
+      theme(id: "survivejs") {
         primaryColor
         secondaryColor
         background
@@ -83,14 +82,14 @@ content:
 ---
 layout: markdown
 content:
-  title: Queries with Names
+  title: Queries with Ids
   markup: |
     ```graphql
     query getTheme {
       themes {
         primaryColor
       }
-      theme(name: "survivejs") {
+      theme(id: "survivejs") {
         primaryColor
         secondaryColor
         background
@@ -103,8 +102,8 @@ content:
   title: Queries with Variables
   markup: |
     ```graphql
-    {
-      theme(name: @themeName) {
+    query($themeID: ID!) {
+      theme(id: $themeID) {
         primaryColor
       }
     }
@@ -114,7 +113,7 @@ content:
 
     ```json
     {
-      "themeName": "survivejs"
+      "themeID": "survivejs"
     }
     ```
 ---
@@ -158,12 +157,12 @@ content:
     ```graphql
     mutation {
       changeTheme(
-        presentationName: "intro-to-graphql",
-        themeName: "survivejs"
+        presentationID: "intro-to-graphql",
+        themeID: "survivejs"
       ) {
-        name
+        id
         theme {
-          name
+          id
         }
       }
     }
@@ -232,7 +231,7 @@ content:
   markup: |
     ```graphql
     type Presentation {
-      name: String!
+      id: ID!
       theme: Theme!
       slides: [Slide]!
     }
@@ -289,9 +288,9 @@ content:
     ```graphql
     type Query {
       themes: [Theme]!
-      theme(name: String!): Theme
+      theme(id: String!): Theme
       presentations: [Presentation]!
-      presentation(name: String!): Presentation
+      presentation(id: String!): Presentation
     }
     ```
 
@@ -304,8 +303,8 @@ content:
     ```graphql
     type Mutation {
       changeTheme(
-        presentationName: String!,
-        themeName: String!
+        presentationID: String!,
+        themeID: String!
       ): Presentation
     }
     ```
