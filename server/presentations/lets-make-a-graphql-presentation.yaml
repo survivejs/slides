@@ -6,6 +6,10 @@ content:
   title: Let's Make a GraphQL Presentation
   author: Juho Vepsäläinen
 ---
+layout: toc
+content:
+  title: Table of Contents
+---
 layout: section
 content:
   title: Schema Design
@@ -57,16 +61,37 @@ content:
 ---
 layout: section
 content:
-  title: Layouts
+  title: Layout Types
 ---
 layout: markdown
 content:
-  title: Layout types
+  title: `title`
   markup: |
-    * `title` - I.e. the first slide
-    * `section` - Section slides between slides
-    * `markdown` - Markdown content slides
-    * `embed` - `<iframe>` embeds
+    > I.e. the first slide of a presentation
+---
+layout: markdown
+content:
+  title: `section`
+  markup: |
+    > Section slides between slides
+---
+layout: markdown
+content:
+  title: `toc`
+  markup: |
+    > Table of Contents generated from sections
+---
+layout: markdown
+content:
+  title: `markdown`
+  markup: |
+    > Slides with Markdown content
+---
+layout: markdown
+content:
+  title: `embed`
+  markup: |
+    > `<iframe>` embeds
 ---
 layout: section
 content:

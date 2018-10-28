@@ -6,14 +6,9 @@ content:
   title: Brief Introduction to GraphQL
   author: Juho Vepsäläinen
 ---
-layout: markdown
+layout: toc
 content:
   title: Topics
-  markup: |
-    * What is GraphQL?
-    * GraphQL Queries
-    * GraphQL Schema
-    * Implementing a Server
 ---
 layout: section
 content:
