@@ -6,7 +6,8 @@ const resolvers = {
     TITLE: "title",
     SECTION: "section",
     EMBED: "embed",
-    MARKDOWN: "markdown"
+    MARKDOWN: "markdown",
+    GRID: "grid"
   },
   Mutation: {
     // TODO: Update at FS to persist
@@ -39,7 +40,7 @@ function getField(type, record, id) {
   return result;
 }
 
-function resolveContentType({ author, link, markup, title }) {
+function resolveContentType({ author, link, markup, title, columns }) {
   if (author) {
     return "TitleContent";
   }
@@ -50,6 +51,10 @@ function resolveContentType({ author, link, markup, title }) {
 
   if (markup) {
     return "MarkdownContent";
+  }
+
+  if (columns) {
+    return "GridContent";
   }
 
   if (title) {

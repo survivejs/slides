@@ -82,7 +82,46 @@ content:
       layout: Layout!
       content: ContentType!
     }
+
+    enum Layout {
+      TITLE
+      SECTION
+      EMBED
+      MARKDOWN
+      GRID
+    }
     ```
+---
+layout: grid
+content:
+  title: What's `Content`?
+  columns:
+    - |
+      ```graphql
+      union ContentType =
+          TitleContent
+        | SectionContent
+        | EmbedContent
+        | MarkdownContent
+
+      interface Content {
+        title: String
+        background: ContentBackground
+      }
+      ```
+    - |
+      ```graphql
+      type ContentBackground {
+        asset: String!
+        source: String
+      }
+
+      type TitleContent implements Content {
+        title: String
+        background: ContentBackground
+        author: String
+      }
+      ```
 ---
 layout: section
 content:

@@ -48,6 +48,14 @@
           }
           markup
         }
+        ... on GridContent {
+          title
+          background {
+            asset
+            source
+          }
+          columns
+        }
       }
     }
   }
