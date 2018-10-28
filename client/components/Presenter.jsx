@@ -20,12 +20,16 @@ class Presenter extends React.Component {
     console.error(err); // eslint-disable-line no-console
   }
   componentDidMount() {
-    root.document &&
+    if (root.document) {
       root.document.addEventListener("keydown", this.onKeydown, false);
+      root.addEventListener("scroll", this.onScroll);
+    }
   }
   componentWillUnmount() {
-    root.document &&
+    if (root.document) {
       root.document.removeEventListener("keydown", this.onKeydown, false);
+      root.removeEventListener("scroll", this.onScroll);
+    }
   }
   onKeydown = event => {
     const { key } = event;
@@ -41,6 +45,14 @@ class Presenter extends React.Component {
     if (key === "s") {
       this.setState({ showOptions: !this.state.showOptions });
     }
+  };
+
+  onScroll = () => {
+    const scrollY = root.scrollY;
+    const slideHeight = getSlideHeight();
+    const currentSlide = Math.floor(scrollY / slideHeight);
+
+    root.location.hash = `#${currentSlide}`;
   };
 
   moveToPreviousSlide = () => {
@@ -127,6 +139,17 @@ function getSlide() {
   }
 
   return root.location.hash ? parseInt(root.location.hash.slice(1)) : 0;
+}
+
+// Assumes there's at least one slide
+function getSlideHeight() {
+  const element = root.document.getElementsByClassName(`slide-0`)[0];
+
+  if (element) {
+    return element.offsetHeight;
+  }
+
+  return 0;
 }
 
 export default Presenter;
