@@ -103,6 +103,7 @@ content:
         | SectionContent
         | EmbedContent
         | MarkdownContent
+        | GridContent
 
       interface Content {
         title: String
@@ -191,6 +192,23 @@ content:
         ```yaml
         ...
         ```
+    ```
+---
+layout: markdown
+content:
+  title: `grid`
+  markup: |
+    > Slides with Grid content (only two columns for now)
+
+    ```yaml
+    layout: grid
+    content:
+      title: Column demo
+      columns:
+        - |
+          First column
+        - |
+          Second column
     ```
 ---
 layout: markdown
