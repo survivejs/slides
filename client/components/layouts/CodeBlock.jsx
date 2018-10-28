@@ -2,6 +2,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import hljs from "highlight.js/lib/highlight";
+import yaml from "highlight.js/lib/languages/yaml";
+
+hljs.registerLanguage("yaml", yaml);
 
 // TODO: Figure out how to register only the needed languages.
 // Ideally we wouldn't need to highlight in the frontend at all.
