@@ -36,6 +36,7 @@ class Presenter extends React.Component {
     if (root.document) {
       root.document.removeEventListener("keydown", this.onKeydown, false);
       root.removeEventListener("scroll", this.onScroll);
+      root.clearTimeout(this.scrollTimeout);
     }
   }
   componentDidUpdate(nextProps) {
