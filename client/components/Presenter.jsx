@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { request } from "graphql-request";
 import root from "window-or-global";
-import OverScroll from "./OverScroll.jsx";
+import { styled } from "linaria/react";
 import Slides from "./Slides.jsx";
 import Options from "./Options.jsx";
 import apiUrl from "../api-url";
+
+const PresenterContainer = styled.div``;
 
 class Presenter extends React.Component {
   state = {
@@ -72,34 +74,21 @@ class Presenter extends React.Component {
 
   render() {
     const { slides } = this.props;
-    const { slide, showOptions } = this.state;
+    const { showOptions } = this.state;
     const theme = this.state.theme || this.props.theme;
-    const slideElements = Slides({
-      slides,
-      theme
-    });
 
+    // TODO: Control based on slide if it changes
     return (
-      <OverScroll
-        factor={2}
-        slides={slideElements.length}
-        throttleRate={30}
-        initialPage={slide}
-        onPageChange={this.setUrlHash}
-      >
-        {page => (
-          <div>
-            <section>{slideElements[page]}</section>
-            {showOptions &&
-              process.env.NODE_ENV !== "production" && (
-                <Options
-                  themeName={theme.name}
-                  onChangeTheme={this.onChangeTheme}
-                />
-              )}
-          </div>
-        )}
-      </OverScroll>
+      <PresenterContainer>
+        <Slides slides={slides} theme={theme} />
+        {showOptions &&
+          process.env.NODE_ENV !== "production" && (
+            <Options
+              themeName={theme.name}
+              onChangeTheme={this.onChangeTheme}
+            />
+          )}
+      </PresenterContainer>
     );
   }
 

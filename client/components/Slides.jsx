@@ -3,24 +3,30 @@ import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import layouts from "./layouts";
 
+const SlideContainer = styled.div``;
+
 const Slide = styled.div`
   background: ${props => props.background};
 `;
 
 function Slides({ slides = [], theme }) {
-  return slides.map((slide, index) => {
-    const slideKey = `slide-${index}`;
+  return (
+    <SlideContainer>
+      {slides.map((slide, index) => {
+        const slideKey = `slide-${index}`;
 
-    // Slides are given class names for keyboard navigation to work.
-    return (
-      <Slide className={slideKey} key={slideKey}>
-        {React.createElement(getLayout(slide.layout), {
-          theme,
-          content: slide.content
-        })}
-      </Slide>
-    );
-  });
+        // Slides are given class names for keyboard navigation to work.
+        return (
+          <Slide className={slideKey} key={slideKey}>
+            {React.createElement(getLayout(slide.layout), {
+              theme,
+              content: slide.content
+            })}
+          </Slide>
+        );
+      })}
+    </SlideContainer>
+  );
 }
 Slides.propTypes = {
   slides: PropTypes.array,
