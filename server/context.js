@@ -10,7 +10,6 @@ function getThemes() {
   return Object.values(themes);
 }
 
-// TODO: Update at FS to persist
 function changeTheme({ presentationID, themeID }) {
   const presentation = getField("presentation", presentations, presentationID);
   const theme = getField("theme", themes, themeID);
