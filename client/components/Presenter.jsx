@@ -16,6 +16,8 @@ class Presenter extends React.Component {
     showOptions: false,
     theme: null
   };
+  scrollTimeout = null;
+
   componentDidCatch(err) {
     // TODO: Use a nice error overlay here
     console.error(err); // eslint-disable-line no-console
@@ -41,6 +43,7 @@ class Presenter extends React.Component {
       root.scrollTo(root.scrollX, getSlideHeight() * this.state.slide);
     }
   }
+
   onKeydown = event => {
     const { key } = event;
 
@@ -56,13 +59,19 @@ class Presenter extends React.Component {
       this.setState({ showOptions: !this.state.showOptions });
     }
   };
-
   onScroll = () => {
     const scrollY = root.scrollY;
     const slideHeight = getSlideHeight();
-    const currentSlide = Math.floor(scrollY / slideHeight);
+    const nearestSlide = Math.round(scrollY / slideHeight);
 
-    root.location.hash = currentSlide;
+    root.location.hash = nearestSlide;
+
+    root.clearTimeout(this.scrollTimeout);
+    this.scrollTimeout = root.setTimeout(() => {
+      if (scrollY === root.scrollY) {
+        this.scrollToSlide(nearestSlide);
+      }
+    }, 100);
   };
 
   moveToPreviousSlide = () => {
