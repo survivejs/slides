@@ -11,6 +11,7 @@ function PresentationContainer({ presentations = [], presentationID }) {
       {...presentations.find(
         presentation => presentation.id === presentationID
       )}
+      presentationID={presentationID}
     />
   );
 }
