@@ -57,7 +57,7 @@ class Presenter extends React.Component {
     const slideHeight = getSlideHeight();
     const currentSlide = Math.floor(scrollY / slideHeight);
 
-    root.location.hash = `#${currentSlide}`;
+    root.location.hash = currentSlide;
   };
 
   moveToPreviousSlide = () => {
@@ -74,7 +74,6 @@ class Presenter extends React.Component {
   };
 
   goToSlide = slide => {
-    this.setUrlHash(slide);
     this.setState({ slide });
     this.scrollToSlide(slide);
   };
@@ -83,10 +82,6 @@ class Presenter extends React.Component {
     const element = root.document.getElementsByClassName(`slide-${slide}`)[0];
 
     element && element.scrollIntoView({ behavior: "smooth" });
-  }
-
-  setUrlHash(slide) {
-    root.location = `${root.location.origin}${root.location.pathname}#${slide}`;
   }
 
   render() {
