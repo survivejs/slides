@@ -10,7 +10,11 @@ function loadPresentations() {
     fs
       .readdirSync(path.resolve(__dirname))
       .filter(p => path.extname(p) === ".yaml")
-      .map(id => [id, loadPresentation(path.basename(id, path.extname(id)))])
+      .map(filename => {
+        const id = path.basename(filename, path.extname(filename));
+
+        return [id, loadPresentation(id)];
+      })
   );
 }
 
