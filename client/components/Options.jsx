@@ -32,7 +32,7 @@ function Options({ themeID, themes, onChangeTheme }) {
       }
       open
       styles={{
-        sidebar: { background: "white", minWidth: "20%" }
+        sidebar: { background: "white", minWidth: "20%", position: "fixed" }
       }}
     />
   );
