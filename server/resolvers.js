@@ -18,7 +18,7 @@ const resolvers = {
   Query: {
     themes: () => Object.values(themes),
     theme: (_, { name }) => themes[name],
-    presentations: () => presentations.map(resolveTheme),
+    presentations: () => Object.values(presentations).map(resolveTheme),
     presentation: (_, { name }) => resolveTheme(presentations[name])
   },
   Content: {

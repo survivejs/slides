@@ -1,4 +1,14 @@
 {
+  theme(name: "survivejs") {
+    name
+    primaryColor
+    secondaryColor
+    background
+  }
+  presentations {
+    title
+    name
+  }
   presentation(name: "intro-to-graphql") {
     name
     theme {

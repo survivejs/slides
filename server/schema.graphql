@@ -10,6 +10,7 @@ type Mutation {
 }
 
 type Presentation {
+  title: String!
   name: String!
   theme: Theme!
   slides: [Slide]!
