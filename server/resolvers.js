@@ -10,11 +10,8 @@ const resolvers = {
     GRID: "grid"
   },
   Mutation: {
-    // TODO: Update at FS to persist
-    changeTheme: (_, { presentationID, themeID }) => ({
-      ...getField("presentation", presentations, presentationID),
-      theme: getField("theme", themes, themeID)
-    })
+    changeTheme: (_, { presentationID, themeID }, { changeTheme }) =>
+      changeTheme({ presentationID, themeID })
   },
   Query: {
     themes: () => Object.values(themes),
@@ -29,16 +26,6 @@ const resolvers = {
     __resolveType: resolveContentType
   }
 };
-
-function getField(type, record, id) {
-  const result = record[id];
-
-  if (!result) {
-    throw new Error(`No ${type} found using ${id}`);
-  }
-
-  return result;
-}
 
 function resolveContentType({ author, link, markup, title, columns }) {
   if (author) {
