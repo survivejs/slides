@@ -6,7 +6,7 @@ type Query {
 }
 
 type Mutation {
-  changeTheme(presentationID: String!, themeID: String!): Presentation
+  changeTheme(presentationID: ID!, themeID: ID!): Presentation
 }
 
 type Presentation {
