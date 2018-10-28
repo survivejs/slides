@@ -1,6 +1,3 @@
-const themes = require("./themes");
-const presentations = require("./presentations");
-
 const resolvers = {
   Layout: {
     TITLE: "title",
@@ -14,10 +11,10 @@ const resolvers = {
       changeTheme({ presentationID, themeID })
   },
   Query: {
-    themes: () => Object.values(themes),
-    theme: (_, { id }) => themes[id],
-    presentations: () => Object.values(presentations).map(resolveTheme),
-    presentation: (_, { id }) => resolveTheme(presentations[id])
+    themes: (_, __, { getThemes }) => getThemes(),
+    theme: (_, { id }, { getTheme }) => getTheme(id),
+    presentations: (_, __, { getPresentations }) => getPresentations(),
+    presentation: (_, { id }, { getPresentation }) => getPresentation(id)
   },
   Content: {
     __resolveType: resolveContentType
@@ -47,15 +44,6 @@ function resolveContentType({ author, link, markup, title, columns }) {
   if (title) {
     return "SectionContent";
   }
-}
-
-const resolveTheme = resolveField("theme", themes);
-
-function resolveField(field, lookup) {
-  return entity => ({
-    ...entity,
-    [field]: lookup[entity[field]]
-  });
 }
 
 module.exports = resolvers;
