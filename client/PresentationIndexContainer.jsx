@@ -24,7 +24,7 @@ function PresentationIndexContainer({ presentations = [], theme = {} }) {
             title: "Presentations",
             markup: presentations
               .map(({ title, name }) => `* [${title}](${name})`)
-              .join()
+              .join("\n")
           }
         }
       ]}
