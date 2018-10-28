@@ -24,6 +24,10 @@ class Presenter extends React.Component {
     if (root.document) {
       root.document.addEventListener("keydown", this.onKeydown, false);
       root.addEventListener("scroll", this.onScroll);
+
+      if (!root.location.hash) {
+        root.location.hash = 0;
+      }
     }
   }
   componentWillUnmount() {
