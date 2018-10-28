@@ -6,6 +6,18 @@ content:
   title: Let's Make a GraphQL Presentation
   author: Juho Vepsäläinen
 ---
+layout: section
+content:
+  title: Schema Design
+---
+layout: markdown
+content:
+  title: GraphQL Schema Definition Language (SDL)
+  markup: |
+    * A definition language is used to define an API
+    * Separate language to describe types and their relations
+    * In addition code implementing **Queries** and **Mutations** is needed
+---
 layout: markdown
 content:
   title: What's a Presentation?
@@ -43,14 +55,18 @@ content:
     }
     ```
 ---
+layout: section
+content:
+  title: Layouts
+---
 layout: markdown
 content:
-  title: Topics
+  title: Layout types
   markup: |
-    * What is GraphQL?
-    * GraphQL Queries
-    * GraphQL Schema
-    * Implementing a Server
+    * `title` - I.e. the first slide
+    * `section` - Section slides between slides
+    * `markdown` - Markdown content slides
+    * `embed` - `<iframe>` embeds
 ---
 layout: section
 content:
