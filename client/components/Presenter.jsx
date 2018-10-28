@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { request } from "graphql-request";
 import root from "window-or-global";
+import { isEqual } from "lodash";
 import { styled } from "linaria/react";
 import Slides from "./Slides.jsx";
 import Options from "./Options.jsx";
@@ -32,7 +33,7 @@ class Presenter extends React.Component {
     }
   }
   componentDidUpdate(nextProps) {
-    if (this.props.slides !== nextProps.slides) {
+    if (!isEqual(this.props.slides, nextProps.slides)) {
       root.scrollTo(root.scrollX, getSlideHeight() * this.state.slide);
     }
   }
