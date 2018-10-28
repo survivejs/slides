@@ -20,7 +20,7 @@ content:
 ---
 layout: markdown
 content:
-  title: What's a Presentation?
+  title: What's a `Presentation`?
   markup: |
     ```graphql
     type Presentation {
@@ -33,7 +33,7 @@ content:
 ---
 layout: markdown
 content:
-  title: What's a Theme?
+  title: What's a `Theme`?
   markup: |
     ```graphql
     type Theme {
@@ -46,7 +46,7 @@ content:
 ---
 layout: markdown
 content:
-  title: What's a Slide?
+  title: What's a `Slide`?
   markup: |
     ```graphql
     type Slide {

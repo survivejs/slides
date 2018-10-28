@@ -32,7 +32,9 @@ const MarkdownContent = ({ content = {}, theme = {} }) => (
   <MarkdownContainer
     background={content.background && content.background.asset}
   >
-    <Title color={theme.primaryColor}>{content.title}</Title>
+    <Title color={theme.primaryColor}>
+      <ReactMarkdown source={content.title} />
+    </Title>
     <Markup color={theme.secondaryColor}>
       <ReactMarkdown source={content.markup} renderers={{ code: CodeBlock }} />
     </Markup>
