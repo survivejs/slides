@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
 import ReactMarkdown from "react-markdown";
-import CodeBlock from "./CodeBlock.jsx";
+import CodeBlock from "../CodeBlock.jsx";
 
 const GridContainer = styled.div`
   min-height: 100vh;

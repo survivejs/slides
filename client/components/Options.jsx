@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Sidebar from "react-sidebar";
 import Select from "react-select";
 import { styled } from "linaria/react";
+import CodeBlock from "./CodeBlock.jsx";
 import connect from "../connect";
 import apiUrl from "../api-url";
 
@@ -14,7 +15,7 @@ const Header = styled.h2`
   margin-bottom: 0.5em;
 `;
 
-function Options({ themeID, themes, onChangeTheme }) {
+function Options({ themeID, themes, gitDiff, onChangeTheme }) {
   const options = toOptions(themes);
 
   return (
@@ -28,6 +29,7 @@ function Options({ themeID, themes, onChangeTheme }) {
             options={options}
             onChange={({ value }) => onChangeTheme(value)}
           />
+          <CodeBlock value={gitDiff} language="diff" />
         </OptionsContainer>
       }
       open
@@ -40,6 +42,7 @@ function Options({ themeID, themes, onChangeTheme }) {
 Options.propTypes = {
   themeID: PropTypes.string,
   themes: PropTypes.array,
+  gitDiff: PropTypes.string,
   onChangeTheme: PropTypes.func
 };
 
@@ -53,6 +56,7 @@ export default connect(
   themes {
     id
   }
+  gitDiff
 }
   `,
   { apiUrl }

@@ -2,8 +2,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import hljs from "highlight.js/lib/highlight";
+import diff from "highlight.js/lib/languages/diff";
 import yaml from "highlight.js/lib/languages/yaml";
 
+hljs.registerLanguage("diff", diff);
 hljs.registerLanguage("yaml", yaml);
 
 // TODO: Figure out how to register only the needed languages.
