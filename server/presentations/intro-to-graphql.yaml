@@ -4,15 +4,9 @@
   content:
     title: Brief Introduction to GraphQL
     author: Juho Vepsäläinen
-- layout: markdown
+- layout: toc
   content:
     title: Topics
-    markup: |-
-      * What is GraphQL?
-      * GraphQL Queries
-      * GraphQL Schema
-      * Implementing a Server
-      * Solutions
 - layout: section
   content:
     title: What is GraphQL?
@@ -36,7 +30,6 @@
       * You have multiple legacy APIs and want to unite them
 
       * You write applications
-
 
       > Discuss: Think about your current projects. Can you see potential for using GraphQL?
 - layout: markdown

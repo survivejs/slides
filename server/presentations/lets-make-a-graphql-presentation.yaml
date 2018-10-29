@@ -4,13 +4,9 @@
   content:
     title: Let's Make a GraphQL Presentation
     author: Juho Vepsäläinen
-- layout: markdown
+- layout: toc
   content:
     title: Table of Contents
-    markup: |-
-      * Schema Design
-      * Layout Types
-      * Conclusion
 - layout: section
   content:
     title: Schema Design
