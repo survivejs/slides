@@ -104,7 +104,6 @@ class Presenter extends React.Component {
     const { showOptions } = this.state;
     const theme = this.state.theme || this.props.theme;
 
-    // TODO: Control based on slide if it changes
     return (
       <PresenterContainer>
         <Slides slides={slides} theme={theme} />
