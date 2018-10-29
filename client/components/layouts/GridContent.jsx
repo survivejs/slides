@@ -28,6 +28,10 @@ const Markup = styled.div`
   margin-left: 5vw;
   align-self: start;
   color: ${props => props.color};
+
+  pre {
+    font-size: 70%;
+  }
 `;
 
 const GridContent = ({ content = {}, theme = {} }) => (

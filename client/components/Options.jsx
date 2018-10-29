@@ -34,7 +34,7 @@ function Options({ themeID, themes, gitDiff, onChangeTheme }) {
       }
       open
       styles={{
-        sidebar: { background: "white", minWidth: "20%", position: "fixed" }
+        sidebar: { background: "white", minWidth: "40%", position: "fixed" }
       }}
     />
   );
