@@ -5,7 +5,12 @@ const presentations = require("./presentations");
 const { saveYAML } = require("./utils");
 
 function gitDiff() {
-  return simpleGit.diff();
+  return simpleGit.diff().then(result =>
+    result
+      .split("\n")
+      .filter(line => !line.startsWith("diff "))
+      .join("\n")
+  );
 }
 
 function getTheme(id) {
