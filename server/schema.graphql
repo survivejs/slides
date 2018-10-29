@@ -3,6 +3,7 @@ type Query {
   theme(id: ID!): Theme
   presentations: [Presentation]!
   presentation(id: ID!): Presentation
+  gitDiff: String!
 }
 
 type Mutation {

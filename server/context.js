@@ -1,7 +1,12 @@
 const path = require("path");
+const simpleGit = require("simple-git/promise")(path.join(__dirname, ".."));
 const themes = require("./themes");
 const presentations = require("./presentations");
 const { saveYAML } = require("./utils");
+
+function gitDiff() {
+  return simpleGit.diff();
+}
 
 function getTheme(id) {
   return themes[id];
@@ -48,6 +53,7 @@ function resolveField(field, lookup) {
 }
 
 module.exports = {
+  gitDiff,
   changeTheme,
   getTheme,
   getThemes,
