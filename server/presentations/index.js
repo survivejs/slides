@@ -19,10 +19,8 @@ function loadPresentations() {
 }
 
 function loadPresentation(id) {
-  const presentation = loadYAML(path.resolve(__dirname, `${id}.yaml`));
-
   return {
-    ...presentation,
+    ...loadYAML(path.resolve(__dirname, `${id}.yaml`)),
     id
   };
 }
