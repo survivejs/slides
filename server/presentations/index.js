@@ -23,31 +23,6 @@ function loadPresentation(id) {
 
   return {
     ...presentation,
-    slides: loadToC(presentation.slides),
     id
   };
-}
-
-function loadToC(slides) {
-  const sections = slides
-    .filter(({ layout }) => layout === "section")
-    .map(({ content: { title } }) => title);
-
-  return slides.map(slide => {
-    if (slide.layout === "toc") {
-      return {
-        layout: "markdown",
-        content: {
-          ...slide.content,
-          markup: toMarkdownList(sections)
-        }
-      };
-    }
-
-    return slide;
-  });
-}
-
-function toMarkdownList(items) {
-  return items.map(item => `* ${item}`).join("\n");
 }

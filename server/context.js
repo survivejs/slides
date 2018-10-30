@@ -41,11 +41,38 @@ function getField(type, record, id) {
   return result;
 }
 
-function getPresentation(id) {
-  return resolveTheme(presentations[id]);
-}
 function getPresentations() {
-  return Object.values(presentations).map(resolveTheme);
+  return Object.keys(presentations).map(getPresentation);
+}
+function getPresentation(id) {
+  const presentation = presentations[id];
+
+  return {
+    ...resolveTheme(presentation),
+    slides: resolveToC(presentation.slides)
+  };
+}
+function resolveToC(slides) {
+  const sections = slides
+    .filter(({ layout }) => layout === "section")
+    .map(({ content: { title } }) => title);
+
+  return slides.map(slide => {
+    if (slide.layout === "toc") {
+      return {
+        layout: "markdown",
+        content: {
+          ...slide.content,
+          markup: toMarkdownList(sections)
+        }
+      };
+    }
+
+    return slide;
+  });
+}
+function toMarkdownList(items) {
+  return items.map(item => `* ${item}`).join("\n");
 }
 
 const resolveTheme = resolveField("theme", themes);
