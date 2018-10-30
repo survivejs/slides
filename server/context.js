@@ -4,15 +4,6 @@ const themes = require("./themes");
 const presentations = require("./presentations");
 const { saveYAML } = require("./utils");
 
-function gitDiff() {
-  return simpleGit.diff().then(result =>
-    result
-      .split("\n")
-      .filter(line => !line.startsWith("diff "))
-      .join("\n")
-  );
-}
-
 function getTheme(id) {
   return themes[id];
 }
@@ -29,7 +20,7 @@ function changeTheme({ presentationID, themeID }) {
     ...presentation.slides
   ]);
 
-  return { ...presentation, theme };
+  return { theme, gitDiff: gitDiff() };
 }
 function getField(type, record, id) {
   const result = record[id];
@@ -82,6 +73,15 @@ function resolveField(field, lookup) {
     ...entity,
     [field]: lookup[entity[field]]
   });
+}
+
+function gitDiff() {
+  return simpleGit.diff().then(result =>
+    result
+      .split("\n")
+      .filter(line => !line.startsWith("diff "))
+      .join("\n")
+  );
 }
 
 module.exports = {

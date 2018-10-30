@@ -56,7 +56,6 @@ export default connect(
   themes {
     id
   }
-  gitDiff
 }
   `,
   { apiUrl }

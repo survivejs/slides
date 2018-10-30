@@ -7,7 +7,12 @@ type Query {
 }
 
 type Mutation {
-  changeTheme(presentationID: ID!, themeID: ID!): Presentation
+  changeTheme(presentationID: ID!, themeID: ID!): ChangeThemeResult
+}
+
+type ChangeThemeResult {
+  theme: Theme!
+  gitDiff: String!
 }
 
 type Presentation {

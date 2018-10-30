@@ -12,6 +12,7 @@ const PresenterContainer = styled.div``;
 
 class Presenter extends React.Component {
   state = {
+    gitDiff: "",
     slide: getSlide(),
     showOptions: false,
     theme: null
@@ -101,7 +102,7 @@ class Presenter extends React.Component {
 
   render() {
     const { slides } = this.props;
-    const { showOptions } = this.state;
+    const { gitDiff, showOptions } = this.state;
     const theme = this.state.theme || this.props.theme;
 
     return (
@@ -109,7 +110,11 @@ class Presenter extends React.Component {
         <Slides slides={slides} theme={theme} />
         {showOptions &&
           process.env.NODE_ENV !== "production" && (
-            <Options themeID={theme.id} onChangeTheme={this.onChangeTheme} />
+            <Options
+              gitDiff={gitDiff}
+              themeID={theme.id}
+              onChangeTheme={this.onChangeTheme}
+            />
           )}
       </PresenterContainer>
     );
@@ -127,6 +132,7 @@ class Presenter extends React.Component {
       `
 mutation($presentationID: ID!, $themeID: ID!) {
   changeTheme(presentationID: $presentationID, themeID: $themeID) {
+    gitDiff
     theme {
       id
       primaryColor
@@ -137,8 +143,8 @@ mutation($presentationID: ID!, $themeID: ID!) {
 }
       `,
       { presentationID, themeID }
-    ).then(({ changeTheme: { theme } }) => {
-      this.setState({ theme });
+    ).then(({ changeTheme: { gitDiff, theme } }) => {
+      this.setState({ gitDiff, theme });
     });
   };
 }
