@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { request } from "graphql-request";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
+import apiUrl from "../../api-url";
 
 const TitlePageContainer = styled.div`
   min-height: 100vh;
@@ -24,15 +26,58 @@ const Author = styled.h2`
   color: ${props => props.color};
 `;
 
-const TitleContent = ({ content = {}, theme = {} }) => (
-  <TitlePageContainer>
-    <Presentation color={theme.primaryColor}>{content.title}</Presentation>
-    <Author color={theme.secondaryColor}>{content.author}</Author>
-  </TitlePageContainer>
-);
+class TitleContent extends React.Component {
+  state = {
+    title: ""
+  };
+
+  render() {
+    const { content = {}, theme = {} } = this.props;
+    const title = this.state.title || content.title;
+
+    return (
+      <TitlePageContainer>
+        <Presentation
+          color={theme.primaryColor}
+          contenteditable="true"
+          onBlur={this.onChangeTitle}
+        >
+          {title}
+        </Presentation>
+        <Author color={theme.secondaryColor}>{content.author}</Author>
+      </TitlePageContainer>
+    );
+  }
+
+  onChangeTitle = ({ target: { innerHTML: title } }) => {
+    const { presentationID } = this.props;
+
+    request(
+      apiUrl,
+      `
+mutation($presentationID: ID!, $content: ContentInput!) {
+  updateSlideContent(
+    slideIndex: 0
+    presentationID: $presentationID
+    content: $content
+  ) {
+    content {
+      title
+    }
+  }
+}
+    `,
+      { presentationID, content: { title } }
+    ).then(({ updateSlideContent: { content: { title } } }) => {
+      this.setState({ title });
+    });
+  };
+}
+
 TitleContent.propTypes = {
   content: PropTypes.object,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  presentationID: PropTypes.string
 };
 
 export default TitleContent;

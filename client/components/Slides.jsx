@@ -9,7 +9,7 @@ const Slide = styled.div`
   background: ${props => props.background};
 `;
 
-function Slides({ slides = [], theme }) {
+function Slides({ slides = [], theme, presentationID }) {
   return (
     <SlideContainer>
       {slides.map((slide, index) => {
@@ -20,7 +20,8 @@ function Slides({ slides = [], theme }) {
           <Slide className={slideKey} key={slideKey}>
             {React.createElement(getLayout(slide.layout), {
               theme,
-              content: slide.content
+              content: slide.content,
+              presentationID
             })}
           </Slide>
         );
@@ -30,7 +31,8 @@ function Slides({ slides = [], theme }) {
 }
 Slides.propTypes = {
   slides: PropTypes.array,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  presentationID: PropTypes.string
 };
 
 function getLayout(id) {
