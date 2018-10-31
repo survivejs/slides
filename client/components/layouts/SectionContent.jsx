@@ -2,11 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
+import excludeProps from "../exclude-props";
 
-/* eslint-disable no-unused-vars */
-const SectionPageContainer = styled(({ backgroundColor, ...rest }) => (
-  <div {...rest} />
-))`
+const SectionPageContainer = styled(excludeProps("backgroundColor", "div"))`
   min-height: 100vh;
   max-height: 100vh;
   display: grid;
