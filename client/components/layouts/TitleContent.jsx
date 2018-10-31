@@ -35,13 +35,10 @@ class TitleContent extends React.Component {
     const { content = {}, theme = {} } = this.props;
     const title = this.state.title || content.title;
 
+    // TODO: contentEditable
     return (
       <TitlePageContainer>
-        <Presentation
-          color={theme.primaryColor}
-          contenteditable="true"
-          onBlur={this.onChangeTitle}
-        >
+        <Presentation color={theme.primaryColor} onBlur={this.onChangeTitle}>
           {title}
         </Presentation>
         <Author color={theme.secondaryColor}>{content.author}</Author>
