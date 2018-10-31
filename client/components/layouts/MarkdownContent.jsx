@@ -9,7 +9,7 @@ const MarkdownContainer = styled.div`
   min-height: 100vh;
   max-height: 100vh;
   display: grid;
-  grid-template-rows: 0.25fr 1.75fr;
+  grid-template-rows: ${({ title }) => (title ? "0.25fr 1.75fr" : "1fr")};
   align-items: center;
   line-height: 1.5;
   background: ${props => props.background};
@@ -24,17 +24,19 @@ const Title = styled.h1`
 const Markup = styled.div`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
-  align-self: start;
   color: ${props => props.color};
 `;
 
 const MarkdownContent = ({ content = {}, theme = {} }) => (
   <MarkdownContainer
     background={content.background && content.background.asset}
+    title={content.title}
   >
-    <Title color={theme.primaryColor}>
-      <ReactMarkdown source={content.title} />
-    </Title>
+    {content.title && (
+      <Title color={theme.primaryColor}>
+        <ReactMarkdown source={content.title} />
+      </Title>
+    )}
     <Markup className="markup" color={theme.secondaryColor}>
       <ReactMarkdown source={content.markup} renderers={{ code: CodeBlock }} />
     </Markup>
