@@ -16,12 +16,12 @@
     background
   }
   presentation(name: "intro-to-graphql") {
-    theme {
-      primaryColor
-      secondaryColor
-      background
-    }
     slides {
+      theme {
+        primaryColor
+        secondaryColor
+        background
+      }
       layout
       content {
         ... on TitleContent {
@@ -84,12 +84,12 @@ mutation {
     name
   }
   presentation(name: "intro-to-graphql") {
-    theme {
-      primaryColor
-      secondaryColor
-      background
-    }
     slides {
+      theme {
+        primaryColor
+        secondaryColor
+        background
+      }
       layout
       content {
         ... on TitleContent {
