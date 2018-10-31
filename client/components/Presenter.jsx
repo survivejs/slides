@@ -97,6 +97,7 @@ class Presenter extends React.Component {
   scrollToSlide(slide) {
     const element = root.document.getElementsByClassName(`slide-${slide}`)[0];
 
+    // TODO: Figure out how to avoid triggering onScroll with this
     element && element.scrollIntoView({ behavior: "smooth" });
   }
 
