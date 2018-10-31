@@ -14,6 +14,16 @@ const SlideNumber = styled(excludeProps("index", "div"))`
   position: absolute;
   top: ${({ index }) => (index + 1) * 100 - 5}vh;
   right: 3vw;
+  opacity: 0.5;
+`;
+
+const SlideProgress = styled(excludeProps(["color", "index", "ratio"], "div"))`
+  position: absolute;
+  top: ${({ index }) => (index + 1) * 100 - 2}vh;
+  width: ${({ ratio }) => ratio * 100}%;
+  height: 2vh;
+  background-color: ${props => props.color};
+  opacity: 0.5;
 `;
 
 function Slides({ slides = [], theme, presentationID }) {
@@ -30,11 +40,20 @@ function Slides({ slides = [], theme, presentationID }) {
               content: slide.content,
               presentationID
             })}
-            {index && (
+            {index ? (
               <SlideNumber index={index}>
                 {index}/{slides.length - 1}
               </SlideNumber>
-            )}
+            ) : null}
+            {index ? (
+              <SlideProgress
+                color={theme.secondaryColor}
+                index={index}
+                ratio={index / (slides.length - 1)}
+              >
+                &nbsp;
+              </SlideProgress>
+            ) : null}
           </Slide>
         );
       })}
