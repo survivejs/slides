@@ -23,6 +23,7 @@ const Title = styled.h1`
 const Markup = styled.div`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
+  align-self: start;
   color: ${props => props.color};
 `;
 
