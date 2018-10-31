@@ -5,8 +5,9 @@ const { importSchema } = require("graphql-import");
 const resolvers = require("./resolvers");
 const context = require("./context");
 
+const schemaPath = path.resolve(__dirname, "schema.graphql");
 const server = new GraphQLServer({
-  typeDefs: importSchema(path.resolve(__dirname, "schema.graphql")),
+  typeDefs: importSchema(schemaPath),
   resolvers,
   context
 });
