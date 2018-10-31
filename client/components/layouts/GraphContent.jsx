@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
-import ReactMarkdown from "react-markdown";
 import mermaid from "mermaid";
+import Markdown from "../Markdown.jsx";
 
 mermaid.initialize({
   startOnLoad: true
@@ -52,7 +52,7 @@ class GraphContent extends React.Component {
         background={content.background && content.background.asset}
       >
         <Title color={theme.primaryColor}>
-          <ReactMarkdown source={content.title} />
+          <Markdown>{content.title}</Markdown>
         </Title>
         <Graph
           className="markup"

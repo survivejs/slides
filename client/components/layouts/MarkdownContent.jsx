@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
-import ReactMarkdown from "react-markdown";
-import CodeBlock from "../CodeBlock.jsx";
+import Markdown from "../Markdown.jsx";
 
 const MarkdownContainer = styled.div`
   min-height: 100vh;
@@ -34,11 +33,11 @@ const MarkdownContent = ({ content = {}, theme = {} }) => (
   >
     {content.title && (
       <Title color={theme.primaryColor}>
-        <ReactMarkdown source={content.title} />
+        <Markdown>{content.title}</Markdown>
       </Title>
     )}
     <Markup className="markup" color={theme.secondaryColor}>
-      <ReactMarkdown source={content.markup} renderers={{ code: CodeBlock }} />
+      <Markdown>{content.markup}</Markdown>
     </Markup>
   </MarkdownContainer>
 );

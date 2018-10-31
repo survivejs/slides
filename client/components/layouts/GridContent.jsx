@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
-import ReactMarkdown from "react-markdown";
-import CodeBlock from "../CodeBlock.jsx";
+import Markdown from "../Markdown.jsx";
 
 const GridContainer = styled.div`
   min-height: 100vh;
@@ -33,17 +32,11 @@ const Markup = styled.div`
 const GridContent = ({ content = {}, theme = {} }) => (
   <GridContainer background={content.background && content.background.asset}>
     <Title color={theme.primaryColor}>
-      <ReactMarkdown source={content.title} />
+      <Markdown>{content.title}</Markdown>
     </Title>
     <Markup className="markup" color={theme.secondaryColor}>
-      <ReactMarkdown
-        source={content.columns[0]}
-        renderers={{ code: CodeBlock }}
-      />
-      <ReactMarkdown
-        source={content.columns[1]}
-        renderers={{ code: CodeBlock }}
-      />
+      <Markdown>{content.columns[0]}</Markdown>
+      <Markdown>{content.columns[0]}</Markdown>
     </Markup>
   </GridContainer>
 );
