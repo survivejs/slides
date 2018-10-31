@@ -17,7 +17,7 @@ type ChangeThemeResult {
 
 type Presentation {
   id: ID!
-  title: String!
+  title: String
   theme: Theme!
   slides: [Slide]!
 }

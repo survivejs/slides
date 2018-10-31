@@ -9,6 +9,29 @@
     title: Table of Contents
 - layout: section
   content:
+    title: Background
+- layout: embed
+  content:
+    title: React Finland API
+    link: https://api.react-finland.fi/graphql
+- layout: embed
+  content:
+    title: React Finland
+    link: https://react-finland.fi/
+- layout: embed
+  content:
+    title: GraphQL Finland
+    link: https://graphql-finland.fi/
+- layout: embed
+  content:
+    title: Asset Generator
+    link: https://rf-asset-generator.netlify.com/
+- layout: embed
+  content:
+    title: Speaker Presentation
+    link: https://rf-asset-generator.netlify.com/presentation/#0
+- layout: section
+  content:
     title: Schema Design
 - layout: embed
   content:
@@ -28,6 +51,21 @@
       * A definition language is used to define an API
       * Separate language to describe types and their relations
       * In addition code implementing **Queries** and **Mutations** is needed
+- layout: section
+  content:
+    title: Design and Architecture
+- layout: markdown
+  content:
+    title: Schema Driven Design
+    markup: |
+      > Define the API first, the rest will follow
+- layout: markdown
+  content:
+    title: Design Constaints
+    markup: |
+      1. Content should be separate from layouts
+      2. Content should live on the server behind an API
+      3.  It should be possible to replace the frontend
 - layout: markdown
   content:
     title: What's a `Presentation`?
@@ -35,7 +73,7 @@
       ```graphql
       type Presentation {
         id: ID!
-        title: String!
+        title: String
         theme: Theme!
         slides: [Slide]!
       }
@@ -113,9 +151,25 @@
           author: String
         }
         ```
+- layout: markdown
+  content:
+    title: What Do Presentations Look Like?
+    markup: |
+      ```yaml
+      - title: Let's Make a GraphQL Presentation
+        theme: graphql-finland
+      - layout: title
+        content:
+          title: Let's Make a GraphQL Presentation
+          author: Juho Vepsäläinen
+      - layout: toc
+        content:
+          title: Table of Contents
+      ...
+      ```
 - layout: section
   content:
-    title: Layout Types
+    title: Layouts
 - layout: markdown
   content:
     title: Meta
@@ -207,4 +261,62 @@
       ```
 - layout: section
   content:
-    title: Conclusion
+    title: Features
+- layout: markdown
+  content:
+    markup: |
+      ## Server-side rendering (SSR) leads to progressive enhancement (works without JS with limitations)
+- layout: markdown
+  content:
+    markup: |
+      ## Prints to PDF as a side effect of the frontend design
+- layout: markdown
+  content:
+    markup: |
+      ## Allows editing through the frontend thanks to GraphQL mutations connected to the file system
+- layout: markdown
+  content:
+    markup: |
+      ## Allows monorepo style slide authoring
+- layout: markdown
+  content:
+    markup: |
+      ## Allows extension through layouts and theming
+- layout: section
+  content:
+    title: Left to Do
+- layout: markdown
+  content:
+    markup: |
+      ## Add includes and other programmer things to compose
+- layout: markdown
+  content:
+    markup: |
+      ## Experiment with different frontends. Generating to **mdx-deck** might be nice
+- layout: markdown
+  content:
+    markup: |
+      ## Explore editing and make it more versatile
+- layout: markdown
+  content:
+    markup: |
+      ## Begin building websites like this
+- layout: section
+  content:
+    title: Lessons Learned
+- layout: markdown
+  content:
+    markup: |
+      # Schema Driven Design is a powerful approach
+- layout: markdown
+  content:
+    markup: |
+      # Separating concerns fosters creativity in design
+- layout: markdown
+  content:
+    markup: |
+      # Frontends don't need to contain much logic. There is value in having an API.
+- layout: markdown
+  content:
+    markup: |
+      Check [https://github.com/survivejs/slides](https://github.com/survivejs/slides) to learn more
