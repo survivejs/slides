@@ -100,6 +100,7 @@
         EMBED
         MARKDOWN
         GRID
+        GRAPH
       }
       ```
 - layout: markdown
