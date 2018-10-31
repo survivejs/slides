@@ -28,10 +28,6 @@ const Markup = styled.div`
   margin-left: 5vw;
   align-self: start;
   color: ${props => props.color};
-
-  pre {
-    font-size: 70%;
-  }
 `;
 
 const GridContent = ({ content = {}, theme = {} }) => (
@@ -39,7 +35,7 @@ const GridContent = ({ content = {}, theme = {} }) => (
     <Title color={theme.primaryColor}>
       <ReactMarkdown source={content.title} />
     </Title>
-    <Markup color={theme.secondaryColor}>
+    <Markup className="markup" color={theme.secondaryColor}>
       <ReactMarkdown
         source={content.columns[0]}
         renderers={{ code: CodeBlock }}
