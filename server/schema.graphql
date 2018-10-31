@@ -32,8 +32,14 @@ type UpdateSlideContentResult {
 
 type Presentation {
   id: ID!
-  theme: Theme!
   slides: [Slide]!
+}
+
+type Slide {
+  # The first slide contains theme by convention for now
+  theme: Theme
+  layout: Layout!
+  content: ContentType!
 }
 
 type Theme {
@@ -41,11 +47,6 @@ type Theme {
   primaryColor: String!
   secondaryColor: String!
   background: String!
-}
-
-type Slide {
-  layout: Layout!
-  content: ContentType!
 }
 
 enum Layout {

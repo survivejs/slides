@@ -21,11 +21,12 @@ function updateSlideContent({ slideIndex, presentationID, content }) {
 function changePresentationTheme({ presentationID, themeID }) {
   const presentation = getField("presentation", presentations, presentationID);
   const theme = getField("theme", themes, themeID);
+  const slides = presentation.slides;
 
-  saveYAML(path.resolve(__dirname, "presentations", `${presentationID}.yaml`), [
-    { theme: themeID },
-    ...presentation.slides
-  ]);
+  saveYAML(
+    path.resolve(__dirname, "presentations", `${presentationID}.yaml`),
+    [{ ...slides[0], theme: themeID }].concat(slides.slice(1))
+  );
 
   return { theme, gitDiff: gitDiff() };
 }
@@ -46,8 +47,14 @@ function getPresentation(id) {
   const presentation = presentations[id];
 
   return {
-    ...resolveTheme(presentation),
+    ...presentation,
+    // TODO: Assumes only the first slide contains theme reference
     slides: resolveToC(presentation.slides)
+      .map(slide => ({
+        ...slide,
+        theme: presentation.slides[0].theme
+      }))
+      .map(resolveTheme)
   };
 }
 function resolveToC(slides) {

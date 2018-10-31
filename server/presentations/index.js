@@ -20,7 +20,7 @@ function loadPresentations() {
 
 function loadPresentation(id) {
   return {
-    ...loadYAML(path.resolve(__dirname, `${id}.yaml`)),
+    slides: loadYAML(path.resolve(__dirname, `${id}.yaml`)),
     id
   };
 }

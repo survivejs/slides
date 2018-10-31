@@ -7,13 +7,13 @@
   }
   presentations {
     id
-    theme {
-      id
-      primaryColor
-      secondaryColor
-      background
-    }
     slides {
+      theme {
+        id
+        primaryColor
+        secondaryColor
+        background
+      }
       layout
       content {
         ... on TitleContent {

@@ -1,5 +1,5 @@
 - theme: graphql-finland
-- layout: title
+  layout: title
   content:
     title: Let's Make a GraphQL Presentation
     author: Juho Vepsäläinen
@@ -73,7 +73,6 @@
       type Presentation {
         id: ID!
         title: String
-        theme: Theme!
         slides: [Slide]!
       }
 
@@ -81,6 +80,26 @@
         presentations: [Presentation]!
         presentation(id: ID!): Presentation
         ...
+      }
+      ```
+- layout: markdown
+  content:
+    title: What's a `Slide`?
+    markup: |
+      ```graphql
+      type Slide {
+        # The first slide contains theme by convention for now
+        theme: Theme
+        layout: Layout!
+        content: ContentType!
+      }
+
+      enum Layout {
+        TITLE
+        SECTION
+        EMBED
+        MARKDOWN
+        GRID
       }
       ```
 - layout: markdown
@@ -99,24 +118,6 @@
         themes: [Theme]!
         theme(id: ID!): Theme
         ...
-      }
-      ```
-- layout: markdown
-  content:
-    title: What's a `Slide`?
-    markup: |
-      ```graphql
-      type Slide {
-        layout: Layout!
-        content: ContentType!
-      }
-
-      enum Layout {
-        TITLE
-        SECTION
-        EMBED
-        MARKDOWN
-        GRID
       }
       ```
 - layout: grid
@@ -270,7 +271,7 @@
     title: Features
 - layout: markdown
   content:
-    markup: >
+    markup: |
       ## Progressive enhancement due to SSR (works without JS)
 - layout: markdown
   content:

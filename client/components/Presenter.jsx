@@ -103,7 +103,8 @@ class Presenter extends React.Component {
   render() {
     const { slides } = this.props;
     const { gitDiff, showOptions } = this.state;
-    const theme = this.state.theme || this.props.theme;
+    // TODO: Likely we should resolve to theme per slide
+    const theme = this.state.theme || (slides && slides[0].theme) || {};
 
     return (
       <PresenterContainer>

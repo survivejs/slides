@@ -1,5 +1,5 @@
-- theme: graphql-finland
 - layout: title
+  theme: graphql-finland
   content:
     title: Brief Introduction to GraphQL
     author: Juho Vepsäläinen
