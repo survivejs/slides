@@ -244,6 +244,15 @@
           - |
             Second column
       ```
+- layout: graph
+  content:
+    title: "`graph`"
+    graph: |
+      graph TD;
+        A-->B;
+        A-->C;
+        B-->D;
+        C-->D;
 - layout: markdown
   content:
     title: "`embed`"

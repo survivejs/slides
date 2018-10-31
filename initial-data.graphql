@@ -55,6 +55,14 @@
           }
           columns
         }
+        ... on GraphContent {
+          title
+          background {
+            asset
+            source
+          }
+          graph
+        }
       }
     }
   }

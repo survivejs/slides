@@ -39,6 +39,7 @@ enum Layout {
   EMBED
   MARKDOWN
   GRID
+  GRAPH
 }
 
 union ContentType =
@@ -47,6 +48,7 @@ union ContentType =
   | EmbedContent
   | MarkdownContent
   | GridContent
+  | GraphContent
 
 interface Content {
   title: String
@@ -85,4 +87,10 @@ type GridContent implements Content {
   title: String
   background: ContentBackground
   columns: [String]!
+}
+
+type GraphContent implements Content {
+  title: String
+  background: ContentBackground
+  graph: String!
 }
