@@ -25,6 +25,10 @@ class Presenter extends React.Component {
   }
   componentDidMount() {
     if (root.document) {
+      const { slide } = this.state;
+      const slideHeight = getSlideHeight();
+
+      root.scrollTo(root.scrollX, slide * slideHeight);
       root.document.addEventListener("keydown", this.onKeydown, false);
       root.addEventListener("scroll", this.onScroll);
 
