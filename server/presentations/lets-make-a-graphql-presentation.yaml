@@ -176,7 +176,7 @@
       ### Usually the first slide of a presentation
 
       ```yaml
-      theme: survivejs
+      theme: graphql-finland
       layout: title
       content:
         title: Let's Make a GraphQL Presentation
@@ -284,15 +284,15 @@
   content:
     markup: >
       ## Allows editing through the frontend thanks to GraphQL mutations
-      connected to the file system
+      connected to the file system (WIP)
 - layout: markdown
   content:
     markup: |
-      ## Allows monorepo style slide authoring
+      ## Supports monorepo style slide authoring
 - layout: markdown
   content:
     markup: |
-      ## Allows extension through layouts and theming
+      ## Extensible through layouts and theming
 - layout: section
   content:
     title: Left to Do
@@ -307,8 +307,9 @@
 - layout: markdown
   content:
     markup: >
-      ## Experiment with different frontends. Generating to **mdx-deck** might
-      be nice
+      ## Experiment with different frontends
+
+      ### Generating to **mdx-deck** might be nice
 - layout: markdown
   content:
     markup: |
