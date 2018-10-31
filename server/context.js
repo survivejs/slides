@@ -16,24 +16,13 @@ function updateSlideContent({ slideIndex, presentationID, content }) {
   const presentation = getField("presentation", presentations, presentationID);
   const oldSlides = presentation.slides;
   const oldSlide = oldSlides[slideIndex];
-  // TODO: lodash merge
   const newSlide = merge({}, oldSlide, { content });
   const newSlides = oldSlides
     .slice(0, slideIndex)
     .concat(newSlide)
     .concat(oldSlides.slice(slideIndex + 1));
 
-  console.log(
-    "update slide content",
-    presentation,
-    oldSlide,
-    newSlide,
-    newSlides.length,
-    oldSlides.length,
-    newSlides[0].content.title
-  );
-
-  // TODO: Mutate slide now
+  updatePresentationFile(presentationID, newSlides);
 
   // TODO: What to return?
   return { content: newSlide.content, gitDiff: gitDiff() };
@@ -41,12 +30,12 @@ function updateSlideContent({ slideIndex, presentationID, content }) {
 function changePresentationTheme({ presentationID, themeID }) {
   const presentation = getField("presentation", presentations, presentationID);
   const theme = getField("theme", themes, themeID);
-  const slides = presentation.slides;
-
-  saveYAML(
-    path.resolve(__dirname, "presentations", `${presentationID}.yaml`),
-    [{ ...slides[0], theme: themeID }].concat(slides.slice(1))
+  const oldSlides = presentation.slides;
+  const newSlides = [{ ...oldSlides[0], theme: themeID }].concat(
+    oldSlides.slice(1)
   );
+
+  updatePresentationFile(presentationID, newSlides);
 
   return { theme, gitDiff: gitDiff() };
 }
@@ -58,6 +47,13 @@ function getField(type, record, id) {
   }
 
   return result;
+}
+
+function updatePresentationFile(presentationID, slides) {
+  saveYAML(
+    path.resolve(__dirname, "presentations", `${presentationID}.yaml`),
+    slides
+  );
 }
 
 function getPresentations() {
