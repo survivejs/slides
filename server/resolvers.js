@@ -12,7 +12,17 @@ const resolvers = {
       _,
       { presentationID, themeID },
       { changePresentationTheme }
-    ) => changePresentationTheme({ presentationID, themeID })
+    ) => changePresentationTheme({ presentationID, themeID }),
+    updateSlideContent: (
+      _,
+      { slideIndex, presentationID, content },
+      { updateSlideContent }
+    ) =>
+      updateSlideContent({
+        slideIndex,
+        presentationID,
+        content
+      })
   },
   Query: {
     themes: (_, __, { getThemes }) => getThemes(),

@@ -11,6 +11,13 @@ function getThemes() {
   return Object.values(themes);
 }
 
+function updateSlideContent({ slideIndex, presentationID, content }) {
+  console.log("update slide content");
+
+  // TODO: Mutate slide now
+
+  return { content, gitDiff: gitDiff() };
+}
 function changePresentationTheme({ presentationID, themeID }) {
   const presentation = getField("presentation", presentations, presentationID);
   const theme = getField("theme", themes, themeID);
@@ -86,6 +93,7 @@ function gitDiff() {
 
 module.exports = {
   gitDiff,
+  updateSlideContent,
   changePresentationTheme,
   getTheme,
   getThemes,

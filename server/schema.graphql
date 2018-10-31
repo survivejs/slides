@@ -11,10 +11,22 @@ type Mutation {
     presentationID: ID!
     themeID: ID!
   ): ChangePresentationThemeResult
+  updateSlideContent(
+    slideIndex: Int!
+    presentationID: ID!
+    content: ContentInput!
+  ): UpdateSlideContentResult
 }
 
+input ContentInput {
+  title: String
+}
 type ChangePresentationThemeResult {
   theme: Theme!
+  gitDiff: String!
+}
+type UpdateSlideContentResult {
+  content: Content!
   gitDiff: String!
 }
 
