@@ -27,6 +27,7 @@ type ChangePresentationThemeResult {
   gitDiff: String!
 }
 type UpdateSlideContentResult {
+  # TODO: Try to convert to ConvertType for a general solution
   content: Content!
   gitDiff: String!
 }
