@@ -1,4 +1,5 @@
 const path = require("path");
+const { merge } = require("lodash");
 const simpleGit = require("simple-git/promise")(path.join(__dirname, ".."));
 const themes = require("./themes");
 const presentations = require("./presentations");
@@ -12,11 +13,30 @@ function getThemes() {
 }
 
 function updateSlideContent({ slideIndex, presentationID, content }) {
-  console.log("update slide content");
+  const presentation = getField("presentation", presentations, presentationID);
+  const oldSlides = presentation.slides;
+  const oldSlide = oldSlides[slideIndex];
+  // TODO: lodash merge
+  const newSlide = merge({}, oldSlide, { content });
+  const newSlides = oldSlides
+    .slice(0, slideIndex)
+    .concat(newSlide)
+    .concat(oldSlides.slice(slideIndex + 1));
+
+  console.log(
+    "update slide content",
+    presentation,
+    oldSlide,
+    newSlide,
+    newSlides.length,
+    oldSlides.length,
+    newSlides[0].content.title
+  );
 
   // TODO: Mutate slide now
 
-  return { content, gitDiff: gitDiff() };
+  // TODO: What to return?
+  return { content: newSlide.content, gitDiff: gitDiff() };
 }
 function changePresentationTheme({ presentationID, themeID }) {
   const presentation = getField("presentation", presentations, presentationID);

@@ -19,6 +19,7 @@ type Mutation {
 }
 
 input ContentInput {
+  author: String
   title: String
 }
 type ChangePresentationThemeResult {
