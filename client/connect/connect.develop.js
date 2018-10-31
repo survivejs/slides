@@ -10,9 +10,15 @@ function connect(query, { apiUrl, propsToVars }) {
         super(props);
 
         this.state = { data: queryCache || null };
+        this._unmounted = false;
       }
       componentDidMount() {
-        this.fetchData().then(data => this.setState(() => data));
+        this.fetchData().then(
+          data => !this._unmounted && this.setState(() => data)
+        );
+      }
+      componentWillUnmount() {
+        this._unmounted = true;
       }
       render() {
         if (this.state.data === null) {
