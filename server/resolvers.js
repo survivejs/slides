@@ -8,8 +8,11 @@ const resolvers = {
     GRAPH: "graph"
   },
   Mutation: {
-    changeTheme: (_, { presentationID, themeID }, { changeTheme }) =>
-      changeTheme({ presentationID, themeID })
+    changePresentationTheme: (
+      _,
+      { presentationID, themeID },
+      { changePresentationTheme }
+    ) => changePresentationTheme({ presentationID, themeID })
   },
   Query: {
     themes: (_, __, { getThemes }) => getThemes(),

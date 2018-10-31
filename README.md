@@ -1,4 +1,4 @@
-# Introduction to GraphQL
+# SurviveJS Slides
 
 1. `npm install`
 2. `npm run watch server` (or `npm run server`) in one terminal
@@ -49,7 +49,10 @@
 
 ```graphql
 mutation {
-  changeTheme(presentationName: "intro-to-graphql", themeName: "survivejs") {
+  changePresentationTheme(
+    presentationName: "intro-to-graphql"
+    themeName: "survivejs"
+  ) {
     name
     theme {
       name

@@ -1,4 +1,5 @@
-- theme: graphql-finland
+- title: null
+  theme: graphql-finland
 - layout: title
   content:
     title: Let's Make a GraphQL Presentation
@@ -270,16 +271,18 @@
     title: Features
 - layout: markdown
   content:
-    markup: |
-      ## Server-side rendering (SSR) leads to progressive enhancement (works without JS with limitations)
+    markup: >
+      ## Server-side rendering (SSR) leads to progressive enhancement (works
+      without JS with limitations)
 - layout: markdown
   content:
     markup: |
       ## Prints to PDF as a side effect of the frontend design
 - layout: markdown
   content:
-    markup: |
-      ## Allows editing through the frontend thanks to GraphQL mutations connected to the file system
+    markup: >
+      ## Allows editing through the frontend thanks to GraphQL mutations
+      connected to the file system
 - layout: markdown
   content:
     markup: |
@@ -297,8 +300,9 @@
       ## Add includes and other programmer things to compose
 - layout: markdown
   content:
-    markup: |
-      ## Experiment with different frontends. Generating to **mdx-deck** might be nice
+    markup: >
+      ## Experiment with different frontends. Generating to **mdx-deck** might
+      be nice
 - layout: markdown
   content:
     markup: |
@@ -320,9 +324,12 @@
       # Separating concerns fosters creativity in design
 - layout: markdown
   content:
-    markup: |
-      # Frontends don't need to contain much logic. There is value in having an API.
+    markup: >
+      # Frontends don't need to contain much logic. There is value in having an
+      API.
 - layout: markdown
   content:
-    markup: |
-      Check [https://github.com/survivejs/slides](https://github.com/survivejs/slides) to learn more
+    markup: >
+      Check
+      [https://github.com/survivejs/slides](https://github.com/survivejs/slides)
+      to learn more

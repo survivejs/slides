@@ -131,7 +131,7 @@ class Presenter extends React.Component {
       apiUrl,
       `
 mutation($presentationID: ID!, $themeID: ID!) {
-  changeTheme(presentationID: $presentationID, themeID: $themeID) {
+  changePresentationTheme(presentationID: $presentationID, themeID: $themeID) {
     gitDiff
     theme {
       id
@@ -143,7 +143,7 @@ mutation($presentationID: ID!, $themeID: ID!) {
 }
       `,
       { presentationID, themeID }
-    ).then(({ changeTheme: { gitDiff, theme } }) => {
+    ).then(({ changePresentationTheme: { gitDiff, theme } }) => {
       this.setState({ gitDiff, theme });
     });
   };
