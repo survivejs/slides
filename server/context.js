@@ -23,7 +23,7 @@ function changePresentationTheme({ presentationID, themeID }) {
   const theme = getField("theme", themes, themeID);
 
   saveYAML(path.resolve(__dirname, "presentations", `${presentationID}.yaml`), [
-    { title: presentation.title, theme: themeID },
+    { theme: themeID },
     ...presentation.slides
   ]);
 
