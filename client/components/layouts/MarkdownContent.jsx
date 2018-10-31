@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
 import Markdown from "../Markdown.jsx";
+import excludeProps from "../exclude-props";
 
-const MarkdownContainer = styled.div`
+const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
   min-height: 100vh;
   max-height: 100vh;
   display: grid;
@@ -20,7 +21,7 @@ const Title = styled.h1`
   color: ${props => props.color};
 `;
 
-const Markup = styled.div`
+const Markup = styled(excludeProps("color", "div"))`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
   align-self: ${({ title }) => (title ? "start" : "center")};
