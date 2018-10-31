@@ -173,7 +173,7 @@
   content:
     title: "`title`"
     markup: |
-      > I.e. the first slide of a presentation
+      ### Usually the first slide of a presentation
 
       ```yaml
       theme: survivejs
@@ -186,7 +186,7 @@
   content:
     title: "`section`"
     markup: |
-      > Section slides between slides
+      ### Section slides between slides
 
       ```yaml
       layout: section
@@ -197,7 +197,7 @@
   content:
     title: "`toc`"
     markup: |
-      > Table of Contents generated from sections
+      ### Table of Contents generated from sections
 
       ```yaml
       layout: toc
@@ -208,7 +208,7 @@
   content:
     title: "`markdown`"
     markup: |
-      > Slides with Markdown content
+      ### Slides with Markdown content
 
       ```yaml
       layout: markdown
@@ -225,7 +225,7 @@
   content:
     title: "`grid`"
     markup: |
-      > Slides with Grid content (only two columns for now)
+      ### Slides with Grid content (only two columns for now)
 
       ```yaml
       layout: grid

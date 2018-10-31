@@ -23,7 +23,7 @@ const Title = styled.h1`
 const Markup = styled.div`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
-  align-self: start;
+  align-self: ${({ title }) => (title ? "start" : "center")};
   color: ${props => props.color};
 `;
 
@@ -37,7 +37,11 @@ const MarkdownContent = ({ content = {}, theme = {} }) => (
         <Markdown>{content.title}</Markdown>
       </Title>
     )}
-    <Markup className="markup" color={theme.secondaryColor}>
+    <Markup
+      className="markup"
+      color={theme.secondaryColor}
+      title={content.title}
+    >
       <Markdown>{content.markup}</Markdown>
     </Markup>
   </MarkdownContainer>
