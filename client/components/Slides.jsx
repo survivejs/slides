@@ -2,11 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import layouts from "./layouts";
+import excludeProps from "./exclude-props";
 
 const SlideContainer = styled.div``;
 
 const Slide = styled.div`
   background: ${props => props.background};
+`;
+
+const SlideNumber = styled(excludeProps("index", "div"))`
+  position: absolute;
+  top: ${({ index }) => (index + 1) * 100 - 5}vh;
+  right: 3vw;
 `;
 
 function Slides({ slides = [], theme, presentationID }) {
@@ -23,6 +30,11 @@ function Slides({ slides = [], theme, presentationID }) {
               content: slide.content,
               presentationID
             })}
+            {index && (
+              <SlideNumber index={index}>
+                {index}/{slides.length - 1}
+              </SlideNumber>
+            )}
           </Slide>
         );
       })}
