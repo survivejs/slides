@@ -1,3 +1,4 @@
+// TODO: Generate most of this from the schema
 const resolvers = {
   Layout: {
     TITLE: "title",
