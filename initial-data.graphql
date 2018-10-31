@@ -7,7 +7,6 @@
   }
   presentations {
     id
-    title
     theme {
       id
       primaryColor

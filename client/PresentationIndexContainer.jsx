@@ -22,7 +22,7 @@ function PresentationIndexContainer({ presentations = [], theme = {} }) {
           content: {
             title: "Presentations",
             markup: presentations
-              .map(({ title, id }) => `* [${title}](${id})`)
+              .map(({ slides, id }) => `* [${slides[0].content.title}](${id})`)
               .join("\n")
           }
         }

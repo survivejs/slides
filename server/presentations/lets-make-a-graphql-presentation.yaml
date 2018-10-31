@@ -1,5 +1,4 @@
-- title: Let's Make a GraphQL Presentation
-  theme: graphql-finland
+- theme: graphql-finland
 - layout: title
   content:
     title: Let's Make a GraphQL Presentation
@@ -156,8 +155,7 @@
     title: What Do Presentations Look Like?
     markup: |
       ```yaml
-      - title: Let's Make a GraphQL Presentation
-        theme: graphql-finland
+      - theme: graphql-finland
       - layout: title
         content:
           title: Let's Make a GraphQL Presentation
@@ -177,7 +175,6 @@
       > A presentation begins by describing itself
 
       ```yaml
-      title: Let's Make a GraphQL Presentation
       theme: graphql-finland
       ```
 - layout: markdown
