@@ -1,9 +1,14 @@
 // From react-markdown
 import React from "react";
 import PropTypes from "prop-types";
+import mermaid from "mermaid";
 import hljs from "highlight.js/lib/highlight";
 import diff from "highlight.js/lib/languages/diff";
 import yaml from "highlight.js/lib/languages/yaml";
+
+mermaid.initialize({
+  startOnLoad: true
+});
 
 hljs.registerLanguage("diff", diff);
 hljs.registerLanguage("yaml", yaml);
@@ -58,6 +63,10 @@ hljs.registerLanguage("graphql", () => ({
 }));
 
 class CodeBlock extends React.PureComponent {
+  state = {
+    value: ""
+  };
+
   constructor(props) {
     super(props);
     this.setRef = this.setRef.bind(this);
@@ -68,11 +77,17 @@ class CodeBlock extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.highlightCode();
+    this.componentDidUpdate();
   }
 
   componentDidUpdate() {
-    this.highlightCode();
+    const { language, value } = this.props;
+
+    if (language === "graph") {
+      mermaid.render("graph", value, value => this.setState({ value }));
+    } else {
+      this.highlightCode();
+    }
   }
 
   highlightCode() {
@@ -80,10 +95,15 @@ class CodeBlock extends React.PureComponent {
   }
 
   render() {
-    return (
+    const { language } = this.props;
+    const value = this.state.value || this.props.value;
+
+    return language === "graph" ? (
+      <div dangerouslySetInnerHTML={{ __html: value }} />
+    ) : (
       <pre>
-        <code ref={this.setRef} className={`language-${this.props.language}`}>
-          {this.props.value}
+        <code ref={this.setRef} className={`language-${language}`}>
+          {value}
         </code>
       </pre>
     );

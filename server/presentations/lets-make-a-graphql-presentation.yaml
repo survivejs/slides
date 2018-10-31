@@ -100,7 +100,6 @@
         EMBED
         MARKDOWN
         GRID
-        GRAPH
       }
       ```
 - layout: markdown
@@ -246,15 +245,26 @@
           - |
             Second column
       ```
-- layout: graph
+- layout: grid
   content:
-    title: "`graph`"
-    graph: |
-      graph TD;
-        A-->B;
-        A-->C;
-        B-->D;
-        C-->D;
+    title: Graphs
+    columns:
+      - |
+        ```
+        graph TD;
+          A-->B;
+          A-->C;
+          B-->D;
+          C-->D;
+        ```
+      - |
+        ```graph
+        graph TD;
+          A-->B;
+          A-->C;
+          B-->D;
+          C-->D;
+        ```
 - layout: markdown
   content:
     title: "`embed`"

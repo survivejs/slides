@@ -4,8 +4,7 @@ const resolvers = {
     SECTION: "section",
     EMBED: "embed",
     MARKDOWN: "markdown",
-    GRID: "grid",
-    GRAPH: "graph"
+    GRID: "grid"
   },
   Mutation: {
     changePresentationTheme: (
@@ -39,7 +38,7 @@ const resolvers = {
   }
 };
 
-function resolveContentType({ author, link, markup, title, columns, graph }) {
+function resolveContentType({ author, link, markup, title, columns }) {
   if (author) {
     return "TitleContent";
   }
@@ -54,10 +53,6 @@ function resolveContentType({ author, link, markup, title, columns, graph }) {
 
   if (columns) {
     return "GridContent";
-  }
-
-  if (graph) {
-    return "GraphContent";
   }
 
   if (title) {

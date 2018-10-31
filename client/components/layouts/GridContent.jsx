@@ -25,6 +25,7 @@ const Markup = styled.div`
   grid-template-columns: 1fr 1fr;
   font-size: ${modularScale(4)};
   margin-left: 5vw;
+  margin-top: 10vh;
   align-self: start;
   color: ${props => props.color};
 `;
@@ -36,7 +37,7 @@ const GridContent = ({ content = {}, theme = {} }) => (
     </Title>
     <Markup className="markup" color={theme.secondaryColor}>
       <Markdown>{content.columns[0]}</Markdown>
-      <Markdown>{content.columns[0]}</Markdown>
+      <Markdown>{content.columns[1]}</Markdown>
     </Markup>
   </GridContainer>
 );
