@@ -272,8 +272,7 @@
 - layout: markdown
   content:
     markup: >
-      ## Server-side rendering (SSR) leads to progressive enhancement (works
-      without JS with limitations)
+      ## Progressive enhancement due to SSR (works without JS)
 - layout: markdown
   content:
     markup: |
@@ -297,7 +296,11 @@
 - layout: markdown
   content:
     markup: |
-      ## Add includes and other programmer things to compose
+      ## Refresh browser when backend data changes
+- layout: markdown
+  content:
+    markup: |
+      ## Add `include`s to compose slides
 - layout: markdown
   content:
     markup: >
