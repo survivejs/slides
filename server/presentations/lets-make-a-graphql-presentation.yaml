@@ -32,7 +32,7 @@
     link: https://rf-asset-generator.netlify.com/presentation/#0
 - layout: section
   content:
-    title: Schema Design
+    title: What is GraphQL?
 - layout: embed
   content:
     title: GraphQL
