@@ -280,52 +280,52 @@
 - layout: markdown
   content:
     markup: |
-      ## Progressive enhancement due to SSR (works without JS)
+      # Progressive enhancement due to SSR (works without JS)
 - layout: markdown
   content:
     markup: |
-      ## Prints to PDF as a side effect of the frontend design
+      # Prints to PDF as a side effect of the frontend design
 - layout: markdown
   content:
     markup: >
-      ## Allows editing through the frontend thanks to GraphQL mutations
+      # Allows editing through the frontend thanks to GraphQL mutations
       connected to the file system (WIP)
 - layout: markdown
   content:
     markup: |
-      ## Supports monorepo style slide authoring
+      # Supports monorepo style slide authoring
 - layout: markdown
   content:
     markup: |
-      ## Extensible through layouts and theming
+      # Extensible through layouts and theming
 - layout: section
   content:
     title: Left to Do
 - layout: markdown
   content:
     markup: |
-      ## Refresh browser when backend data changes
+      # Refresh browser when backend data changes
 - layout: markdown
   content:
     markup: |
-      ## Add `include`s to compose slides
+      # Add `include`s to compose slides
 - layout: markdown
   content:
     markup: |
-      ## Implement virtualization
+      # Implement virtualization
 - layout: markdown
   content:
     markup: |
-      ## Experiment with different frontends
-      ### Generating to **mdx-deck** might be nice
+      # Experiment with different frontends
+      ## Generating to **mdx-deck** might be nice
 - layout: markdown
   content:
     markup: |
-      ## Explore editing and make it more versatile
+      # Explore editing and make it more versatile
 - layout: markdown
   content:
     markup: |
-      ## Begin building websites like this
+      # Begin building websites like this
 - layout: section
   content:
     title: Lessons Learned
