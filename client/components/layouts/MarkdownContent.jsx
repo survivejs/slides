@@ -12,7 +12,7 @@ const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
   grid-template-rows: ${({ title }) => (title ? "0.25fr 1.75fr" : "1fr")};
   align-items: center;
   line-height: 1.5;
-  background: ${props => props.background};
+  background: ${({ background }) => background};
   background-size: cover;
 `;
 
@@ -22,12 +22,15 @@ const Title = styled.h1`
   color: ${props => props.color};
 `;
 
-const Markup = styled(excludeProps("color", "div"))`
+const Markup = styled(excludeProps(["color", "title"], "div"))`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
-  align-self: ${({ title }) => (title ? "start" : "center")};
-  color: ${props => props.color};
+  align-self: start;
+  color: ${({ color }) => color};
 `;
+
+// TODO: Restore (linaria bug)
+// align-self: ${({ title }) => (title ? "start" : "center")};
 
 const MarkdownContent = ({ background = {}, content = {}, theme = {} }) => (
   <MarkdownContainer
