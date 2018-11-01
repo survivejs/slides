@@ -49,6 +49,7 @@
     "react-sidebar": "^3.0.2",
     "scroll-into-view": "^1.9.3",
     "simple-git": "^1.106.0",
+    "smooth-scroll-into-view-if-needed": "^1.1.23",
     "window-or-global": "^1.0.1",
     "yaml": "^1.0.0"
   },

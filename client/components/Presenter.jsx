@@ -4,7 +4,7 @@ import { request } from "graphql-request";
 import root from "window-or-global";
 import { isEqual } from "lodash";
 import { styled } from "linaria/react";
-import scrollIntoView from "scroll-into-view";
+import scrollIntoView from "smooth-scroll-into-view-if-needed";
 import Slides from "./Slides.jsx";
 import Options from "./Options.jsx";
 import apiUrl from "../api-url";
@@ -14,11 +14,11 @@ const PresenterContainer = styled.div``;
 class Presenter extends React.Component {
   state = {
     gitDiff: "",
-    slide: getSlide(),
     showOptions: false,
     theme: null
   };
   scrollTimeout = null;
+  slide = getSlide();
 
   componentDidCatch(err) {
     // TODO: Use a nice error overlay here
@@ -26,10 +26,6 @@ class Presenter extends React.Component {
   }
   componentDidMount() {
     if (root.document) {
-      const { slide } = this.state;
-      const slideHeight = getSlideHeight();
-
-      root.scrollTo(root.scrollX, slide * slideHeight);
       root.document.addEventListener("keydown", this.onKeydown, false);
       root.addEventListener("wheel", this.onScroll);
 
@@ -47,7 +43,7 @@ class Presenter extends React.Component {
   }
   componentDidUpdate(nextProps) {
     if (!isEqual(this.props.slides, nextProps.slides)) {
-      root.scrollTo(root.scrollX, getSlideHeight() * this.state.slide);
+      this.scrollToSlide(this.slide);
     }
   }
 
@@ -95,17 +91,16 @@ class Presenter extends React.Component {
   };
 
   goToSlide = slide => {
-    this.setState({ slide });
+    this.slide = slide;
     this.scrollToSlide(slide);
   };
 
   scrollToSlide(slide) {
     const element = root.document.getElementsByClassName(`slide-${slide}`)[0];
 
-    element &&
-      scrollIntoView(element, () => {
-        root.location.hash = slide;
-      });
+    scrollIntoView(element).then(() => {
+      root.location.hash = slide;
+    });
   }
 
   render() {
