@@ -85,32 +85,35 @@
         ...
       }
       ```
-- layout: markdown
+- layout: grid
   content:
     title: What's a `Slide`?
-    markup: |
-      ```graphql
-      type Slide {
-        # The first slide contains theme by convention for now
-        theme: Theme
-        layout: Layout!
-        content: ContentType!
-        background: Background
-      }
+    columns:
+      - |
+        ```graphql
+        type Slide {
+          # The first slide contains theme
+          theme: Theme
+          layout: Layout!
+          content: ContentType!
+          background: Background
+        }
 
-      enum Layout {
-        TITLE
-        SECTION
-        EMBED
-        MARKDOWN
-        GRID
-      }
-
-      type Background {
-        asset: String!
-        source: String
-      }
-      ```
+        enum Layout {
+          TITLE
+          SECTION
+          EMBED
+          MARKDOWN
+          GRID
+        }
+        ```
+      - |
+        ```graphql
+        type Background {
+          asset: String!
+          source: String
+        }
+        ```
 - layout: markdown
   content:
     title: What's a `Theme`?
