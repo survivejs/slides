@@ -14,45 +14,29 @@
         secondaryColor
         background
       }
+      background {
+        asset
+        source
+      }
       layout
       content {
         ... on TitleContent {
           title
-          background {
-            asset
-            source
-          }
           author
         }
         ... on SectionContent {
           title
-          background {
-            asset
-            source
-          }
         }
         ... on EmbedContent {
           title
-          background {
-            asset
-            source
-          }
           link
         }
         ... on MarkdownContent {
           title
-          background {
-            asset
-            source
-          }
           markup
         }
         ... on GridContent {
           title
-          background {
-            asset
-            source
-          }
           columns
         }
       }

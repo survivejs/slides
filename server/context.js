@@ -81,6 +81,7 @@ function resolveToC(slides) {
   return slides.map(slide => {
     if (slide.layout === "toc") {
       return {
+        ...slide,
         layout: "markdown",
         content: {
           ...slide.content,

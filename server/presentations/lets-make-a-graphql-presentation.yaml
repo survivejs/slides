@@ -4,6 +4,9 @@
     title: Let's Make a GraphQL Presentation
     author: Juho Vepsäläinen
 - layout: toc
+  background:
+    asset: client/assets/images/switchboard.jpg
+    source: https://en.wikipedia.org/wiki/Switchboard_operator#/media/File:Bell_telephone_magazine_(1922)_(14776291573).jpg
   content:
     title: Table of Contents
 - layout: section
@@ -92,6 +95,7 @@
         theme: Theme
         layout: Layout!
         content: ContentType!
+        background: Background
       }
 
       enum Layout {
@@ -100,6 +104,11 @@
         EMBED
         MARKDOWN
         GRID
+      }
+
+      type Background {
+        asset: String!
+        source: String
       }
       ```
 - layout: markdown
@@ -135,19 +144,12 @@
 
         interface Content {
           title: String
-          background: ContentBackground
         }
         ```
       - |
         ```graphql
-        type ContentBackground {
-          asset: String!
-          source: String
-        }
-
         type TitleContent implements Content {
           title: String
-          background: ContentBackground
           author: String
         }
         ```

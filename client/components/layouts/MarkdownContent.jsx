@@ -28,9 +28,9 @@ const Markup = styled(excludeProps("color", "div"))`
   color: ${props => props.color};
 `;
 
-const MarkdownContent = ({ content = {}, theme = {} }) => (
+const MarkdownContent = ({ background = {}, content = {}, theme = {} }) => (
   <MarkdownContainer
-    background={content.background && content.background.asset}
+    background={background && background.asset}
     title={content.title}
   >
     {content.title && (
@@ -48,6 +48,7 @@ const MarkdownContent = ({ content = {}, theme = {} }) => (
   </MarkdownContainer>
 );
 MarkdownContent.propTypes = {
+  background: PropTypes.object,
   content: PropTypes.object,
   theme: PropTypes.object
 };

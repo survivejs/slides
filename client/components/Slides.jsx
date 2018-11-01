@@ -36,8 +36,8 @@ function Slides({ slide, slides = [], theme, presentationID }) {
         return (
           <Slide className={slideKey} key={slideKey}>
             {React.createElement(getLayout(slide.layout), {
+              ...slide,
               theme,
-              content: slide.content,
               presentationID
             })}
             {index ? (
