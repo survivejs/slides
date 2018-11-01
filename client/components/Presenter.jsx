@@ -111,7 +111,12 @@ class Presenter extends React.Component {
 
     return (
       <PresenterContainer>
-        <Slides slides={slides} theme={theme} presentationID={presentationID} />
+        <Slides
+          slide={this.slide}
+          slides={slides}
+          theme={theme}
+          presentationID={presentationID}
+        />
         {showOptions &&
           process.env.NODE_ENV !== "production" && (
             <Options

@@ -307,6 +307,10 @@
 - layout: markdown
   content:
     markup: |
+      ## Implement virtualization
+- layout: markdown
+  content:
+    markup: |
       ## Experiment with different frontends
       ### Generating to **mdx-deck** might be nice
 - layout: markdown

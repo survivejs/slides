@@ -17,16 +17,16 @@ const SlideNumber = styled(excludeProps("index", "div"))`
   opacity: 0.5;
 `;
 
-const SlideProgress = styled(excludeProps(["color", "index", "ratio"], "div"))`
-  position: absolute;
-  top: ${({ index }) => (index + 1) * 100 - 2}vh;
+const SlideProgress = styled(excludeProps(["color", "ratio"], "div"))`
+  position: fixed;
   width: ${({ ratio }) => ratio * 100}%;
-  height: 2vh;
+  height: 3vh;
+  top: 97vh;
   background-color: ${props => props.color};
   opacity: 0.5;
 `;
 
-function Slides({ slides = [], theme, presentationID }) {
+function Slides({ slide, slides = [], theme, presentationID }) {
   return (
     <SlideContainer>
       {slides.map((slide, index) => {
@@ -45,22 +45,22 @@ function Slides({ slides = [], theme, presentationID }) {
                 {index}/{slides.length - 1}
               </SlideNumber>
             ) : null}
-            {index ? (
-              <SlideProgress
-                color={theme.secondaryColor}
-                index={index}
-                ratio={index / (slides.length - 1)}
-              >
-                &nbsp;
-              </SlideProgress>
-            ) : null}
           </Slide>
         );
       })}
+      {slide ? (
+        <SlideProgress
+          color={theme.secondaryColor}
+          ratio={slide / (slides.length - 1)}
+        >
+          &nbsp;
+        </SlideProgress>
+      ) : null}
     </SlideContainer>
   );
 }
 Slides.propTypes = {
+  slide: PropTypes.number,
   slides: PropTypes.array,
   theme: PropTypes.object,
   presentationID: PropTypes.string
