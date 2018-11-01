@@ -47,6 +47,7 @@
     "react-markdown": "^4.0.3",
     "react-select": "^2.1.0",
     "react-sidebar": "^3.0.2",
+    "scroll-into-view": "^1.9.3",
     "simple-git": "^1.106.0",
     "window-or-global": "^1.0.1",
     "yaml": "^1.0.0"

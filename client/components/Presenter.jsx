@@ -4,6 +4,7 @@ import { request } from "graphql-request";
 import root from "window-or-global";
 import { isEqual } from "lodash";
 import { styled } from "linaria/react";
+import scrollIntoView from "scroll-into-view";
 import Slides from "./Slides.jsx";
 import Options from "./Options.jsx";
 import apiUrl from "../api-url";
@@ -30,7 +31,7 @@ class Presenter extends React.Component {
 
       root.scrollTo(root.scrollX, slide * slideHeight);
       root.document.addEventListener("keydown", this.onKeydown, false);
-      root.addEventListener("scroll", this.onScroll);
+      root.addEventListener("wheel", this.onScroll);
 
       if (!root.location.hash) {
         root.location.hash = 0;
@@ -40,7 +41,7 @@ class Presenter extends React.Component {
   componentWillUnmount() {
     if (root.document) {
       root.document.removeEventListener("keydown", this.onKeydown, false);
-      root.removeEventListener("scroll", this.onScroll);
+      root.removeEventListener("wheel", this.onScroll);
       root.clearTimeout(this.scrollTimeout);
     }
   }
@@ -101,8 +102,10 @@ class Presenter extends React.Component {
   scrollToSlide(slide) {
     const element = root.document.getElementsByClassName(`slide-${slide}`)[0];
 
-    // TODO: Figure out how to avoid triggering onScroll with this
-    element && element.scrollIntoView({ behavior: "smooth" });
+    element &&
+      scrollIntoView(element, () => {
+        root.location.hash = slide;
+      });
   }
 
   render() {
