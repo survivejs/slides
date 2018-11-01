@@ -1,3 +1,4 @@
+const fs = require("fs");
 const path = require("path");
 const { merge } = require("lodash");
 const simpleGit = require("simple-git/promise")(path.join(__dirname, ".."));
@@ -6,6 +7,13 @@ const Promise = require("bluebird");
 const themes = require("./themes");
 const presentations = require("./presentations");
 const { saveYAML } = require("./utils");
+
+const cloudinaryAssetPath = path.join(
+  __dirname,
+  "..",
+  "cloudinary-assets.json"
+);
+const cloudinaryAssets = require(cloudinaryAssetPath);
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -111,21 +119,34 @@ async function resolveBackground(background) {
 
   const asset = background.asset;
   const assetPath = path.resolve(__dirname, "..", asset);
+  const id = path.basename(asset, path.extname(asset));
   let uploadedAsset;
 
-  // TODO: Rewrite logic to avoid the upload step
+  if (cloudinaryAssets[id]) {
+    return {
+      ...background,
+      asset: cloudinaryAssets[id]
+    };
+  }
+
   try {
     uploadedAsset = await cloudinary.v2.uploader.upload(assetPath, {
       overwrite: true,
-      public_id: path.basename(asset, path.extname(asset))
+      public_id: id
     });
   } catch (err) {
     throw new Error(err);
   }
 
+  const secureUrl = uploadedAsset.secure_url;
+  cloudinaryAssets[id] = secureUrl;
+  fs.writeFileSync(cloudinaryAssetPath, JSON.stringify(cloudinaryAssets), {
+    encoding: "utf8"
+  });
+
   return {
     ...background,
-    asset: uploadedAsset.secure_url
+    asset: secureUrl
   };
 }
 
