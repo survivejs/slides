@@ -1,9 +1,17 @@
 const path = require("path");
 const { merge } = require("lodash");
 const simpleGit = require("simple-git/promise")(path.join(__dirname, ".."));
+const cloudinary = require("cloudinary");
+const Promise = require("bluebird");
 const themes = require("./themes");
 const presentations = require("./presentations");
 const { saveYAML } = require("./utils");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 function getTheme(id) {
   return themes[id];
@@ -56,21 +64,20 @@ function updatePresentationFile(presentationID, slides) {
   );
 }
 
-function getPresentations() {
-  return Object.keys(presentations).map(getPresentation);
+async function getPresentations() {
+  return await Object.keys(presentations).map(getPresentation);
 }
-function getPresentation(id) {
+async function getPresentation(id) {
   const presentation = presentations[id];
 
   return {
     ...presentation,
     // TODO: Assumes only the first slide contains theme reference
-    slides: resolveToC(presentation.slides)
-      .map(slide => ({
-        ...slide,
-        theme: presentation.slides[0].theme
-      }))
-      .map(resolveTheme)
+    slides: await Promise.map(resolveToC(presentation.slides), async slide => ({
+      ...slide,
+      background: await resolveBackground(slide.background),
+      theme: presentation.slides[0].theme
+    })).map(resolveTheme)
   };
 }
 function resolveToC(slides) {
@@ -95,6 +102,31 @@ function resolveToC(slides) {
 }
 function toMarkdownList(items) {
   return items.map(item => `* ${item}`).join("\n");
+}
+
+async function resolveBackground(background) {
+  if (!background || !background.asset) {
+    return Promise.resolve(background);
+  }
+
+  const asset = background.asset;
+  const assetPath = path.resolve(__dirname, "..", asset);
+  let uploadedAsset;
+
+  // TODO: Rewrite logic to avoid the upload step
+  try {
+    uploadedAsset = await cloudinary.v2.uploader.upload(assetPath, {
+      overwrite: true,
+      public_id: path.basename(asset, path.extname(asset))
+    });
+  } catch (err) {
+    throw new Error(err);
+  }
+
+  return {
+    ...background,
+    asset: uploadedAsset.secure_url
+  };
 }
 
 const resolveTheme = resolveField("theme", themes);

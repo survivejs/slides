@@ -34,7 +34,10 @@
   },
   "homepage": "https://github.com/survivejs-presentations/intro-to-graphql#readme",
   "dependencies": {
+    "bluebird": "^3.5.2",
     "classnames": "^2.2.6",
+    "cloudinary": "^1.11.0",
+    "dotenv": "^6.1.0",
     "graphql-import": "^0.7.1",
     "graphql-request": "^1.8.2",
     "highlight.js": "^9.13.0",

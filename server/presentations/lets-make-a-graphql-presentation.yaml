@@ -4,9 +4,6 @@
     title: Let's Make a GraphQL Presentation
     author: Juho Vepsäläinen
 - layout: toc
-  background:
-    asset: client/assets/images/switchboard.jpg
-    source: https://en.wikipedia.org/wiki/Switchboard_operator#/media/File:Bell_telephone_magazine_(1922)_(14776291573).jpg
   content:
     title: Table of Contents
 - layout: section
@@ -40,6 +37,9 @@
     title: GraphQL
     link: https://graphql.org/
 - layout: markdown
+  background:
+    asset: client/assets/images/switchboard.jpg
+    source: https://en.wikipedia.org/wiki/Switchboard_operator#/media/File:Bell_telephone_magazine_(1922)_(14776291573).jpg
   content:
     title: Why GraphQL?
     markup: |

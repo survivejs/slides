@@ -14,7 +14,7 @@ const SlideNumber = styled(excludeProps("index", "div"))`
   position: absolute;
   top: ${({ index }) => (index + 1) * 100 - 5}vh;
   right: 3vw;
-  opacity: 0.5;
+  opacity: 0.8;
 `;
 
 const SlideProgress = styled(excludeProps(["color", "ratio"], "div"))`
@@ -23,7 +23,7 @@ const SlideProgress = styled(excludeProps(["color", "ratio"], "div"))`
   height: 3vh;
   top: 97vh;
   background-color: ${props => props.color};
-  opacity: 0.5;
+  opacity: 0.8;
 `;
 
 function Slides({ slide, slides = [], theme, presentationID }) {

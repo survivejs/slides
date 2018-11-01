@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+require("dotenv").config();
+
 const path = require("path");
 const { GraphQLServer } = require("graphql-yoga");
 const { importSchema } = require("graphql-import");

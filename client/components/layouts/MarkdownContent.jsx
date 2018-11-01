@@ -13,6 +13,7 @@ const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
   align-items: center;
   line-height: 1.5;
   background: ${props => props.background};
+  background-size: cover;
 `;
 
 const Title = styled.h1`
@@ -30,7 +31,7 @@ const Markup = styled(excludeProps("color", "div"))`
 
 const MarkdownContent = ({ background = {}, content = {}, theme = {} }) => (
   <MarkdownContainer
-    background={background && background.asset}
+    background={getBackground(background)}
     title={content.title}
   >
     {content.title && (
@@ -52,5 +53,18 @@ MarkdownContent.propTypes = {
   content: PropTypes.object,
   theme: PropTypes.object
 };
+
+function getBackground(background) {
+  if (!background || !background.asset) {
+    return;
+  }
+
+  return background && `${linearGradient()},url(${background.asset})`;
+}
+
+// TODO: Make this more flexible
+function linearGradient() {
+  return `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))`;
+}
 
 export default MarkdownContent;
