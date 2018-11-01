@@ -13,7 +13,9 @@ const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
   align-items: center;
   line-height: 1.5;
   background: ${({ background }) => background};
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const Title = styled.h1`

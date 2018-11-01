@@ -304,6 +304,8 @@
   content:
     title: Left to Do
 - layout: markdown
+  background:
+    asset: "https://memegen.link/doge/memes/are_tough.jpg"
   content:
     markup: |
       # Refresh browser when backend data changes

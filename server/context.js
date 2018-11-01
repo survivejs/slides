@@ -120,8 +120,16 @@ async function resolveBackground(background) {
   }
 
   const asset = background.asset;
-  const assetPath = path.resolve(__dirname, "..", asset);
-  const id = path.basename(asset, path.extname(asset));
+  let assetPath = path.resolve(__dirname, "..", asset);
+  let id;
+
+  if (fs.existsSync(assetPath)) {
+    id = path.basename(asset, path.extname(asset));
+  } else {
+    assetPath = asset;
+    id = asset.split("?")[0].replace(/\//g, "-");
+  }
+
   let uploadedAsset;
 
   if (cloudinaryAssets[id]) {
@@ -137,14 +145,18 @@ async function resolveBackground(background) {
       public_id: id
     });
   } catch (err) {
-    throw new Error(err);
+    throw new Error(err.message);
   }
 
   const secureUrl = uploadedAsset.secure_url;
   cloudinaryAssets[id] = secureUrl;
-  fs.writeFileSync(cloudinaryAssetPath, JSON.stringify(cloudinaryAssets), {
-    encoding: "utf8"
-  });
+  fs.writeFileSync(
+    cloudinaryAssetPath,
+    JSON.stringify(cloudinaryAssets, null, 2),
+    {
+      encoding: "utf8"
+    }
+  );
 
   return {
     ...background,
