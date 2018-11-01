@@ -85,7 +85,6 @@ class CodeBlock extends React.PureComponent {
 
     if (language === "graph") {
       //mermaid.render("graph", value, value => this.setState({ value }));
-      this.highlightCode();
     } else {
       this.highlightCode();
     }
