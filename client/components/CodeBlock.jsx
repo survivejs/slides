@@ -1,14 +1,10 @@
 // From react-markdown
 import React from "react";
 import PropTypes from "prop-types";
-import mermaid from "mermaid";
+// import mermaid from "mermaid";
 import hljs from "highlight.js/lib/highlight";
 import diff from "highlight.js/lib/languages/diff";
 import yaml from "highlight.js/lib/languages/yaml";
-
-mermaid.initialize({
-  startOnLoad: true
-});
 
 hljs.registerLanguage("diff", diff);
 hljs.registerLanguage("yaml", yaml);
@@ -78,13 +74,18 @@ class CodeBlock extends React.PureComponent {
 
   componentDidMount() {
     this.componentDidUpdate();
+
+    /*mermaid.initialize({
+      startOnLoad: true
+    });*/
   }
 
   componentDidUpdate() {
     const { language, value } = this.props;
 
     if (language === "graph") {
-      mermaid.render("graph", value, value => this.setState({ value }));
+      //mermaid.render("graph", value, value => this.setState({ value }));
+      this.highlightCode();
     } else {
       this.highlightCode();
     }
