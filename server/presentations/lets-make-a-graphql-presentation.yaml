@@ -97,6 +97,7 @@
           layout: Layout!
           content: ContentType!
           background: Background
+          skip: Boolean
         }
 
         enum Layout {
@@ -243,6 +244,7 @@
             Second column
       ```
 - layout: grid
+  skip: true
   content:
     title: Graphs
     columns:

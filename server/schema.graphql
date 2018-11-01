@@ -43,6 +43,7 @@ type Slide {
   layout: Layout!
   content: ContentType!
   background: Background
+  skip: Boolean
 }
 
 type Background {

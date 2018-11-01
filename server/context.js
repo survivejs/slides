@@ -85,7 +85,9 @@ async function getPresentation(id) {
       ...slide,
       background: await resolveBackground(slide.background),
       theme: presentation.slides[0].theme
-    })).map(resolveTheme)
+    }))
+      .map(resolveTheme)
+      .filter(({ skip }) => !skip)
   };
 }
 function resolveToC(slides) {
