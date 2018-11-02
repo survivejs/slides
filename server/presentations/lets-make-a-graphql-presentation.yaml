@@ -368,7 +368,7 @@
   content:
     markup: |
       # Experiment with different frontends
-      ## Generating to **mdx-deck** might be nice
+      ## Generating to [mdx-deck](https://github.com/jxnblk/mdx-deck) might be nice
 - layout: markdown
   background:
     asset: client/assets/images/editing-2.jpg
@@ -401,8 +401,7 @@
     asset: client/assets/images/lion.jpg
   content:
     markup: |
-      # Frontends don't need to contain much logic. There is value in having an
-      API.
+      # Frontend doesn't need to contain much logic
 - layout: markdown
   background:
     asset: client/assets/images/mother.jpg
