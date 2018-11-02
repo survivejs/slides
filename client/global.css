@@ -50,6 +50,10 @@ body {
   background: white;
 }
 
+a {
+  color: inherit;
+}
+
 p,
 h1,
 h2,

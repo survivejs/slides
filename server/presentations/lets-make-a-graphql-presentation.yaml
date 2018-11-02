@@ -400,12 +400,15 @@
   background:
     asset: client/assets/images/lion.jpg
   content:
-    markup: >
+    markup: |
       # Frontends don't need to contain much logic. There is value in having an
       API.
 - layout: markdown
+  background:
+    asset: client/assets/images/mother.jpg
   content:
-    markup: >
-      > Check
+    markup: |
+      * Check out
       [https://github.com/survivejs/slides](https://github.com/survivejs/slides)
       to learn more
+      * Thank you **#jsconfam18**!
