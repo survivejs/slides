@@ -132,6 +132,8 @@ async function resolveBackground(background) {
 
   let uploadedAsset;
 
+  // TODO: Figure out if the files have changed and need an update
+  // (md5 content)
   if (cloudinaryAssets[id]) {
     return {
       ...background,
