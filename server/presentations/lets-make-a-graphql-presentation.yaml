@@ -4,6 +4,8 @@
     title: Let's Make a GraphQL Presentation
     author: Juho Vepsäläinen
 - layout: toc
+  background:
+    asset: client/assets/images/toc.jpg
   content:
     title: Table of Contents
 - layout: section
@@ -47,6 +49,8 @@
       2. You have multiple legacy APIs and want to unite them
       3. You want to make a GraphQL presentation
 - layout: markdown
+  background:
+    asset: client/assets/images/sdl.jpg
   content:
     title: GraphQL Schema Definition Language (SDL)
     markup: |
@@ -57,11 +61,15 @@
   content:
     title: Design and Architecture
 - layout: markdown
+  background:
+    asset: client/assets/images/sdd.jpg
   content:
     title: Schema Driven Design
     markup: |
       > Define the API first, the rest will follow
 - layout: markdown
+  background:
+    asset: client/assets/images/design-constraints.jpg
   content:
     title: Design Constaints
     markup: |
@@ -69,6 +77,8 @@
       2. Content should live on the server behind an API
       3.  It should be possible to replace the frontend
 - layout: markdown
+  background:
+    asset: client/assets/images/presentation.jpg
   content:
     title: What's a `Presentation`?
     markup: |
@@ -86,6 +96,8 @@
       }
       ```
 - layout: grid
+  background:
+    asset: client/assets/images/slide.jpg
   content:
     title: What's a `Slide`?
     columns:
@@ -116,6 +128,8 @@
         }
         ```
 - layout: markdown
+  background:
+    asset: client/assets/images/theme.jpg
   content:
     title: What's a `Theme`?
     markup: |
@@ -134,6 +148,8 @@
       }
       ```
 - layout: grid
+  background:
+    asset: client/assets/images/content.jpg
   content:
     title: What's `Content`?
     columns:
@@ -158,6 +174,8 @@
         }
         ```
 - layout: markdown
+  background:
+    asset: client/assets/images/presentations.jpg
   content:
     title: What Do Presentations Look Like?
     markup: |
@@ -176,6 +194,8 @@
   content:
     title: Layouts
 - layout: markdown
+  background:
+    asset: client/assets/images/title.jpg
   content:
     title: "`title`"
     markup: |
@@ -189,6 +209,8 @@
         author: Juho Vepsäläinen
       ```
 - layout: markdown
+  background:
+    asset: client/assets/images/section.jpg
   content:
     title: "`section`"
     markup: |
@@ -200,6 +222,8 @@
         title: Layout Types
       ```
 - layout: markdown
+  background:
+    asset: client/assets/images/toc.jpg
   content:
     title: "`toc`"
     markup: |
@@ -211,6 +235,8 @@
         title: Table of Contents
       ```
 - layout: markdown
+  background:
+    asset: client/assets/images/markdown.jpg
   content:
     title: "`markdown`"
     markup: |
@@ -228,6 +254,8 @@
           ```
       ```
 - layout: markdown
+  background:
+    asset: client/assets/images/grid.jpg
   content:
     title: "`grid`"
     markup: |
@@ -265,6 +293,8 @@
           C-->D;
         ```
 - layout: markdown
+  background:
+    asset: client/assets/images/embed.jpg
   content:
     title: "`embed`"
     markup: |
@@ -280,23 +310,33 @@
   content:
     title: Features
 - layout: markdown
+  background:
+    asset: client/assets/images/ssr.jpg
   content:
     markup: |
       # Progressive enhancement due to SSR (works without JS)
 - layout: markdown
+  background:
+    asset: client/assets/images/to-pdf.jpg
   content:
     markup: |
       # Prints to PDF as a side effect of the frontend design
 - layout: markdown
+  background:
+    asset: client/assets/images/editing.jpg
   content:
     markup: >
       # Allows editing through the frontend thanks to GraphQL mutations
       connected to the file system (WIP)
 - layout: markdown
+  background:
+    asset: client/assets/images/monorepo.jpg
   content:
     markup: |
       # Supports monorepo style slide authoring
 - layout: markdown
+  background:
+    asset: client/assets/images/theme.jpg
   content:
     markup: |
       # Extensible through layouts and theming
@@ -305,28 +345,38 @@
     title: Left to Do
 - layout: markdown
   background:
-    asset: "https://memegen.link/doge/memes/are_tough.jpg"
+    asset: https://memegen.link/doge/memes/are_tough.jpg
   content:
     markup: |
       # Refresh browser when backend data changes
 - layout: markdown
+  background:
+    asset: client/assets/images/include.jpg
   content:
     markup: |
       # Add `include`s to compose slides
 - layout: markdown
+  background:
+    asset: client/assets/images/virtualization.jpg
   content:
     markup: |
       # Implement virtualization
 - layout: markdown
+  background:
+    asset: client/assets/images/frontend.jpg
   content:
     markup: |
       # Experiment with different frontends
       ## Generating to **mdx-deck** might be nice
 - layout: markdown
+  background:
+    asset: client/assets/images/editing-2.jpg
   content:
     markup: |
       # Explore editing and make it more versatile
 - layout: markdown
+  background:
+    asset: client/assets/images/begin-building.jpg
   content:
     markup: |
       # Begin building websites like this
@@ -334,14 +384,20 @@
   content:
     title: Lessons Learned
 - layout: markdown
+  background:
+    asset: client/assets/images/sdd.jpg
   content:
     markup: |
       # Schema Driven Design is a powerful approach
 - layout: markdown
+  background:
+    asset: client/assets/images/design-constraints.jpg
   content:
     markup: |
       # Separating concerns fosters creativity in design
 - layout: markdown
+  background:
+    asset: client/assets/images/frontend.jpg
   content:
     markup: >
       # Frontends don't need to contain much logic. There is value in having an
