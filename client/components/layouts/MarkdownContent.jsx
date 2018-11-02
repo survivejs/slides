@@ -28,6 +28,7 @@ const Title = styled.h1`
 const Markup = styled(excludeProps(["color", "title"], "div"))`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
+  margin-right: 5vw;
   align-self: start;
   color: ${({ color }) => color};
 `;
