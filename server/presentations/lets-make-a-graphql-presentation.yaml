@@ -11,12 +11,12 @@
     title: Background
 - layout: embed
   content:
-    title: React Finland API
-    link: https://api.react-finland.fi/graphql
-- layout: embed
-  content:
     title: React Finland
     link: https://react-finland.fi/
+- layout: embed
+  content:
+    title: React Finland API
+    link: https://api.react-finland.fi/graphql
 - layout: embed
   content:
     title: GraphQL Finland
@@ -99,7 +99,9 @@
           background: Background
           skip: Boolean
         }
-
+        ```
+      - |
+        ```graphql
         enum Layout {
           TITLE
           SECTION
@@ -107,9 +109,7 @@
           MARKDOWN
           GRID
         }
-        ```
-      - |
-        ```graphql
+
         type Background {
           asset: String!
           source: String
@@ -163,7 +163,7 @@
     markup: |
       ```yaml
       - theme: graphql-finland
-      - layout: title
+        layout: title
         content:
           title: Let's Make a GraphQL Presentation
           author: Juho Vepsäläinen
@@ -349,6 +349,6 @@
 - layout: markdown
   content:
     markup: >
-      Check
+      > Check
       [https://github.com/survivejs/slides](https://github.com/survivejs/slides)
       to learn more
