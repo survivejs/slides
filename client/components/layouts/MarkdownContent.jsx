@@ -6,6 +6,7 @@ import Markdown from "../Markdown.jsx";
 import getBackground from "./get-background";
 import excludeProps from "../exclude-props";
 
+// TODO: Allow background-size to be tuneable (contain is needed sometimes)
 const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
   min-height: 100vh;
   max-height: 100vh;
@@ -18,7 +19,6 @@ const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
   background-repeat: no-repeat;
   background-position: center;
 `;
-// TODO: Allow background-size to be tuneable (contain is needed sometimes)
 
 const Title = styled.h1`
   font-size: ${modularScale(6)};
@@ -31,13 +31,10 @@ const Markup = styled(excludeProps(["color", "title"], "div"))`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
   margin-right: 5vw;
-  align-self: start;
+  align-self: ${({ title }) => (title ? "start" : "center")};
   color: ${({ color }) => color};
   opacity: 0.9;
 `;
-
-// TODO: Restore (linaria bug)
-// align-self: ${({ title }) => (title ? "start" : "center")};
 
 const MarkdownContent = ({ background = {}, content = {}, theme = {} }) => (
   <MarkdownContainer
