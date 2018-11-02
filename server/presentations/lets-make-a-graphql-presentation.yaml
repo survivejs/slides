@@ -17,12 +17,12 @@
     link: https://react-finland.fi/
 - layout: embed
   content:
-    title: React Finland API
-    link: https://api.react-finland.fi/graphql
-- layout: embed
-  content:
     title: GraphQL Finland
     link: https://graphql-finland.fi/
+- layout: embed
+  content:
+    title: React Finland API
+    link: https://api.react-finland.fi/graphql
 - layout: embed
   content:
     title: Asset Generator
