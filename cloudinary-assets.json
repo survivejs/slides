@@ -24,5 +24,10 @@
   "slide": "https://res.cloudinary.com/survivejs/image/upload/v1541141431/slide.jpg",
   "include": "https://res.cloudinary.com/survivejs/image/upload/v1541141431/include.jpg",
   "markdown": "https://res.cloudinary.com/survivejs/image/upload/v1541141431/markdown.jpg",
-  "ssr": "https://res.cloudinary.com/survivejs/image/upload/v1541141471/ssr.jpg"
+  "ssr": "https://res.cloudinary.com/survivejs/image/upload/v1541141471/ssr.jpg",
+  "face": "https://res.cloudinary.com/survivejs/image/upload/v1541162197/face.jpg",
+  "through": "https://res.cloudinary.com/survivejs/image/upload/v1541162198/through.jpg",
+  "plane": "https://res.cloudinary.com/survivejs/image/upload/v1541162223/plane.jpg",
+  "lion": "https://res.cloudinary.com/survivejs/image/upload/v1541162311/lion.jpg",
+  "tunnel": "https://res.cloudinary.com/survivejs/image/upload/v1541162311/tunnel.jpg"
 }

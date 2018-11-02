@@ -358,13 +358,13 @@
       # Add `include`s to compose slides
 - layout: markdown
   background:
-    asset: client/assets/images/virtualization.jpg
+    asset: client/assets/images/tunnel.jpg
   content:
     markup: |
       # Implement virtualization
 - layout: markdown
   background:
-    asset: client/assets/images/frontend.jpg
+    asset: client/assets/images/face.jpg
   content:
     markup: |
       # Experiment with different frontends
@@ -386,19 +386,19 @@
     title: Lessons Learned
 - layout: markdown
   background:
-    asset: client/assets/images/sdd.jpg
+    asset: client/assets/images/plane.jpg
   content:
     markup: |
       # Schema Driven Design is a powerful approach
 - layout: markdown
   background:
-    asset: client/assets/images/design-constraints.jpg
+    asset: client/assets/images/through.jpg
   content:
     markup: |
       # Separating concerns fosters creativity in design
 - layout: markdown
   background:
-    asset: client/assets/images/frontend.jpg
+    asset: client/assets/images/lion.jpg
   content:
     markup: >
       # Frontends don't need to contain much logic. There is value in having an

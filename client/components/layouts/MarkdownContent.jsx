@@ -33,7 +33,7 @@ const Markup = styled(excludeProps(["color", "title"], "div"))`
   margin-right: 5vw;
   align-self: start;
   color: ${({ color }) => color};
-  opacity: 0.8;
+  opacity: 0.9;
 `;
 
 // TODO: Restore (linaria bug)
