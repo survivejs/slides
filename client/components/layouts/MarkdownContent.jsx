@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { styled } from "linaria/react";
 import { modularScale } from "polished";
 import Markdown from "../Markdown.jsx";
+import getBackground from "./get-background";
 import excludeProps from "../exclude-props";
 
 const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
@@ -22,6 +23,7 @@ const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
 const Title = styled.h1`
   font-size: ${modularScale(6)};
   margin-left: 5vw;
+  margin-right: 5vw;
   color: ${props => props.color};
 `;
 
@@ -31,6 +33,7 @@ const Markup = styled(excludeProps(["color", "title"], "div"))`
   margin-right: 5vw;
   align-self: start;
   color: ${({ color }) => color};
+  opacity: 0.8;
 `;
 
 // TODO: Restore (linaria bug)
@@ -60,18 +63,5 @@ MarkdownContent.propTypes = {
   content: PropTypes.object,
   theme: PropTypes.object
 };
-
-function getBackground(background) {
-  if (!background || !background.asset) {
-    return;
-  }
-
-  return background && `${linearGradient()},url(${background.asset})`;
-}
-
-// TODO: Make this more flexible
-function linearGradient() {
-  return `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))`;
-}
 
 export default MarkdownContent;

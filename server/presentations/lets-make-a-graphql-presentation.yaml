@@ -259,7 +259,8 @@
   content:
     title: "`grid`"
     markup: |
-      ### Slides with Grid content (only two columns for now)
+      ### Slides with Grid content
+      #### (only two columns for now)
 
       ```yaml
       layout: grid
