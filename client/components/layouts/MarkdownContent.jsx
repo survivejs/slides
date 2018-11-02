@@ -13,10 +13,11 @@ const MarkdownContainer = styled(excludeProps(["background", "title"], "div"))`
   align-items: center;
   line-height: 1.5;
   background: ${({ background }) => background};
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 `;
+// TODO: Allow background-size to be tuneable (contain is needed sometimes)
 
 const Title = styled.h1`
   font-size: ${modularScale(6)};
