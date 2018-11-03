@@ -32,7 +32,6 @@ const Markup = styled(excludeProps(["color"], "div"))`
   font-size: ${modularScale(4)};
   margin-left: 5vw;
   margin-right: 5vw;
-  margin-top: 10vh;
   align-self: start;
   color: ${props => props.color};
   opacity: 0.8;
