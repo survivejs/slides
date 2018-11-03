@@ -33,7 +33,7 @@ const Markup = styled(excludeProps(["color", "title"], "div"))`
   margin-right: 5vw;
   align-self: ${({ title }) => (title ? "start" : "center")};
   color: ${({ color }) => color};
-  opacity: 0.9;
+  opacity: 0.8;
 `;
 
 const MarkdownContent = ({ background = {}, content = {}, theme = {} }) => (

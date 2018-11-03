@@ -26,7 +26,7 @@ const Title = styled.h1`
   color: ${props => props.color};
 `;
 
-const Markup = styled.div`
+const Markup = styled(excludeProps(["color"], "div"))`
   display: grid;
   grid-template-columns: 1fr 1fr;
   font-size: ${modularScale(4)};
@@ -35,7 +35,7 @@ const Markup = styled.div`
   margin-top: 10vh;
   align-self: start;
   color: ${props => props.color};
-  opacity: 0.9;
+  opacity: 0.8;
 `;
 
 const GridContent = ({ background = {}, content = {}, theme = {} }) => (
