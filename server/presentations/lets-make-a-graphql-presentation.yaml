@@ -190,6 +190,12 @@
           title: Table of Contents
       ...
       ```
+- layout: markdown
+  background:
+    asset: https://memegen.link/puffin/meme_goes_here.jpg
+  content:
+    markup: |
+      # Demo time
 - layout: section
   content:
     title: Layouts
