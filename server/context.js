@@ -83,7 +83,7 @@ async function getPresentation(id) {
     // TODO: Assumes only the first slide contains theme reference
     slides: await Promise.map(resolveToC(presentation.slides), async slide => ({
       ...slide,
-      background: await resolveBackground(slide.background),
+      background: await resolveImage(slide.background),
       theme: presentation.slides[0].theme
     }))
       .map(resolveTheme)
@@ -107,6 +107,13 @@ function resolveToC(slides) {
       };
     }
 
+    if (slide.layout === "image") {
+      return {
+        ...slide,
+        content: resolveImage(slide.content)
+      };
+    }
+
     return slide;
   });
 }
@@ -114,12 +121,12 @@ function toMarkdownList(items) {
   return items.map(item => `* ${item}`).join("\n");
 }
 
-async function resolveBackground(background) {
-  if (!background || !background.asset) {
-    return Promise.resolve(background);
+async function resolveImage(image) {
+  if (!image || !image.asset) {
+    return Promise.resolve(image);
   }
 
-  const asset = background.asset;
+  const asset = image.asset;
   let assetPath = path.resolve(__dirname, "..", asset);
   let id;
 
@@ -136,7 +143,7 @@ async function resolveBackground(background) {
   // (md5 content)
   if (cloudinaryAssets[id]) {
     return {
-      ...background,
+      ...image,
       asset: cloudinaryAssets[id]
     };
   }
@@ -161,7 +168,7 @@ async function resolveBackground(background) {
   );
 
   return {
-    ...background,
+    ...image,
     asset: secureUrl
   };
 }

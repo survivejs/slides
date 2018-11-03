@@ -3,6 +3,7 @@ const resolvers = {
   Layout: {
     TITLE: "title",
     SECTION: "section",
+    IMAGE: "image",
     EMBED: "embed",
     MARKDOWN: "markdown",
     GRID: "grid"
@@ -39,7 +40,11 @@ const resolvers = {
   }
 };
 
-function resolveContentType({ author, link, markup, title, columns }) {
+function resolveContentType({ author, asset, link, markup, title, columns }) {
+  if (asset) {
+    return "Image";
+  }
+
   if (author) {
     return "TitleContent";
   }

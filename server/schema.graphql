@@ -42,13 +42,8 @@ type Slide {
   theme: Theme
   layout: Layout!
   content: ContentType!
-  background: Background
+  background: Image
   skip: Boolean
-}
-
-type Background {
-  asset: String!
-  source: String
 }
 
 type Theme {
@@ -61,17 +56,24 @@ type Theme {
 enum Layout {
   TITLE
   SECTION
+  IMAGE
   EMBED
   MARKDOWN
   GRID
 }
 
 union ContentType =
-    TitleContent
+    Image
+  | TitleContent
   | SectionContent
   | EmbedContent
   | MarkdownContent
   | GridContent
+
+type Image {
+  asset: String!
+  source: String
+}
 
 interface Content {
   title: String

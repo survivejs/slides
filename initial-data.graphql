@@ -20,6 +20,10 @@
       }
       layout
       content {
+        ... on Image {
+          asset
+          source
+        }
         ... on TitleContent {
           title
           author

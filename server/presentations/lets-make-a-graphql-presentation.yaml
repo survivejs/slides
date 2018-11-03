@@ -3,6 +3,18 @@
   content:
     title: Let's Make a GraphQL Presentation
     author: Juho Vepsäläinen
+- layout: image
+  content:
+    asset: https://i.imgur.com/Q3cUg29.gif
+- layout: image
+  content:
+    asset: client/assets/images/pineapple.jpg
+- layout: image
+  content:
+    asset: https://imgoat.com/uploads/8baa56554f/141386.jpeg
+- layout: image
+  content:
+    asset: https://e2.365dm.com/13/03/768x432/football-teemu-pukki-spain-v-finland_2919067.jpg?20130322220117
 - layout: toc
   background:
     asset: client/assets/images/toc.jpg
@@ -108,7 +120,7 @@
           theme: Theme
           layout: Layout!
           content: ContentType!
-          background: Background
+          background: Image
           skip: Boolean
         }
         ```
@@ -122,7 +134,7 @@
           GRID
         }
 
-        type Background {
+        type Image {
           asset: String!
           source: String
         }
@@ -156,7 +168,8 @@
       - |
         ```graphql
         union ContentType =
-            TitleContent
+            Image
+          | TitleContent
           | SectionContent
           | EmbedContent
           | MarkdownContent
@@ -239,6 +252,19 @@
       layout: toc
       content:
         title: Table of Contents
+      ```
+- layout: markdown
+  background:
+    asset: client/assets/images/theme.jpg
+  content:
+    title: "`image`"
+    markup: |
+      ### Image
+
+      ```yaml
+      layout: image
+      content:
+        asset: client/assets/images/theme.jpg
       ```
 - layout: markdown
   background:
