@@ -8,7 +8,7 @@ function getBackground(background) {
 
 // TODO: Make this more flexible
 function linearGradient() {
-  return `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))`;
+  return `linear-gradient(rgba(0, 0, 0, 0.9), rgba(130, 70, 0, 0.7))`;
 }
 
 export default getBackground;
