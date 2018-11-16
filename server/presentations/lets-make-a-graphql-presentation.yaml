@@ -398,8 +398,9 @@
   background:
     asset: client/assets/images/face.jpg
   content:
-    markup: |
+    markup: >
       # Experiment with different frontends
+
       ## Generating to [mdx-deck](https://github.com/jxnblk/mdx-deck) might be nice
 - layout: markdown
   background:
