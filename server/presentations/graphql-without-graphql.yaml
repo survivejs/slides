@@ -1,7 +1,7 @@
 - theme: graphql-finland
   layout: title
   content:
-    title: GraphQL Without GraphQL
+    title: GraphQL without GraphQL
     author: Juho Vepsäläinen
 - layout: image
   content:
@@ -27,7 +27,7 @@
     markup: |
       * A definition language is used to define an API
       * Separate language to describe types and their relations
-      * In addition code implementing **Queries** and **Mutations** is needed
+      * In addition, code implementing **Queries** and **Mutations** is needed
 - layout: section
   content:
     title: Schema First Design
@@ -68,6 +68,9 @@
 - layout: image
   content:
     asset: client/assets/images/react-finland/arch-v5.png
+- layout: section
+  content:
+    title: Schema First Design with GraphQL
 - layout: markdown
   background:
     asset: client/assets/images/sdd.jpg
@@ -77,23 +80,170 @@
       > Define the Schema first and the rest will follow
 - layout: markdown
   content:
-    title: How SFD works in context of GraphQL
+    title: SFD with GraphQL
     markup: |
       1. Think of the main concepts of your system (i.e., `Conference`, `Contact`, `Location`, `Theme`)
       2. Think of the fields and types the concepts have (i.e., `name`, `description`)
       3. Think of the nature of the fields (i.e. where does the data come from)
+- layout: embed
+  content:
+    title: TypeGraphQL
+    link: https://typegraphql.ml/
+- layout: grid
+  content:
+    title: Types as Classes
+    columns:
+      - |
+        **Conference.ts**
+
+        ```typescript
+        ...
+
+        @ObjectType()
+        export class Conference {
+          @Field(_ => ID)
+          public id!: string;
+
+          @Field(_ => String)
+          public name!: string;
+
+          @Field(_ => Contact)
+          public organizer!: Contact;
+
+          ...
+        }
+        ```
+      - |
+        **Generated schema:**
+
+        ```graphql
+        type Conference {
+          id: ID!
+          name: String!
+          organizer: Contact!
+          ...
+        }
+        ```
+
+        > GraphQL/TypeScript definition at the same time!
+- layout: grid
+  content:
+    title: Resolvers as Classes
+    columns:
+      - |
+        **ConferenceResolver.ts**
+
+        ```typescript
+        ...
+
+        @Resolver(_ => Conference)
+        class ConferenceResolver {
+          @Query(_ => Conference)
+          public conference(
+            @Arg("id", _ => ID) id: string
+          ) {
+            return getConference(id);
+          }
+
+          ...
+        }
+        ```
+      - |
+        **Generated schema:**
+
+        ```graphql
+        type Query {
+          conference(id: ID!): Conference
+        }
+        ```
+
+        > Resolve to data here (async possible too)
 - layout: markdown
-  background:
-    asset: https://memegen.link/puffin/meme_goes_here.jpg
   content:
+    title: What else?
     markup: |
-      # Demo time
+      * Dependency injection (inject db service for example)
+      * Authorization (add more annotations)
+      * Validations (GraphQL scalars and specific annotations)
+      * Query complexity handling
+      * And more
+- layout: markdown
+  content:
+    title: Why I use TypeGraphQL
+    markup: |
+      1. I don't have to think of GraphQL Schema
+      2. I can consume types from my frontend
+      3. I can generate GraphQL queries (WIP)
 - layout: section
   content:
-    title: Generating a GraphQL Schema
-- layout: section
+    title: GraphQL without GraphQL
+- layout: markdown
   content:
-    title: GraphQL Without GraphQL
+    title: Is it possible to use GraphQL and TypeScript type systems to generate queries?
+    markup: |
+      > Spoiler: Yes
+- layout: grid
+  content:
+    title: React Demo
+    columns:
+      - |
+        **Schedule.tsx**
+
+        ```typescript
+        interface ScheduleProps {
+          theme: Theme;
+          intervals: Array<{
+            begin: Interval["begin"];
+            end: Interval["end"];
+            sessions: Array<{
+              title: Session["title"];
+              type: Session["type"];
+            }>;
+          }>;
+        }
+        ```
+      - |
+        **Schedule.tsx**
+
+        ```graphql
+        function Schedule({
+          theme, intervals
+        }: ScheduleProps) {
+          ...
+        }
+        ```
+
+        > The types point to our schema (source of truth for GraphQL)
+- layout: markdown
+  content:
+    title: Approach
+    markup: |
+      1. Extract types from GraphQL schema and React components
+      2. Implement `connected(Schedule)` finds the component by name and constructs the related queries
+
+      > To work, the system expects to find matching root queries (i.e. `theme` and `intervals` in this case)
+- layout: markdown
+  content:
+    title: Constraints
+    markup: |
+      * Expects components to be strictly typed
+      * Expects backend to implement queries matching to collections
+      * Expects you to use TypeScript for now
+- layout: grid
+  content:
+    title: Pros and Cons
+    columns:
+      - |
+        **Pros:**
+
+        * Eliminates the need to maintain separate GraphQL queries
+        * Typechecking through TypeScript
+        * No need for *graphql-tag* or similar solution?
+      - |
+        **Cons:**
+
+        * Additional abstraction to worry about (query generator)
+        * Loses some power of GraphQL (directives through comments?)
 - layout: section
   content:
     title: Lessons Learned
@@ -102,28 +252,13 @@
     asset: client/assets/images/plane.jpg
   content:
     markup: |
-      # Schema Driven Design is a powerful approach
+      # Schema First Design ties frontend and backend together
 - layout: markdown
   background:
     asset: client/assets/images/through.jpg
   content:
     markup: |
-      # Separating concerns fosters creativity in design
-- layout: markdown
-  background:
-    asset: client/assets/images/lion.jpg
-  content:
-    markup: |
-      # Frontend doesn't need to contain much logic
-- layout: section
-  content:
-    title: Future Work
-- layout: markdown
-  background:
-    asset: https://memegen.link/doge/memes/are_tough.jpg
-  content:
-    markup: |
-      # Refresh browser when backend data changes
+      # Types lead to new possibilities (i.e. automating queries, testing)
 - layout: markdown
   background:
     asset: client/assets/images/mother.jpg
@@ -131,5 +266,5 @@
     markup: |
       * Check out
       [https://github.com/survivejs/slides](https://github.com/survivejs/slides)
-      to learn more
+      for the slides
       * Thank you **@typeofconf**!

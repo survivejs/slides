@@ -37,14 +37,22 @@ const Markup = styled(excludeProps(["color"], "div"))`
   opacity: 0.8;
 `;
 
+const MarkdownContainer = styled.div`
+  margin: 0.5em;
+`;
+
 const GridContent = ({ background = {}, content = {}, theme = {} }) => (
   <GridContainer background={getBackground(background)}>
     <Title color={theme.primaryColor}>
       <Markdown>{content.title}</Markdown>
     </Title>
     <Markup className="markup" color={theme.secondaryColor}>
-      <Markdown>{content.columns[0]}</Markdown>
-      <Markdown>{content.columns[1]}</Markdown>
+      <MarkdownContainer>
+        <Markdown>{content.columns[0]}</Markdown>
+      </MarkdownContainer>
+      <MarkdownContainer>
+        <Markdown>{content.columns[1]}</Markdown>
+      </MarkdownContainer>
     </Markup>
   </GridContainer>
 );
