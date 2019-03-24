@@ -1,7 +1,7 @@
 {
-  "name": "intro-to-graphql",
+  "name": "slides",
   "version": "0.0.0",
-  "description": "Brief introduction to GraphQL",
+  "description": "SurviveJS slides",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/survivejs-presentations/intro-to-graphql.git"
+    "url": "git+https://github.com/survivejs/slides.git"
   },
   "lint-staged": {
     "*.{graphql,js,jsx,json,md,css}": [
@@ -30,9 +30,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/survivejs-presentations/intro-to-graphql/issues"
+    "url": "https://github.com/survivejs/slides/issues"
   },
-  "homepage": "https://github.com/survivejs-presentations/intro-to-graphql#readme",
+  "homepage": "https://github.com/survivejs/slides#readme",
   "dependencies": {
     "bluebird": "^3.5.2",
     "classnames": "^2.2.6",
