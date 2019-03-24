@@ -83,7 +83,7 @@
   background:
     asset: client/assets/images/design-constraints.jpg
   content:
-    title: Design Constaints
+    title: Design Constraints
     markup: |
       1. Content should be separate from layouts
       2. Content should live on the server behind an API

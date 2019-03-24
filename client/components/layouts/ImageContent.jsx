@@ -5,14 +5,20 @@ import { styled } from "linaria/react";
 
 // TODO: Exclude props
 const ImageContainer = styled.div`
+  display: grid;
   min-height: 100vh;
   max-height: 100vh;
   text-align: center;
+  padding: 2em;
+  box-sizing: border-box;
 `;
 
 const Image = styled.img`
   height: 100%;
+  max-width: 100%;
   object-fit: contain;
+  align-self: center;
+  justify-self: center;
 `;
 
 const ImageContent = ({ content = {} }) => (

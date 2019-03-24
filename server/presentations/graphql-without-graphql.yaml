@@ -1,0 +1,135 @@
+- theme: graphql-finland
+  layout: title
+  content:
+    title: GraphQL Without GraphQL
+    author: Juho Vepsäläinen
+- layout: image
+  content:
+    asset: client/assets/images/pineapple.jpg
+- layout: image
+  content:
+    asset: https://imgoat.com/uploads/8baa56554f/141386.jpeg
+- layout: toc
+  content:
+    title: What to Expect
+- layout: section
+  content:
+    title: What is GraphQL?
+- layout: embed
+  content:
+    title: GraphQL
+    link: https://graphql.org/
+- layout: markdown
+  background:
+    asset: client/assets/images/sdl.jpg
+  content:
+    title: GraphQL Schema Definition Language (SDL)
+    markup: |
+      * A definition language is used to define an API
+      * Separate language to describe types and their relations
+      * In addition code implementing **Queries** and **Mutations** is needed
+- layout: section
+  content:
+    title: Schema First Design
+- layout: markdown
+  background:
+    asset: client/assets/images/switchboard.jpg
+    source: https://en.wikipedia.org/wiki/Switchboard_operator#/media/File:Bell_telephone_magazine_(1922)_(14776291573).jpg
+  content:
+    title: Why I Began to Use GraphQL
+    markup: |
+      1. Initially my content was tied to my website
+      2. Mobile app needed to consume the same data
+      3. A content API was needed and GraphQL fit the bill
+- layout: image
+  content:
+    asset: client/assets/images/react-finland/arch-v1.png
+- layout: embed
+  content:
+    title: React Finland API
+    link: https://api.react-finland.fi/graphql
+- layout: image
+  content:
+    asset: client/assets/images/react-finland/arch-v2.png
+- layout: image
+  content:
+    asset: client/assets/images/react-finland/arch-v3.png
+- layout: embed
+  content:
+    title: Asset Generator
+    link: https://rf-asset-generator.netlify.com/
+- layout: image
+  content:
+    asset: client/assets/images/react-finland/arch-v4.png
+- layout: embed
+  content:
+    title: Asset Designer
+    link: https://api.react-finland.fi/asset-designer
+- layout: image
+  content:
+    asset: client/assets/images/react-finland/arch-v5.png
+- layout: markdown
+  background:
+    asset: client/assets/images/sdd.jpg
+  content:
+    title: Schema First Design (SFD)
+    markup: |
+      > Define the Schema first and the rest will follow
+- layout: markdown
+  content:
+    title: How SFD works in context of GraphQL
+    markup: |
+      1. Think of the main concepts of your system (i.e., `Conference`, `Contact`, `Location`, `Theme`)
+      2. Think of the fields and types the concepts have (i.e., `name`, `description`)
+      3. Think of the nature of the fields (i.e. where does the data come from)
+- layout: markdown
+  background:
+    asset: https://memegen.link/puffin/meme_goes_here.jpg
+  content:
+    markup: |
+      # Demo time
+- layout: section
+  content:
+    title: Generating a GraphQL Schema
+- layout: section
+  content:
+    title: GraphQL Without GraphQL
+- layout: section
+  content:
+    title: Lessons Learned
+- layout: markdown
+  background:
+    asset: client/assets/images/plane.jpg
+  content:
+    markup: |
+      # Schema Driven Design is a powerful approach
+- layout: markdown
+  background:
+    asset: client/assets/images/through.jpg
+  content:
+    markup: |
+      # Separating concerns fosters creativity in design
+- layout: markdown
+  background:
+    asset: client/assets/images/lion.jpg
+  content:
+    markup: |
+      # Frontend doesn't need to contain much logic
+- layout: section
+  content:
+    title: Future Work
+- layout: markdown
+  background:
+    asset: https://memegen.link/doge/memes/are_tough.jpg
+  content:
+    markup: |
+      # Refresh browser when backend data changes
+- layout: markdown
+  background:
+    asset: client/assets/images/mother.jpg
+  content:
+    markup: |
+      * Check out
+      [https://github.com/survivejs/slides](https://github.com/survivejs/slides)
+      to learn more
+      * Thank you **@typeofconf**!
