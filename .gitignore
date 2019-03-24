@@ -3,4 +3,5 @@ build/
 server/schema.graphql
 .antwar
 .initial-data.json
+.linaria-cache
 .env
