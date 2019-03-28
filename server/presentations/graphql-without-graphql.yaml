@@ -30,7 +30,7 @@
       * In addition, code implementing **Queries** and **Mutations** is needed
 - layout: section
   content:
-    title: Schema First Design
+    title: My Experience with GraphQL
 - layout: markdown
   background:
     asset: client/assets/images/switchboard.jpg
